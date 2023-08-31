@@ -21,10 +21,21 @@ module.exports = grammar({
 
       parameter_list: $ => seq(
           '(',
-          // TODO: parameters
+          optional(
+              commaSeparated($._parameter),
+          ),
           ')'
+      ),
+
+      _parameter: $ => seq(
+          $.primitive_type,
+          $.identifier
       ),
 
       identifier: $ => /[a-zA-Z][a-zA-Z0-9_]+/,
   }
 });
+
+function commaSeparated(rule) {
+  return seq(rule, repeat(seq(',', rule)));
+}
