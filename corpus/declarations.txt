@@ -1,0 +1,13 @@
+===========
+Declaration
+===========
+
+void() NoParamFunction1;
+
+---
+
+(source_file
+    (function_declaration
+        (primitive_type)
+        (parameter_list)
+        (identifier)))
