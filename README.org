@@ -41,8 +41,10 @@
 
   - [ ] check with the [[https://pages.cs.wisc.edu/~jeremyp/quake/quakec/quakec.pdf][QuakeC Reference Manual]]
 
-- [ ] error handling
+- [ ] error handling?
 
-- [ ] fteqcc
+- [ ] new-style quakec
+
+- [ ] fteqcc dialect
 
 - [ ] gmqcc
