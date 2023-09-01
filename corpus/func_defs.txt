@@ -1,0 +1,41 @@
+===========
+Builtin function definition
+===========
+
+void() NoParamFunction1 = #12;
+void(int param1, int param2) ParamFunction1 = #2;
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier))
+    (function_definition
+        (simple_type)
+        (parameter_list
+            (simple_type)
+            (identifier)
+            (simple_type)
+            (identifier))
+        (identifier)))
+
+===========
+Empty block function definition
+===========
+
+void(int param1, int param2) EmptyFunction1 = {};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list
+            (simple_type)
+            (identifier)
+            (simple_type)
+            (identifier))
+        (identifier)
+        (compound_statement)))

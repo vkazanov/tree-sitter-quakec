@@ -11,7 +11,8 @@ module.exports = grammar({
 
         _definition: $ => choice(
             $.function_declaration,
-            $.constant_definition
+            $.constant_definition,
+            $.function_definition
         ),
 
         function_declaration: $ => seq(
@@ -21,11 +22,23 @@ module.exports = grammar({
             ';'
         ),
 
+        function_definition: $ => seq(
+            $.simple_type,
+            $.parameter_list,
+            $.identifier,
+            '=',
+            choice(
+                $._builtin_literal,
+                $.compound_statement
+            ),
+            ';'
+        ),
+
         constant_definition: $ => seq(
             $.simple_type,
             $.identifier,
             '=',
-            $.immediate,
+            $.literal,
             ';'
         ),
 
@@ -33,10 +46,10 @@ module.exports = grammar({
             optional('local'),
             $.simple_type,
             $.identifier,
-            optional(seq('=', $.immediate)),
+            optional(seq('=', $.literal)),
             optional(commaSeparated(
-                // name [ = immediate]
-                seq($.identifier, seq('=', $.immediate))
+                // name [ = literal]
+                seq($.identifier, seq('=', $.literal))
             ))
         ),
 
@@ -57,10 +70,22 @@ module.exports = grammar({
             $.identifier
         ),
 
+        compound_statement: $ => seq(
+            '{',
+            // repeat($.statement)
+            '}'
+        ),
+
         identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]+/,
 
-        // TODO: or it should be called literal?
-        immediate: $ => choice(
+        // usual literals used in code, excluding the builtin function literals that can
+        // only be used for function definition
+        literal: $ => choice(
+            $._numeric_literal,
+            $._string_literal,
+        ),
+
+        _numeric_literal: $ => choice(
             // integer
             /-?[0-9]+/,
             // float
@@ -68,13 +93,18 @@ module.exports = grammar({
             // vector
             /`-?[0-9]+ -?[0-9]+ -?[0-9]+`/,
             /`-?[0-9]+\.[0-9]+ -?[0-9]+\.[0-9]+ -?[0-9]+\.[0-9]+`/,
-            // string (TODO: escaping, see how javascript grammar does it)
+        ),
+
+        // string (TODO: escaping, see how javascript grammar does it)
+        _string_literal: $ => seq(
             seq(
                 '"',
                 /[^"]*/,
                 '"'
-            )
+            ),
         ),
+
+        _builtin_literal: $ => /#[0-9]+/,
 
         comment: _ => token(choice(
             seq('//', /.*/),

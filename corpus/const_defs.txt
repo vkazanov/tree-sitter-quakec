@@ -15,24 +15,24 @@ int constString = "bla bla bla";
     (constant_definition
         (simple_type)
         (identifier)
-        (immediate))
+        (literal))
     (constant_definition
         (simple_type)
         (identifier)
-        (immediate))
+        (literal))
     (constant_definition
         (simple_type)
         (identifier)
-        (immediate))
+        (literal))
     (constant_definition
         (simple_type)
         (identifier)
-        (immediate))
+        (literal))
     (constant_definition
         (simple_type)
         (identifier)
-        (immediate))
+        (literal))
     (constant_definition
         (simple_type)
         (identifier)
-        (immediate)))
+        (literal)))

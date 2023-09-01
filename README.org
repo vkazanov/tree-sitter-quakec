@@ -11,9 +11,21 @@
 
   - [X] comments
 
-  - [ ] pragmas
+  - [X] function definitions
 
-  - [ ] function definitions
+  - [ ] statements
+
+    - [ ] assignment
+
+    - [ ] if
+
+    - [ ] while
+
+    - [ ] do
+
+  - [ ] expressions
+
+  - [ ] pragmas
 
   - [ ] frame function definitions
 

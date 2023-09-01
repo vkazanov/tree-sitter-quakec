@@ -1,5 +1,10 @@
 [
   {
+    "type": "compound_statement",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "constant_definition",
     "named": true,
     "fields": {},
@@ -12,7 +17,7 @@
           "named": true
         },
         {
-          "type": "immediate",
+          "type": "literal",
           "named": true
         },
         {
@@ -46,7 +51,34 @@
     }
   },
   {
-    "type": "immediate",
+    "type": "function_definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "compound_statement",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "parameter_list",
+          "named": true
+        },
+        {
+          "type": "simple_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "literal",
     "named": true,
     "fields": {}
   },
@@ -88,6 +120,10 @@
         },
         {
           "type": "function_declaration",
+          "named": true
+        },
+        {
+          "type": "function_definition",
           "named": true
         }
       ]
@@ -151,6 +187,14 @@
   },
   {
     "type": "void",
+    "named": false
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "}",
     "named": false
   }
 ]
