@@ -1,5 +1,5 @@
 ===========
-Trivial Declaration
+Function declaration - no params
 ===========
 
 void() NoParamFunction1;
@@ -8,12 +8,12 @@ void() NoParamFunction1;
 
 (source_file
     (function_declaration
-        (primitive_type)
+        (simple_type)
         (parameter_list)
         (identifier)))
 
 ===========
-Parametrized declaration
+Function declaration - multiple params
 ===========
 
 float(entity param1, entity param2) TestFunction4;
@@ -22,10 +22,10 @@ float(entity param1, entity param2) TestFunction4;
 
 (source_file
     (function_declaration
-        (primitive_type)
+        (simple_type)
         (parameter_list
-                (primitive_type)
+                (simple_type)
                 (identifier)
-                (primitive_type)
+                (simple_type)
                 (identifier))
          (identifier)))

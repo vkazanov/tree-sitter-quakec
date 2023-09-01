@@ -1,0 +1,38 @@
+===========
+Constant definitions
+===========
+
+float constFloat = 11.123;
+int constInt = 1;
+int constNegInt = -1;
+int constInt = `1 -12 3`;
+int constFloat = `1.0 -12.12 3.4`;
+int constString = "bla bla bla";
+
+---
+
+(source_file
+    (constant_definition
+        (simple_type)
+        (identifier)
+        (immediate))
+    (constant_definition
+        (simple_type)
+        (identifier)
+        (immediate))
+    (constant_definition
+        (simple_type)
+        (identifier)
+        (immediate))
+    (constant_definition
+        (simple_type)
+        (identifier)
+        (immediate))
+    (constant_definition
+        (simple_type)
+        (identifier)
+        (immediate))
+    (constant_definition
+        (simple_type)
+        (identifier)
+        (immediate)))

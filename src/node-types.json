@@ -1,5 +1,28 @@
 [
   {
+    "type": "constant_definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "immediate",
+          "named": true
+        },
+        {
+          "type": "simple_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "function_declaration",
     "named": true,
     "fields": {},
@@ -16,11 +39,16 @@
           "named": true
         },
         {
-          "type": "primitive_type",
+          "type": "simple_type",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "immediate",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "parameter_list",
@@ -35,14 +63,14 @@
           "named": true
         },
         {
-          "type": "primitive_type",
+          "type": "simple_type",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "primitive_type",
+    "type": "simple_type",
     "named": true,
     "fields": {}
   },
@@ -55,11 +83,19 @@
       "required": false,
       "types": [
         {
+          "type": "constant_definition",
+          "named": true
+        },
+        {
           "type": "function_declaration",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "\"",
+    "named": false
   },
   {
     "type": "(",
@@ -78,6 +114,10 @@
     "named": false
   },
   {
+    "type": "=",
+    "named": false
+  },
+  {
     "type": "entity",
     "named": false
   },
@@ -91,6 +131,10 @@
   },
   {
     "type": "int",
+    "named": false
+  },
+  {
+    "type": "local",
     "named": false
   },
   {

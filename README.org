@@ -1,0 +1,34 @@
+
+- [-] vanilla qc
+
+  - [X] simple types
+
+  - [X] immediates
+
+  - [X] variable definition
+
+  - [X] constant definition
+
+  - [X] functions declaration
+
+  - [ ] comments
+
+  - [ ] function definitions
+
+  - [ ] field types
+
+  - [ ] frame function definitions
+
+  - [ ] pragmas
+
+  - [ ] function body blocks
+
+  - [ ] test with original qc code
+
+  - [ ] check with the [[https://pages.cs.wisc.edu/~jeremyp/quake/quakec/quakec.pdf][QuakeC Reference Manual]]
+
+- [ ] error handling
+
+- [ ] fteqcc
+
+- [ ] gmqcc

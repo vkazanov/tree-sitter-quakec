@@ -5,17 +5,37 @@ module.exports = grammar({
       source_file: $ => repeat($._definition),
 
       _definition: $ => choice(
-          $.function_declaration
+          $.function_declaration,
+          $.constant_definition
       ),
 
       function_declaration: $ => seq(
-          $.primitive_type,
+          $.simple_type,
           $.parameter_list,
           $.identifier,
           ';'
       ),
 
-      primitive_type: $ => choice(
+      constant_definition: $ => seq(
+          $.simple_type,
+          $.identifier,
+          '=',
+          $.immediate,
+          ';'
+      ),
+
+      variable_definition: $ => seq(
+          optional('local'),
+          $.simple_type,
+          $.identifier,
+          optional(seq('=', $.immediate)),
+          optional(commaSeparated(
+              // name [ = immediate]
+              seq($.identifier, seq('=', $.immediate))
+          ))
+      ),
+
+      simple_type: $ => choice(
           'void', 'entity', 'float', 'vector', 'string', 'int'
       ),
 
@@ -28,11 +48,28 @@ module.exports = grammar({
       ),
 
       _parameter: $ => seq(
-          $.primitive_type,
+          $.simple_type,
           $.identifier
       ),
 
-      identifier: $ => /[a-zA-Z][a-zA-Z0-9_]+/,
+      identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]+/,
+
+      // TODO: or it should be called literal?
+      immediate: $ => choice(
+          // integer
+          /-?[0-9]+/,
+          // float
+          /-?[0-9]+\.[0-9]+/,
+          // vector
+          /`-?[0-9]+ -?[0-9]+ -?[0-9]+`/,
+          /`-?[0-9]+\.[0-9]+ -?[0-9]+\.[0-9]+ -?[0-9]+\.[0-9]+`/,
+          // string (TODO: escaping)
+          seq(
+              '"',
+              /[^"]*/,
+              '"'
+          ),
+      )
   }
 });
 
