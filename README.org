@@ -23,6 +23,8 @@
 
     - [ ] do
 
+    - [ ] return
+
   - [ ] expressions
 
   - [ ] pragmas
