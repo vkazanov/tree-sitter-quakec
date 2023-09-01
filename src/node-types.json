@@ -118,6 +118,10 @@
     "named": false
   },
   {
+    "type": "comment",
+    "named": true
+  },
+  {
     "type": "entity",
     "named": false
   },

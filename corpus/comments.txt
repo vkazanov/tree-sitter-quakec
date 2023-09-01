@@ -1,0 +1,25 @@
+===========
+Single line comment
+===========
+
+// float constFloat = 11.123;
+// some text here
+
+---
+
+(source_file
+        (comment)
+        (comment))
+
+===========
+Multiline comment
+===========
+
+/*************
+ Long live Emacs!
+ ***************/
+
+---
+
+(source_file
+        (comment))
