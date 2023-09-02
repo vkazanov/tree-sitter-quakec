@@ -1,3 +1,22 @@
+// Operator precedence table
+//
+// TODO: manuals and qcc.h contradict each other have to check code, maybe even the newer
+// gmqcc code
+const PREC = {
+    PAREN_DECLARATOR: -10,
+    DEFAULT: 0,                 // TODO: do I need this at all?
+    LOGICAL_OR: 1,
+    LOGICAL_AND: 2,
+    LOGICAL_NOT: 3,
+    RELATIONAL: 4,
+    ADD: 5,                     // same as substraction
+    BITWISE_OR: 6,
+    BITWISE_AND: 7,
+    MULTIPLY: 8,                 // same as division
+    UNARY: 9,                    // positive/negative
+    CALL: 10,
+};
+
 module.exports = grammar({
     name: 'QuakeC',
 
@@ -153,9 +172,15 @@ module.exports = grammar({
 
         _expression: $ => choice(
             $.identifier,
-            $.literal
+            $.literal,
+            $.unary_expression
             // TODO
         ),
+
+        unary_expression: $ => prec.left(PREC.UNARY, seq(
+            choice('-', '+'),
+            $._expression,
+        )),
 
         //
         // Terminal nodes

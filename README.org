@@ -13,7 +13,7 @@
 
   - [X] function definitions
 
-  - [-] statements
+  - [X] statements
 
     - [X] assignment
 
@@ -32,11 +32,19 @@
 
     - [X] expression statement
 
-  - [ ] proper strings (escaped newline if necessary)
+  - [-] expressions
 
-  - [ ] expressions
+    - [X] unary expression
+
+    - [ ] binary expressions
 
     - [ ] funcall (or should it be an expression?)
+
+    - [ ] parentheses
+
+    - [ ] bit operators
+
+  - [ ] proper strings (escaped newline if necessary)
 
   - [ ] pragmas
 
