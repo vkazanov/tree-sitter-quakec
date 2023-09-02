@@ -23,12 +23,22 @@
 
     - [X] do/while
 
-    - [ ] return
-
-    - [ ] sort out statement hierarchy (simple vs compound and what looks better in the
+    - [X] sort out statement hierarchy (simple vs compound and what looks better in the
       CST)
 
+    - [X] return statement
+
+    - [ ] variable definition statement
+
+    - [ ] expression statement
+
+    - [ ] comma after a block not necessary?
+
+  - [ ] proper strings
+
   - [ ] expressions
+
+    - [ ] funcall (or should it be an expression?)
 
   - [ ] pragmas
 
@@ -36,13 +46,27 @@
 
   - [ ] variable definition
 
-  - [ ] field types
-
-  - [ ] function body blocks
+  - [ ] fields
 
   - [ ] test with original qc code
 
   - [ ] check with the [[https://pages.cs.wisc.edu/~jeremyp/quake/quakec/quakec.pdf][QuakeC Reference Manual]]
+
+- [ ] check extensions in https://quakewiki.org/wiki/QuakeC_Loops_and_Conditions
+
+  - [ ] for
+
+  - [ ] switch
+
+  - [ ] break
+
+  - [ ] for
+
+  - [ ] switch
+
+  - [ ] break
+
+- [ ] further extensions in https://www.fteqcc.org/dl/fteqcc_manual.txt
 
 - [ ] error handling?
 

@@ -92,6 +92,7 @@ module.exports = grammar({
             $.if_statement,
             $.while_statement,
             $.do_while_statement,
+            $.return_statement,
             // TODO
         ),
 
@@ -126,6 +127,10 @@ module.exports = grammar({
             '(', $._expression, ')',
         ),
 
+        return_statement: $ => seq(
+            'return',
+            $._expression
+        ),
 
         //
         // Expressions

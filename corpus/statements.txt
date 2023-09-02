@@ -252,3 +252,21 @@ void() Function = {
                 (identifier)
                 (literal))
             (identifier))))
+
+===========
+Return statement
+===========
+
+void() Function = {
+    return 111;
+};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (return_statement
+            (literal))))
