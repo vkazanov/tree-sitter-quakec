@@ -74,6 +74,10 @@
           "named": true
         },
         {
+          "type": "variable_definition_statement",
+          "named": true
+        },
+        {
           "type": "while_statement",
           "named": true
         }
@@ -140,6 +144,10 @@
           "named": true
         },
         {
+          "type": "variable_definition_statement",
+          "named": true
+        },
+        {
           "type": "while_statement",
           "named": true
         }
@@ -176,6 +184,10 @@
         },
         {
           "type": "return_statement",
+          "named": true
+        },
+        {
+          "type": "variable_definition_statement",
           "named": true
         },
         {
@@ -257,6 +269,29 @@
     }
   },
   {
+    "type": "variable_definition_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "literal",
+          "named": true
+        },
+        {
+          "type": "simple_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "while_statement",
     "named": true,
     "fields": {},
@@ -286,6 +321,10 @@
         },
         {
           "type": "return_statement",
+          "named": true
+        },
+        {
+          "type": "variable_definition_statement",
           "named": true
         },
         {

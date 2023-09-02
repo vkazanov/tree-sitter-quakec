@@ -270,3 +270,33 @@ void() Function = {
         (identifier)
         (return_statement
             (literal))))
+
+===========
+Variable definition statement
+===========
+
+void() Function = {
+    int a;
+    local int b;
+    int c = 1, d = 2;
+};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (variable_definition_statement
+          (simple_type)
+          (identifier))
+        (variable_definition_statement
+          (simple_type)
+          (identifier))
+        (variable_definition_statement
+          (simple_type)
+          (identifier)
+          (literal)
+          (identifier)
+          (literal))))

@@ -9,7 +9,9 @@ module.exports = grammar({
     rules: {
         source_file: $ => repeat($._definition),
 
+        //
         // definitions and declarations
+        //
 
         _definition: $ => choice(
             $.function_declaration,
@@ -36,6 +38,8 @@ module.exports = grammar({
             ';'
         ),
 
+        // TODO: do I need a separate form of variable/constant definitino? This seems to
+        // be subsumed by the more general variable definition rules
         constant_definition: $ => seq(
             $.simple_type,
             $.identifier,
@@ -44,15 +48,18 @@ module.exports = grammar({
             ';'
         ),
 
+        // When defined globally with an immediate this is constant, otherwise - a
+        // variable (either a global or a local one). Note that function-local var
+        // definitions are not constants.
         variable_definition: $ => seq(
             optional('local'),
             $.simple_type,
             $.identifier,
             optional(seq('=', $.literal)),
-            optional(commaSeparated(
+            optional(seq(',', commaSeparated(
                 // name [ = literal]
                 seq($.identifier, optional(seq('=', $.literal)))
-            ))
+            )))
         ),
 
         simple_type: $ => choice(
@@ -93,6 +100,7 @@ module.exports = grammar({
             $.while_statement,
             $.do_while_statement,
             $.return_statement,
+            $._variable_definition_statement,
             // TODO
         ),
 
@@ -130,6 +138,11 @@ module.exports = grammar({
         return_statement: $ => seq(
             'return',
             $._expression
+        ),
+
+        _variable_definition_statement: $ => alias(
+            $.variable_definition,
+            $.variable_definition_statement
         ),
 
         //

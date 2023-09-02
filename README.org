@@ -28,7 +28,7 @@
 
     - [X] return statement
 
-    - [ ] variable definition statement
+    - [X] variable definition statement
 
     - [ ] expression statement
 
