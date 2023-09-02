@@ -155,3 +155,100 @@ void() Function = {
             (assignment_statement
                 (identifier)
                 (literal)))))
+
+===========
+While statement - simple
+===========
+
+void() Function = {
+    while (a) b = 1;
+};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (while_statement
+            (identifier)
+            (assignment_statement
+                (identifier)
+                (literal)))))
+
+===========
+While statement - compound
+===========
+
+void() Function = {
+    while (a) {
+        b = 1;
+        a = 22;
+    };
+};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (while_statement
+            (identifier)
+            (assignment_statement
+                (identifier)
+                (literal))
+            (assignment_statement
+                (identifier)
+                (literal)))))
+
+===========
+Do/while statement - simple
+===========
+
+void() Function = {
+    do b = 1
+    while (a);
+};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (do_while_statement
+            (assignment_statement
+                (identifier)
+                (literal))
+            (identifier))))
+
+===========
+Do/while statement - compound
+===========
+
+void() Function = {
+    do {
+        b = 1;
+        a = 22;
+    } while (a);
+};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (do_while_statement
+            (assignment_statement
+                (identifier)
+                (literal))
+            (assignment_statement
+                (identifier)
+                (literal))
+            (identifier))))

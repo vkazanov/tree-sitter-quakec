@@ -72,7 +72,9 @@ module.exports = grammar({
             $.identifier
         ),
 
+        //
         // Statements
+        //
 
         _statement: $ => choice(
             $._compound_statement,
@@ -87,7 +89,9 @@ module.exports = grammar({
 
         _simple_statement: $ => choice(
             $.assignment_statement,
-            $.if_statement
+            $.if_statement,
+            $.while_statement,
+            $.do_while_statement,
             // TODO
         ),
 
@@ -100,7 +104,7 @@ module.exports = grammar({
         if_statement: $ => prec.right(seq(
             'if',
             '(',
-            $._expression,       // TODO: boolean expression?
+            $._expression,
             ')',
             $._statement,
             optional(seq(
@@ -109,7 +113,23 @@ module.exports = grammar({
             )),
         )),
 
+        while_statement: $ => seq(
+            'while',
+            '(', $._expression, ')',
+            $._statement,
+        ),
+
+        do_while_statement: $ => seq(
+            'do',
+            $._statement,
+            'while',
+            '(', $._expression, ')',
+        ),
+
+
+        //
         // Expressions
+        //
 
         _expression: $ => choice(
             $.identifier,
@@ -117,7 +137,9 @@ module.exports = grammar({
             // TODO
         ),
 
-        // Leaf nodes
+        //
+        // Terminal nodes
+        //
 
         identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
 
@@ -149,6 +171,10 @@ module.exports = grammar({
 
         // only used assign builtin function names
         _builtin_literal: $ => /#[0-9]+/,
+
+        //
+        // Comments (to used in extras)
+        //
 
         comment: _ => token(choice(
             seq('//', /.*/),

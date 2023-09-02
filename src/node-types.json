@@ -42,6 +42,41 @@
     }
   },
   {
+    "type": "do_while_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "assignment_statement",
+          "named": true
+        },
+        {
+          "type": "do_while_statement",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "literal",
+          "named": true
+        },
+        {
+          "type": "while_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "function_declaration",
     "named": true,
     "fields": {},
@@ -77,6 +112,10 @@
           "named": true
         },
         {
+          "type": "do_while_statement",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -90,6 +129,10 @@
         },
         {
           "type": "simple_type",
+          "named": true
+        },
+        {
+          "type": "while_statement",
           "named": true
         }
       ]
@@ -108,6 +151,10 @@
           "named": true
         },
         {
+          "type": "do_while_statement",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -117,6 +164,10 @@
         },
         {
           "type": "literal",
+          "named": true
+        },
+        {
+          "type": "while_statement",
           "named": true
         }
       ]
@@ -175,6 +226,41 @@
     }
   },
   {
+    "type": "while_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "assignment_statement",
+          "named": true
+        },
+        {
+          "type": "do_while_statement",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "literal",
+          "named": true
+        },
+        {
+          "type": "while_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "\"",
     "named": false
   },
@@ -201,6 +287,10 @@
   {
     "type": "comment",
     "named": true
+  },
+  {
+    "type": "do",
+    "named": false
   },
   {
     "type": "else",
@@ -240,6 +330,10 @@
   },
   {
     "type": "void",
+    "named": false
+  },
+  {
+    "type": "while",
     "named": false
   },
   {

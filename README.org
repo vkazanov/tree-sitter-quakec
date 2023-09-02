@@ -19,9 +19,9 @@
 
     - [X] if
 
-    - [ ] while
+    - [X] while
 
-    - [ ] do
+    - [X] do/while
 
     - [ ] return
 
