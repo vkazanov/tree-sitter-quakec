@@ -13,9 +13,9 @@
 
   - [X] function definitions
 
-  - [ ] statements
+  - [-] statements
 
-    - [ ] assignment
+    - [X] assignment
 
     - [ ] if
 

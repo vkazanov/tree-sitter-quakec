@@ -1,0 +1,31 @@
+===========
+Assignment statement
+===========
+
+void() Function = {
+   ab = -1;
+   b = -1.1;
+   b11 = 101.1;
+   c = d;
+};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (compound_statement
+            (assignment_statement
+               (identifier)
+               (literal))
+            (assignment_statement
+               (identifier)
+               (literal))
+            (assignment_statement
+               (identifier)
+               (literal))
+            (assignment_statement
+               (identifier)
+               (identifier)))))

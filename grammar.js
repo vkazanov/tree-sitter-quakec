@@ -49,7 +49,7 @@ module.exports = grammar({
             optional(seq('=', $.literal)),
             optional(commaSeparated(
                 // name [ = literal]
-                seq($.identifier, seq('=', $.literal))
+                seq($.identifier, optional(seq('=', $.literal)))
             ))
         ),
 
@@ -72,14 +72,32 @@ module.exports = grammar({
 
         compound_statement: $ => seq(
             '{',
-            // repeat($.statement)
+            repeat($._statement),
             '}'
         ),
 
-        identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]+/,
+        _statement: $ => choice(
+            $.assignment_statement
+            // TODO
+        ),
 
-        // usual literals used in code, excluding the builtin function literals that can
-        // only be used for function definition
+        assignment_statement: $ => seq(
+            $.identifier,
+            '=',
+            $._expression,
+            ';'
+        ),
+
+        _expression: $ => choice(
+            $.identifier,
+            $.literal
+            // TODO
+        ),
+
+        identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
+
+        // NOTE: usual literals used in code, excluding the builtin function literals that
+        // can only be used for function definition
         literal: $ => choice(
             $._numeric_literal,
             $._string_literal,
@@ -90,7 +108,7 @@ module.exports = grammar({
             /-?[0-9]+/,
             // float
             /-?[0-9]+\.[0-9]+/,
-            // vector
+            // vector: `10 -1 10.0`
             /`-?[0-9]+ -?[0-9]+ -?[0-9]+`/,
             /`-?[0-9]+\.[0-9]+ -?[0-9]+\.[0-9]+ -?[0-9]+\.[0-9]+`/,
         ),
@@ -104,6 +122,7 @@ module.exports = grammar({
             ),
         ),
 
+        // only used assign builtin function names
         _builtin_literal: $ => /#[0-9]+/,
 
         comment: _ => token(choice(
