@@ -8,6 +8,37 @@
       "required": true,
       "types": [
         {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "literal",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "binary_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -55,6 +86,10 @@
       "types": [
         {
           "type": "assignment_statement",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
           "named": true
         },
         {
@@ -128,6 +163,10 @@
           "named": true
         },
         {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
           "type": "do_while_statement",
           "named": true
         },
@@ -180,6 +219,10 @@
       "types": [
         {
           "type": "assignment_statement",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
           "named": true
         },
         {
@@ -250,6 +293,10 @@
       "required": true,
       "types": [
         {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -301,6 +348,10 @@
       "required": true,
       "types": [
         {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -351,6 +402,10 @@
           "named": true
         },
         {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
           "type": "do_while_statement",
           "named": true
         },
@@ -386,7 +441,23 @@
     }
   },
   {
+    "type": "!",
+    "named": false
+  },
+  {
+    "type": "!=",
+    "named": false
+  },
+  {
     "type": "\"",
+    "named": false
+  },
+  {
+    "type": "&",
+    "named": false
+  },
+  {
+    "type": "&&",
     "named": false
   },
   {
@@ -395,6 +466,10 @@
   },
   {
     "type": ")",
+    "named": false
+  },
+  {
+    "type": "*",
     "named": false
   },
   {
@@ -410,11 +485,35 @@
     "named": false
   },
   {
+    "type": "/",
+    "named": false
+  },
+  {
     "type": ";",
     "named": false
   },
   {
+    "type": "<",
+    "named": false
+  },
+  {
+    "type": "<=",
+    "named": false
+  },
+  {
     "type": "=",
+    "named": false
+  },
+  {
+    "type": "==",
+    "named": false
+  },
+  {
+    "type": ">",
+    "named": false
+  },
+  {
+    "type": ">=",
     "named": false
   },
   {
@@ -475,6 +574,14 @@
   },
   {
     "type": "{",
+    "named": false
+  },
+  {
+    "type": "|",
+    "named": false
+  },
+  {
+    "type": "||",
     "named": false
   },
   {

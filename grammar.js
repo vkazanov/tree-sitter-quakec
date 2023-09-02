@@ -1,10 +1,10 @@
 // Operator precedence table
 //
-// TODO: manuals and qcc.h contradict each other have to check code, maybe even the newer
-// gmqcc code
+// TODO: manuals and qcc.h contradict each other on precedence, got to check code, maybe
+// even the newer gmqcc code
 const PREC = {
     PAREN_DECLARATOR: -10,
-    DEFAULT: 0,                 // TODO: do I need this at all?
+    DEFAULT: 0,
     LOGICAL_OR: 1,
     LOGICAL_AND: 2,
     LOGICAL_NOT: 3,
@@ -173,7 +173,8 @@ module.exports = grammar({
         _expression: $ => choice(
             $.identifier,
             $.literal,
-            $.unary_expression
+            $.unary_expression,
+            $.binary_expression
             // TODO
         ),
 
@@ -181,6 +182,33 @@ module.exports = grammar({
             choice('-', '+'),
             $._expression,
         )),
+
+        binary_expression: $ => {
+            const table = [
+                ['+', PREC.ADD],
+                ['-', PREC.ADD],
+                ['*', PREC.MULTIPLY],
+                ['/', PREC.MULTIPLY],
+                ['||', PREC.LOGICAL_OR],
+                ['&&', PREC.LOGICAL_AND],
+                ['!', PREC.LOGICAL_NOT],
+                ['|', PREC.BITWISE_OR],
+                ['&', PREC.BITWISE_AND],
+                ['==', PREC.RELATIONAL],
+                ['!=', PREC.RELATIONAL],
+                ['>', PREC.RELATIONAL],
+                ['>=', PREC.RELATIONAL],
+                ['<=', PREC.RELATIONAL],
+                ['<', PREC.RELATIONAL],
+            ];
+
+            return choice(...table.map(([operator, precedence]) => {
+                return prec.left(
+                    precedence,
+                    seq($._expression, operator, $._expression)
+                );
+            }));
+        },
 
         //
         // Terminal nodes

@@ -36,7 +36,7 @@
 
     - [X] unary expression
 
-    - [ ] binary expressions
+    - [X] binary expressions
 
     - [ ] funcall (or should it be an expression?)
 
@@ -57,6 +57,8 @@
   - [ ] test with original qc code
 
   - [ ] check with the [[https://pages.cs.wisc.edu/~jeremyp/quake/quakec/quakec.pdf][QuakeC Reference Manual]]
+
+  - [ ] add TODOs
 
 - [ ] check extensions in https://quakewiki.org/wiki/QuakeC_Loops_and_Conditions
 

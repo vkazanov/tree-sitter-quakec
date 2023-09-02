@@ -1,5 +1,5 @@
 ===========
-Unary expression
+Unary expression - simple
 ===========
 
 void() Function = {
@@ -21,4 +21,86 @@ void() Function = {
           (unary_expression
             (identifier)))
         (unary_expression
+          (identifier))))
+
+===========
+Unary expression - mixed
+===========
+
+void() Function = {
+    -a+1;
+};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (binary_expression
+          (unary_expression
+            (identifier))
+          (literal))))
+
+
+===========
+Binary expression - addition
+===========
+
+void() Function = {
+    1 + b;
+};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (binary_expression
+          (literal)
+          (identifier))))
+
+===========
+Binary expression - subtraction
+===========
+
+void() Function = {
+    1 - b;
+};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (binary_expression
+          (literal)
+          (identifier))))
+
+===========
+Binary expression - multiplication / division
+===========
+
+void() Function = {
+    1 * b;
+    1 / b;
+};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (binary_expression
+          (literal)
+          (identifier))
+        (binary_expression
+          (literal)
           (identifier))))
