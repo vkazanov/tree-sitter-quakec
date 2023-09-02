@@ -19,21 +19,6 @@
     }
   },
   {
-    "type": "compound_statement",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "assignment_statement",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "constant_definition",
     "named": true,
     "fields": {},
@@ -88,11 +73,15 @@
       "required": true,
       "types": [
         {
-          "type": "compound_statement",
+          "type": "assignment_statement",
           "named": true
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_statement",
           "named": true
         },
         {
@@ -101,6 +90,33 @@
         },
         {
           "type": "simple_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "if_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "assignment_statement",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "literal",
           "named": true
         }
       ]
@@ -187,6 +203,10 @@
     "named": true
   },
   {
+    "type": "else",
+    "named": false
+  },
+  {
     "type": "entity",
     "named": false
   },
@@ -197,6 +217,10 @@
   {
     "type": "identifier",
     "named": true
+  },
+  {
+    "type": "if",
+    "named": false
   },
   {
     "type": "int",

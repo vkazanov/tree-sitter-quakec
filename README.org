@@ -17,13 +17,16 @@
 
     - [X] assignment
 
-    - [ ] if
+    - [X] if
 
     - [ ] while
 
     - [ ] do
 
     - [ ] return
+
+    - [ ] sort out statement hierarchy (simple vs compound and what looks better in the
+      CST)
 
   - [ ] expressions
 

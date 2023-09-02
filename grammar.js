@@ -9,6 +9,8 @@ module.exports = grammar({
     rules: {
         source_file: $ => repeat($._definition),
 
+        // definitions and declarations
+
         _definition: $ => choice(
             $.function_declaration,
             $.constant_definition,
@@ -29,7 +31,7 @@ module.exports = grammar({
             '=',
             choice(
                 $._builtin_literal,
-                $.compound_statement
+                $._statement
             ),
             ';'
         ),
@@ -70,14 +72,22 @@ module.exports = grammar({
             $.identifier
         ),
 
-        compound_statement: $ => seq(
+        // Statements
+
+        _statement: $ => choice(
+            $._compound_statement,
+            $._simple_statement,
+        ),
+
+        _compound_statement: $ => seq(
             '{',
-            repeat($._statement),
+            repeat(seq($._simple_statement, ';')),
             '}'
         ),
 
-        _statement: $ => choice(
-            $.assignment_statement
+        _simple_statement: $ => choice(
+            $.assignment_statement,
+            $.if_statement
             // TODO
         ),
 
@@ -85,14 +95,29 @@ module.exports = grammar({
             $.identifier,
             '=',
             $._expression,
-            ';'
         ),
+
+        if_statement: $ => prec.right(seq(
+            'if',
+            '(',
+            $._expression,       // TODO: boolean expression?
+            ')',
+            $._statement,
+            optional(seq(
+                'else',
+                $._statement
+            )),
+        )),
+
+        // Expressions
 
         _expression: $ => choice(
             $.identifier,
             $.literal
             // TODO
         ),
+
+        // Leaf nodes
 
         identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
 

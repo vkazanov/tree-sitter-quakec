@@ -16,16 +16,142 @@ void() Function = {
         (simple_type)
         (parameter_list)
         (identifier)
-        (compound_statement
+        (assignment_statement
+           (identifier)
+           (literal))
+        (assignment_statement
+           (identifier)
+           (literal))
+        (assignment_statement
+           (identifier)
+           (literal))
+        (assignment_statement
+           (identifier)
+           (identifier))))
+
+===========
+If statement - simple statement guard
+===========
+
+void() Function = {
+    if (a) b = 1;
+};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (if_statement
+            (identifier)
             (assignment_statement
-               (identifier)
-               (literal))
+                (identifier)
+                (literal)))))
+
+===========
+If statement - single compound statement guard
+===========
+
+void() Function = {
+    if (a) {
+        b = 1;
+    };
+};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (if_statement
+            (identifier)
             (assignment_statement
-               (identifier)
-               (literal))
+                (identifier)
+                (literal)))))
+
+===========
+If statement - multiple compound statements guard
+===========
+
+void() Function = {
+    if (a) {
+        b = 1;
+        ab = 33;
+        abc = 444.1;
+    };
+};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (if_statement
+            (identifier)
             (assignment_statement
-               (identifier)
-               (literal))
+                (identifier)
+                (literal))
             (assignment_statement
-               (identifier)
-               (identifier)))))
+                (identifier)
+                (literal))
+            (assignment_statement
+                (identifier)
+                (literal)))))
+
+
+===========
+If statement - simple else
+===========
+
+void() Function = {
+    if (a) b = 1 else b = 2;
+};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (if_statement
+            (identifier)
+            (assignment_statement
+                (identifier)
+                (literal))
+            (assignment_statement
+                (identifier)
+                (literal)))))
+
+===========
+If statement - compound else
+===========
+
+void() Function = {
+    if (a) b = 1
+    else {
+        b = 2;
+    };
+};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (if_statement
+            (identifier)
+            (assignment_statement
+                (identifier)
+                (literal))
+            (assignment_statement
+                (identifier)
+                (literal)))))
