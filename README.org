@@ -30,11 +30,9 @@
 
     - [X] variable definition statement
 
-    - [ ] expression statement
+    - [X] expression statement
 
-    - [ ] comma after a block not necessary?
-
-  - [ ] proper strings
+  - [ ] proper strings (escaped newline if necessary)
 
   - [ ] expressions
 

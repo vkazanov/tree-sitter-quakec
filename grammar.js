@@ -101,7 +101,7 @@ module.exports = grammar({
             $.do_while_statement,
             $.return_statement,
             $._variable_definition_statement,
-            // TODO
+            $._expression_statement
         ),
 
         assignment_statement: $ => seq(
@@ -144,6 +144,8 @@ module.exports = grammar({
             $.variable_definition,
             $.variable_definition_statement
         ),
+
+        _expression_statement: $ => $._expression,
 
         //
         // Expressions

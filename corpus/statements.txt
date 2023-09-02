@@ -300,3 +300,22 @@ void() Function = {
           (literal)
           (identifier)
           (literal))))
+
+===========
+Expression statement
+===========
+
+void() Function = {
+    12;
+    abc;
+};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (literal)
+        (identifier)))

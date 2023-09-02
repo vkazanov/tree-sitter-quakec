@@ -405,6 +405,10 @@
         {
           "type": "SYMBOL",
           "name": "_variable_definition_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_expression_statement"
         }
       ]
     },
@@ -550,6 +554,10 @@
       },
       "named": true,
       "value": "variable_definition_statement"
+    },
+    "_expression_statement": {
+      "type": "SYMBOL",
+      "name": "_expression"
     },
     "_expression": {
       "type": "CHOICE",

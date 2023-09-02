@@ -132,6 +132,10 @@
           "named": true
         },
         {
+          "type": "literal",
+          "named": true
+        },
+        {
           "type": "parameter_list",
           "named": true
         },
