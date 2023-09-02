@@ -32,17 +32,15 @@
 
     - [X] expression statement
 
-  - [-] expressions
+  - [X] expressions
 
     - [X] unary expression
 
     - [X] binary expressions
 
-    - [ ] funcall (or should it be an expression?)
+    - [X] funcall (or should it be an expression?)
 
-    - [ ] parentheses
-
-    - [ ] bit operators
+    - [X] parentheses
 
   - [ ] proper strings (escaped newline if necessary)
 
@@ -58,7 +56,7 @@
 
   - [ ] check with the [[https://pages.cs.wisc.edu/~jeremyp/quake/quakec/quakec.pdf][QuakeC Reference Manual]]
 
-  - [ ] add TODOs
+  - [ ] fix TODO
 
 - [ ] check extensions in https://quakewiki.org/wiki/QuakeC_Loops_and_Conditions
 

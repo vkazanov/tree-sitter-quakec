@@ -104,3 +104,32 @@ void() Function = {
         (binary_expression
           (literal)
           (identifier))))
+
+===========
+Funcall expression
+===========
+
+void() Function = {
+    call1();
+    call2(arg1, arg2, arg3);
+    call3(call4());
+};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (funcall_expression
+            (identifier))
+        (funcall_expression
+            (identifier)
+            (identifier)
+            (identifier)
+            (identifier))
+        (funcall_expression
+            (identifier)
+            (funcall_expression
+                (identifier)))))

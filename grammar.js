@@ -1,9 +1,8 @@
 // Operator precedence table
 //
 // TODO: manuals and qcc.h contradict each other on precedence, got to check code, maybe
-// even the newer gmqcc code
+// even gmqcc or gteqcc code
 const PREC = {
-    PAREN_DECLARATOR: -10,
     DEFAULT: 0,
     LOGICAL_OR: 1,
     LOGICAL_AND: 2,
@@ -174,8 +173,10 @@ module.exports = grammar({
             $.identifier,
             $.literal,
             $.unary_expression,
-            $.binary_expression
-            // TODO
+            $.binary_expression,
+            $.funcall_expression,
+            $.parenthesized_expression, // TODO: should be used directly in statements
+                                        // whenver paren-zed expressions are used?
         ),
 
         unary_expression: $ => prec.left(PREC.UNARY, seq(
@@ -209,6 +210,14 @@ module.exports = grammar({
                 );
             }));
         },
+
+        funcall_expression: $ => seq(
+            $.identifier, '(', optional(commaSeparated($._expression)), ')'
+        ),
+
+        parenthesized_expression: $ => seq(
+            '(', $._expression, ')',
+        ),
 
         //
         // Terminal nodes
