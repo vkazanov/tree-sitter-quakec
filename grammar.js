@@ -28,7 +28,7 @@ module.exports = grammar({
         source_file: $ => repeat($._definition),
 
         //
-        // definitions and declarations
+        // Global definitions and declarations
         //
 
         _definition: $ => choice(
@@ -58,8 +58,6 @@ module.exports = grammar({
             ';'
         ),
 
-        // TODO: do I need a separate form of variable/constant definitino? This seems to
-        // be subsumed by the more general variable definition rules
         constant_definition: $ => seq(
             $.simple_type,
             $.identifier,
@@ -68,7 +66,6 @@ module.exports = grammar({
             ';'
         ),
 
-        // A global variable definition
         variable_definition: $ => seq(
             $.simple_type,
             $.identifier,
