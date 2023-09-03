@@ -8,9 +8,9 @@ void() NoParamFunction1;
 
 (source_file
     (function_declaration
-        (simple_type)
-        (parameter_list)
-        (identifier)))
+        result: (simple_type)
+        parameters: (parameter_list)
+        name: (identifier)))
 
 ===========
 Function declaration - multiple params
@@ -22,13 +22,13 @@ float(entity param1, entity param2) TestFunction4;
 
 (source_file
     (function_declaration
-        (simple_type)
-        (parameter_list
+        result: (simple_type)
+        parameters: (parameter_list
                 (simple_type)
                 (identifier)
                 (simple_type)
                 (identifier))
-         (identifier)))
+        name: (identifier)))
 
 
 ===========
@@ -42,18 +42,18 @@ void(int param1, int param2) ParamFunction1 = #2;
 
 (source_file
     (function_definition
-        (simple_type)
-        (parameter_list)
-        (identifier)
+        result: (simple_type)
+        parameters: (parameter_list)
+        name: (identifier)
         (literal))
     (function_definition
-        (simple_type)
-        (parameter_list
+        result: (simple_type)
+        parameters: (parameter_list
             (simple_type)
             (identifier)
             (simple_type)
             (identifier))
-        (identifier)
+        name: (identifier)
         (literal)))
 
 ===========
@@ -66,13 +66,13 @@ void(int param1, int param2) EmptyFunction1 = {};
 
 (source_file
     (function_definition
-        (simple_type)
-        (parameter_list
+        result: (simple_type)
+        parameters: (parameter_list
             (simple_type)
             (identifier)
             (simple_type)
             (identifier))
-        (identifier)))
+        name: (identifier)))
 
 ===========
 Empty block function definition - vararg
@@ -93,6 +93,29 @@ void(int param1, int param2, ...) EmptyFunction1 = {};
         (identifier)))
 
 ===========
+Block function definition
+===========
+
+void(int param1, int param2) Function1 = {
+    a + b;
+};
+
+---
+
+(source_file
+    (function_definition
+        result: (simple_type)
+        parameters: (parameter_list
+            (simple_type)
+            (identifier)
+            (simple_type)
+            (identifier))
+        name: (identifier)
+        body: (binary_expression
+                  (identifier)
+                  (identifier))))
+
+===========
 Frame function definition
 ===========
 
@@ -102,13 +125,13 @@ void(int param1, int param2) FrameFunction1 = [ $frame1, next ] {};
 
 (source_file
     (function_definition
-        (simple_type)
-        (parameter_list
+        result: (simple_type)
+        parameters: (parameter_list
             (simple_type)
             (identifier)
             (simple_type)
             (identifier))
-        (identifier)
+        name: (identifier)
         (frame_identifier)
         (identifier)))
 
@@ -127,29 +150,29 @@ string constString = "bla bla bla";
 
 (source_file
     (constant_definition
-        (simple_type)
-        (identifier)
-        (literal))
+        type: (simple_type)
+        name: (identifier)
+        value: (literal))
     (constant_definition
-        (simple_type)
-        (identifier)
-        (literal))
+        type: (simple_type)
+        name: (identifier)
+        value: (literal))
     (constant_definition
-        (simple_type)
-        (identifier)
-        (literal))
+        type: (simple_type)
+        name: (identifier)
+        value: (literal))
     (constant_definition
-        (simple_type)
-        (identifier)
-        (literal))
+        type: (simple_type)
+        name: (identifier)
+        value: (literal))
     (constant_definition
-        (simple_type)
-        (identifier)
-        (literal))
+        type: (simple_type)
+        name: (identifier)
+        value: (literal))
     (constant_definition
-        (simple_type)
-        (identifier)
-        (literal)))
+        type: (simple_type)
+        name: (identifier)
+        value: (literal)))
 
 ===========
 Variable definitions
@@ -162,13 +185,13 @@ int multiple1, multiple2, multple3;
 
 (source_file
     (variable_definition
-        (simple_type)
-        (identifier))
+        type: (simple_type)
+        name: (identifier))
     (variable_definition
-        (simple_type)
-        (identifier)
-        (identifier)
-        (identifier)))
+        type: (simple_type)
+        name: (identifier)
+        name: (identifier)
+        name: (identifier)))
 
 ===========
 Field definitions
@@ -181,13 +204,13 @@ Field definitions
 
 (source_file
     (field_definition
-        (simple_type)
-        (identifier))
+        type: (simple_type)
+        name: (identifier))
     (field_definition
-        (simple_type)
-        (identifier)
-        (identifier)
-        (identifier)))
+        type: (simple_type)
+        name: (identifier)
+        name: (identifier)
+        name: (identifier)))
 
 ===========
 Modelgen pragmas

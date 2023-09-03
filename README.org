@@ -59,15 +59,19 @@
 
   - [X] wtf is this: #0:ex_walkpathtogoal; Immediate with a symbol?!
 
-  - [ ] modelgen pragmas (just get the pragma and it's args)
+  - [X] modelgen pragmas (just get the pragma and it's args)
 
-  - [ ] test with original qc code
+  - [ ] start with setting up fields in the grammar
+
+  - [ ] test with original qc code: tree-sitter parse 'examples/**/*.qc' --quiet --stat
 
   - [ ] check with the [[https://pages.cs.wisc.edu/~jeremyp/quake/quakec/quakec.pdf][QuakeC Reference Manual]]
 
   - [ ] fix TODOs
 
-  - [ ] see how highlighting works
+- [ ] highlighting?
+
+- [ ] tags?
 
 - [ ] check extensions in https://quakewiki.org/wiki/QuakeC_Loops_and_Conditions
 

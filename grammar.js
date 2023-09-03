@@ -40,47 +40,46 @@ module.exports = grammar({
             $.modelgen_pragma
         ),
 
-        // TODO: is it possible to declare a frame function? Need to check compiler code
         function_declaration: $ => seq(
-            $.simple_type,
-            $.parameter_list,
-            $.identifier,
+            field('result', $.simple_type),
+            field('parameters', $.parameter_list),
+            field('name', $.identifier),
             ';'
         ),
 
         function_definition: $ => seq(
-            $.simple_type,
-            $.parameter_list,
-            $.identifier,
+            field('result', $.simple_type),
+            field('parameters', $.parameter_list),
+            field('name', $.identifier),
             '=',
             optional(seq('[', $.frame_identifier, ',' , $.identifier, ']')),
             choice(
                 $._builtin_literal,
-                $._statement
+                field('body', $._statement)
             ),
             ';'
         ),
 
         constant_definition: $ => seq(
-            $.simple_type,
-            $.identifier,
+            field('type', $.simple_type),
+            field('name', $.identifier),
             '=',
-            $.literal,
+            field('value', $.literal),
             ';'
         ),
 
         variable_definition: $ => seq(
-            $.simple_type,
-            $.identifier,
-            optional(seq(',', commaSeparated($.identifier))),
+            field('type', $.simple_type),
+            field('name', $.identifier),
+            optional(seq(',', commaSeparated(field('name', $.identifier)))),
             ';'
         ),
 
         field_definition: $ => seq(
             '.',
-            $.simple_type,
-            $.identifier,
-            optional(seq(',', commaSeparated($.identifier))),
+            field('type', $.simple_type),
+            field('name', $.identifier),
+            optional(seq(',', commaSeparated(field('name', $.identifier)))),
             ';'
         ),
 

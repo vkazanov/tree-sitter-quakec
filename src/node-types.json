@@ -72,24 +72,37 @@
   {
     "type": "constant_definition",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
-          "type": "simple_type",
-          "named": true
-        }
-      ]
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "simple_type",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "literal",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -154,20 +167,27 @@
   {
     "type": "field_definition",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "simple_type",
-          "named": true
-        }
-      ]
+    "fields": {
+      "name": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "simple_type",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -213,52 +233,146 @@
   {
     "type": "function_declaration",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "parameter_list",
-          "named": true
-        },
-        {
-          "type": "simple_type",
-          "named": true
-        }
-      ]
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "parameters": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "parameter_list",
+            "named": true
+          }
+        ]
+      },
+      "result": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "simple_type",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
     "type": "function_definition",
     "named": true,
-    "fields": {},
+    "fields": {
+      "body": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ";",
+            "named": false
+          },
+          {
+            "type": "assignment_statement",
+            "named": true
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "do_while_statement",
+            "named": true
+          },
+          {
+            "type": "funcall_expression",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "if_statement",
+            "named": true
+          },
+          {
+            "type": "literal",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "return_statement",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          },
+          {
+            "type": "variable_definition_statement",
+            "named": true
+          },
+          {
+            "type": "while_statement",
+            "named": true
+          },
+          {
+            "type": "{",
+            "named": false
+          },
+          {
+            "type": "}",
+            "named": false
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "parameters": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "parameter_list",
+            "named": true
+          }
+        ]
+      },
+      "result": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "simple_type",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "assignment_statement",
-          "named": true
-        },
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "do_while_statement",
-          "named": true
-        },
-        {
           "type": "frame_identifier",
-          "named": true
-        },
-        {
-          "type": "funcall_expression",
           "named": true
         },
         {
@@ -266,39 +380,7 @@
           "named": true
         },
         {
-          "type": "if_statement",
-          "named": true
-        },
-        {
           "type": "literal",
-          "named": true
-        },
-        {
-          "type": "parameter_list",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "return_statement",
-          "named": true
-        },
-        {
-          "type": "simple_type",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
-          "named": true
-        },
-        {
-          "type": "variable_definition_statement",
-          "named": true
-        },
-        {
-          "type": "while_statement",
           "named": true
         }
       ]
@@ -540,20 +622,27 @@
   {
     "type": "variable_definition",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "simple_type",
-          "named": true
-        }
-      ]
+    "fields": {
+      "name": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "simple_type",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
