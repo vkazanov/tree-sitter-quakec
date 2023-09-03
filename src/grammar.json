@@ -363,7 +363,7 @@
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "_parameter"
+                  "name": "parameter"
                 },
                 {
                   "type": "REPEAT",
@@ -376,7 +376,7 @@
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "_parameter"
+                        "name": "parameter"
                       }
                     ]
                   }
@@ -415,7 +415,7 @@
         }
       ]
     },
-    "_parameter": {
+    "parameter": {
       "type": "SEQ",
       "members": [
         {

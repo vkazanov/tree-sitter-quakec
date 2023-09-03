@@ -24,10 +24,12 @@ float(entity param1, entity param2) TestFunction4;
     (function_declaration
         result: (simple_type)
         parameters: (parameter_list
-                type: (simple_type)
-                name: (identifier)
+            (parameter
                 type: (simple_type)
                 name: (identifier))
+            (parameter
+                type: (simple_type)
+                name: (identifier)))
         name: (identifier)))
 
 
@@ -49,10 +51,12 @@ void(int param1, int param2) ParamFunction1 = #2;
     (function_definition
         result: (simple_type)
         parameters: (parameter_list
-            type: (simple_type)
-            name: (identifier)
-            type: (simple_type)
-            name: (identifier))
+            (parameter
+                type: (simple_type)
+                name: (identifier))
+            (parameter
+                type: (simple_type)
+                name: (identifier)))
         name: (identifier)
         (builtin_literal)))
 
@@ -68,10 +72,12 @@ void(int param1, int param2) EmptyFunction1 = {};
     (function_definition
         result: (simple_type)
         parameters: (parameter_list
-            type: (simple_type)
-            name: (identifier)
-            type: (simple_type)
-            name: (identifier))
+            (parameter
+                type: (simple_type)
+                name: (identifier))
+            (parameter
+                type: (simple_type)
+                name: (identifier)))
         name: (identifier)
         body: (compound_statement)))
 
@@ -87,10 +93,12 @@ void(int param1, int param2, ...) EmptyFunction1 = {};
     (function_definition
         result: (simple_type)
         parameters: (parameter_list
-            type: (simple_type)
-            name: (identifier)
-            type: (simple_type)
-            name: (identifier))
+            (parameter
+                type: (simple_type)
+                name: (identifier))
+            (parameter
+                type: (simple_type)
+                name: (identifier)))
         name: (identifier)
         body: (compound_statement)))
 
@@ -108,10 +116,12 @@ void(int param1, int param2) Function1 = {
     (function_definition
         result: (simple_type)
         parameters: (parameter_list
-            type: (simple_type)
-            name: (identifier)
-            type: (simple_type)
-            name: (identifier))
+            (parameter
+                type: (simple_type)
+                name: (identifier))
+            (parameter
+                type: (simple_type)
+                name: (identifier)))
         name: (identifier)
         body: (compound_statement
           (binary_expression
@@ -130,10 +140,12 @@ void(int param1, int param2) FrameFunction1 = [ $frame1, next ] {};
     (function_definition
         result: (simple_type)
         parameters: (parameter_list
-            type: (simple_type)
-            name: (identifier)
-            type: (simple_type)
-            name: (identifier))
+            (parameter
+                type: (simple_type)
+                name: (identifier))
+            (parameter
+                type: (simple_type)
+                name: (identifier)))
         name: (identifier)
         (frame_identifier)
         (identifier)

@@ -85,12 +85,12 @@ module.exports = grammar({
 
         parameter_list: $ => seq(
             '(',
-            optional(commaSeparated($._parameter)),
+            optional(commaSeparated($.parameter)),
             optional(seq(',', '...')),
             ')'
         ),
 
-        _parameter: $ => seq(
+        parameter: $ => seq(
             field('type', $.simple_type),
             field('name', $.identifier)
         ),

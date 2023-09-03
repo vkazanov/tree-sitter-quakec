@@ -61,7 +61,7 @@
 
   - [X] modelgen pragmas (just get the pragma and it's args)
 
-  - [ ] start with setting up fields in the grammar
+  - [X] start with setting up fields in the grammar
 
   - [ ] test with original qc code: tree-sitter parse 'examples/**/*.qc' --quiet --stat
 
