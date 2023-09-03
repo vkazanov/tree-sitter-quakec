@@ -171,6 +171,11 @@
     }
   },
   {
+    "type": "frame_identifier",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "funcall_expression",
     "named": true,
     "fields": {},
@@ -246,6 +251,10 @@
         },
         {
           "type": "do_while_statement",
+          "named": true
+        },
+        {
+          "type": "frame_identifier",
           "named": true
         },
         {
@@ -633,6 +642,10 @@
     "named": false
   },
   {
+    "type": "$",
+    "named": false
+  },
+  {
     "type": "&",
     "named": false
   },
@@ -698,6 +711,14 @@
   },
   {
     "type": ">=",
+    "named": false
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
     "named": false
   },
   {

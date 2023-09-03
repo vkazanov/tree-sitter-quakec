@@ -73,6 +73,26 @@ void(int param1, int param2) EmptyFunction1 = {};
         (identifier)))
 
 ===========
+Frame function definition
+===========
+
+void(int param1, int param2) FrameFunction1 = [ $frame1, next ] {};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list
+            (simple_type)
+            (identifier)
+            (simple_type)
+            (identifier))
+        (identifier)
+        (frame_identifier)
+        (identifier)))
+
+===========
 Constant definitions
 ===========
 

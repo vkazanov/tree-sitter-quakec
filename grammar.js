@@ -39,6 +39,7 @@ module.exports = grammar({
             $.function_definition
         ),
 
+        // TODO: is it possible to declare a frame function? Need to check compiler code
         function_declaration: $ => seq(
             $.simple_type,
             $.parameter_list,
@@ -51,6 +52,7 @@ module.exports = grammar({
             $.parameter_list,
             $.identifier,
             '=',
+            optional(seq('[', $.frame_identifier, ',' , $.identifier, ']')),
             choice(
                 $._builtin_literal,
                 $._statement
@@ -229,7 +231,10 @@ module.exports = grammar({
         // Terminal nodes
         //
 
+
         identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
+
+        frame_identifier: $ => seq('$', token.immediate(/[a-zA-Z_][a-zA-Z0-9_]*/)),
 
         // NOTE: usual literals used in code, excluding the builtin function literals that
         // can only be used for function definition

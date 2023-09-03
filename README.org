@@ -48,7 +48,7 @@
 
   - [X] fields
 
-  - [ ] frame function definitions (are declarations necessary here?)
+  - [X] frame function definitions (are declarations necessary here?)
 
   - [ ] pragmas
 
