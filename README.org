@@ -91,12 +91,14 @@
 
   - [ ] preprocessor?
 
-- [ ] further extensions in https://www.fteqcc.org/dl/fteqcc_manual.txt
-
-- [ ] error handling?
-
 - [ ] new-style quakec
 
 - [ ] fteqcc dialect
 
+  - [ ] further extensions in https://www.fteqcc.org/dl/fteqcc_manual.txt
+
+  - [ ] preprocessor macros
+
 - [ ] gmqcc
+
+- [ ] extract and test code for 3-4 most popular extensions
