@@ -20,7 +20,7 @@
           "named": true
         },
         {
-          "type": "literal",
+          "type": "numeric_literal",
           "named": true
         },
         {
@@ -28,7 +28,15 @@
           "named": true
         },
         {
+          "type": "string_literal",
+          "named": true
+        },
+        {
           "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "vector_literal",
           "named": true
         }
       ]
@@ -55,7 +63,7 @@
           "named": true
         },
         {
-          "type": "literal",
+          "type": "numeric_literal",
           "named": true
         },
         {
@@ -63,7 +71,82 @@
           "named": true
         },
         {
+          "type": "string_literal",
+          "named": true
+        },
+        {
           "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "vector_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "compound_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "assignment_statement",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "do_while_statement",
+          "named": true
+        },
+        {
+          "type": "funcall_expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "numeric_literal",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "return_statement",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "variable_definition_statement",
+          "named": true
+        },
+        {
+          "type": "vector_literal",
+          "named": true
+        },
+        {
+          "type": "while_statement",
           "named": true
         }
       ]
@@ -98,7 +181,15 @@
         "required": true,
         "types": [
           {
-            "type": "literal",
+            "type": "numeric_literal",
+            "named": true
+          },
+          {
+            "type": "string_literal",
+            "named": true
+          },
+          {
+            "type": "vector_literal",
             "named": true
           }
         ]
@@ -122,6 +213,10 @@
           "named": true
         },
         {
+          "type": "compound_statement",
+          "named": true
+        },
+        {
           "type": "do_while_statement",
           "named": true
         },
@@ -138,7 +233,7 @@
           "named": true
         },
         {
-          "type": "literal",
+          "type": "numeric_literal",
           "named": true
         },
         {
@@ -150,11 +245,19 @@
           "named": true
         },
         {
+          "type": "string_literal",
+          "named": true
+        },
+        {
           "type": "unary_expression",
           "named": true
         },
         {
           "type": "variable_definition_statement",
+          "named": true
+        },
+        {
+          "type": "vector_literal",
           "named": true
         },
         {
@@ -198,36 +301,55 @@
   {
     "type": "funcall_expression",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "funcall_expression",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
-          "named": true
-        }
-      ]
+    "fields": {
+      "arg": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "funcall_expression",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "numeric_literal",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "string_literal",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          },
+          {
+            "type": "vector_literal",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -271,19 +393,19 @@
     "named": true,
     "fields": {
       "body": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
-          {
-            "type": ";",
-            "named": false
-          },
           {
             "type": "assignment_statement",
             "named": true
           },
           {
             "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "compound_statement",
             "named": true
           },
           {
@@ -303,7 +425,7 @@
             "named": true
           },
           {
-            "type": "literal",
+            "type": "numeric_literal",
             "named": true
           },
           {
@@ -315,6 +437,10 @@
             "named": true
           },
           {
+            "type": "string_literal",
+            "named": true
+          },
+          {
             "type": "unary_expression",
             "named": true
           },
@@ -323,16 +449,12 @@
             "named": true
           },
           {
-            "type": "while_statement",
+            "type": "vector_literal",
             "named": true
           },
           {
-            "type": "{",
-            "named": false
-          },
-          {
-            "type": "}",
-            "named": false
+            "type": "while_statement",
+            "named": true
           }
         ]
       },
@@ -372,15 +494,15 @@
       "required": false,
       "types": [
         {
+          "type": "builtin_literal",
+          "named": true
+        },
+        {
           "type": "frame_identifier",
           "named": true
         },
         {
           "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "literal",
           "named": true
         }
       ]
@@ -403,6 +525,10 @@
           "named": true
         },
         {
+          "type": "compound_statement",
+          "named": true
+        },
+        {
           "type": "do_while_statement",
           "named": true
         },
@@ -419,7 +545,7 @@
           "named": true
         },
         {
-          "type": "literal",
+          "type": "numeric_literal",
           "named": true
         },
         {
@@ -431,11 +557,19 @@
           "named": true
         },
         {
+          "type": "string_literal",
+          "named": true
+        },
+        {
           "type": "unary_expression",
           "named": true
         },
         {
           "type": "variable_definition_statement",
+          "named": true
+        },
+        {
+          "type": "vector_literal",
           "named": true
         },
         {
@@ -446,12 +580,12 @@
     }
   },
   {
-    "type": "literal",
+    "type": "modelgen_pragma",
     "named": true,
     "fields": {}
   },
   {
-    "type": "modelgen_pragma",
+    "type": "numeric_literal",
     "named": true,
     "fields": {}
   },
@@ -502,7 +636,7 @@
           "named": true
         },
         {
-          "type": "literal",
+          "type": "numeric_literal",
           "named": true
         },
         {
@@ -510,7 +644,15 @@
           "named": true
         },
         {
+          "type": "string_literal",
+          "named": true
+        },
+        {
           "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "vector_literal",
           "named": true
         }
       ]
@@ -537,7 +679,7 @@
           "named": true
         },
         {
-          "type": "literal",
+          "type": "numeric_literal",
           "named": true
         },
         {
@@ -545,7 +687,15 @@
           "named": true
         },
         {
+          "type": "string_literal",
+          "named": true
+        },
+        {
           "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "vector_literal",
           "named": true
         }
       ]
@@ -592,6 +742,11 @@
     }
   },
   {
+    "type": "string_literal",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "unary_expression",
     "named": true,
     "fields": {},
@@ -612,7 +767,7 @@
           "named": true
         },
         {
-          "type": "literal",
+          "type": "numeric_literal",
           "named": true
         },
         {
@@ -620,7 +775,15 @@
           "named": true
         },
         {
+          "type": "string_literal",
+          "named": true
+        },
+        {
           "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "vector_literal",
           "named": true
         }
       ]
@@ -665,11 +828,34 @@
           "named": true
         },
         {
-          "type": "literal",
+          "type": "numeric_literal",
           "named": true
         },
         {
           "type": "simple_type",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "vector_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "vector_literal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "numeric_literal",
           "named": true
         }
       ]
@@ -692,6 +878,10 @@
           "named": true
         },
         {
+          "type": "compound_statement",
+          "named": true
+        },
+        {
           "type": "do_while_statement",
           "named": true
         },
@@ -708,7 +898,7 @@
           "named": true
         },
         {
-          "type": "literal",
+          "type": "numeric_literal",
           "named": true
         },
         {
@@ -720,11 +910,19 @@
           "named": true
         },
         {
+          "type": "string_literal",
+          "named": true
+        },
+        {
           "type": "unary_expression",
           "named": true
         },
         {
           "type": "variable_definition_statement",
+          "named": true
+        },
+        {
+          "type": "vector_literal",
           "named": true
         },
         {
@@ -833,6 +1031,10 @@
   {
     "type": "`",
     "named": false
+  },
+  {
+    "type": "builtin_literal",
+    "named": true
   },
   {
     "type": "comment",

@@ -54,7 +54,7 @@ module.exports = grammar({
             '=',
             optional(seq('[', $.frame_identifier, ',' , $.identifier, ']')),
             choice(
-                $._builtin_literal,
+                $.builtin_literal,
                 field('body', $._statement)
             ),
             ';'
@@ -64,7 +64,7 @@ module.exports = grammar({
             field('type', $.simple_type),
             field('name', $.identifier),
             '=',
-            field('value', $.literal),
+            field('value', $._literal),
             ';'
         ),
 
@@ -117,11 +117,11 @@ module.exports = grammar({
         //
 
         _statement: $ => choice(
-            $._compound_statement,
+            $.compound_statement,
             $._simple_statement,
         ),
 
-        _compound_statement: $ => seq(
+        compound_statement: $ => seq(
             '{',
             repeat(seq($._simple_statement, ';')),
             '}'
@@ -177,9 +177,9 @@ module.exports = grammar({
             optional('local'),
             $.simple_type,
             $.identifier,
-            optional(seq('=', $.literal)),
+            optional(seq('=', $._literal)),
             optional(seq(',', commaSeparated(
-                seq($.identifier, optional(seq('=', $.literal)))
+                seq($.identifier, optional(seq('=', $._literal)))
             )))
         ),
 
@@ -191,7 +191,7 @@ module.exports = grammar({
 
         _expression: $ => choice(
             $.identifier,
-            $.literal,
+            $._literal,
             $.unary_expression,
             $.binary_expression,
             $.funcall_expression,
@@ -232,7 +232,10 @@ module.exports = grammar({
         },
 
         funcall_expression: $ => seq(
-            $.identifier, '(', optional(commaSeparated($._expression)), ')'
+            field('name', $.identifier),
+            '(',
+            optional(commaSeparated(field('arg', $._expression))),
+            ')'
         ),
 
         parenthesized_expression: $ => seq(
@@ -253,13 +256,13 @@ module.exports = grammar({
 
         // NOTE: usual literals used in code, excluding the builtin function literals that
         // can only be used for function definition
-        literal: $ => choice(
-            $._numeric_literal,
-            $._vector_literal,
-            $._string_literal,
+        _literal: $ => choice(
+            $.numeric_literal,
+            $.vector_literal,
+            $.string_literal,
         ),
 
-        _numeric_literal: $ => choice(
+        numeric_literal: $ => choice(
             $._integer_literal,
             $._float_literal,
         ),
@@ -268,16 +271,16 @@ module.exports = grammar({
 
         _float_literal: $ => /-?([0-9]+)?\.[0-9]+/,
 
-        _vector_literal: $ => seq(
+        vector_literal: $ => seq(
             '`',
-            $._numeric_literal,
-            $._numeric_literal,
-            $._numeric_literal,
+            $.numeric_literal,
+            $.numeric_literal,
+            $.numeric_literal,
             '`'
         ),
 
         // string (TODO: escaping, see how javascript grammar does it)
-        _string_literal: $ => seq(
+        string_literal: $ => seq(
             '"',
             repeat(choice(
                 // Normal chars
@@ -290,7 +293,7 @@ module.exports = grammar({
         ),
 
         // only used assign builtin function names
-        _builtin_literal: $ => alias(/#[0-9]+(:[a-zA-Z_][a-zA-Z0-9_]*)?/, $.literal),
+        builtin_literal: $ => /#[0-9]+(:[a-zA-Z_][a-zA-Z0-9_]*)?/,
 
         //
         // Comments (to used in extras)

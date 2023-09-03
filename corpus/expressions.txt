@@ -15,13 +15,14 @@ void() Function = {
         (simple_type)
         (parameter_list)
         (identifier)
-        (unary_expression
-          (identifier))
-        (unary_expression
-          (unary_expression
-            (identifier)))
-        (unary_expression
-          (identifier))))
+        (compound_statement
+            (unary_expression
+              (identifier))
+            (unary_expression
+              (unary_expression
+                (identifier)))
+            (unary_expression
+              (identifier)))))
 
 ===========
 Unary expression - mixed
@@ -38,10 +39,11 @@ void() Function = {
         (simple_type)
         (parameter_list)
         (identifier)
-        (binary_expression
-          (unary_expression
-            (identifier))
-          (literal))))
+        (compound_statement
+          (binary_expression
+            (unary_expression
+              (identifier))
+            (numeric_literal)))))
 
 
 ===========
@@ -59,9 +61,10 @@ void() Function = {
         (simple_type)
         (parameter_list)
         (identifier)
-        (binary_expression
-          (literal)
-          (identifier))))
+        (compound_statement
+          (binary_expression
+            (numeric_literal)
+            (identifier)))))
 
 ===========
 Binary expression - subtraction
@@ -78,9 +81,10 @@ void() Function = {
         (simple_type)
         (parameter_list)
         (identifier)
-        (binary_expression
-          (literal)
-          (identifier))))
+        (compound_statement
+          (binary_expression
+            (numeric_literal)
+            (identifier)))))
 
 ===========
 Binary expression - multiplication / division
@@ -98,12 +102,13 @@ void() Function = {
         (simple_type)
         (parameter_list)
         (identifier)
-        (binary_expression
-          (literal)
-          (identifier))
-        (binary_expression
-          (literal)
-          (identifier))))
+        (compound_statement
+          (binary_expression
+            (numeric_literal)
+            (identifier))
+          (binary_expression
+            (numeric_literal)
+            (identifier)))))
 
 ===========
 Funcall expression
@@ -119,17 +124,18 @@ void() Function = {
 
 (source_file
     (function_definition
-        (simple_type)
-        (parameter_list)
-        (identifier)
-        (funcall_expression
-            (identifier))
-        (funcall_expression
-            (identifier)
-            (identifier)
-            (identifier)
-            (identifier))
-        (funcall_expression
-            (identifier)
-            (funcall_expression
-                (identifier)))))
+        result: (simple_type)
+        parameters: (parameter_list)
+        name: (identifier)
+        body: (compound_statement
+          (funcall_expression
+            name: (identifier))
+          (funcall_expression
+            name: (identifier)
+            arg: (identifier)
+            arg: (identifier)
+            arg: (identifier))
+          (funcall_expression
+            name: (identifier)
+            arg: (funcall_expression
+              name: (identifier))))))

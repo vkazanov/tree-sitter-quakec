@@ -17,11 +17,12 @@ void() Function = {
         (simple_type)
         (parameter_list)
         (identifier)
-        (literal)
-        (literal)
-        (literal)
-        (literal)
-        (literal)))
+        (compound_statement
+             (numeric_literal)
+             (numeric_literal)
+             (numeric_literal)
+             (numeric_literal)
+             (numeric_literal))))
 
 ===========
 Vector literal
@@ -40,9 +41,19 @@ void() Function = {
         (simple_type)
         (parameter_list)
         (identifier)
-        (literal)
-        (literal)
-        (literal)))
+        (compound_statement
+            (vector_literal
+                (numeric_literal)
+                (numeric_literal)
+                (numeric_literal))
+            (vector_literal
+                (numeric_literal)
+                (numeric_literal)
+                (numeric_literal))
+            (vector_literal
+                (numeric_literal)
+                (numeric_literal)
+                (numeric_literal)))))
 
 
 ===========
@@ -62,9 +73,10 @@ void() Function = {
         (simple_type)
         (parameter_list)
         (identifier)
-        (literal)
-        (literal)
-        (literal)))
+        (compound_statement
+            (string_literal)
+            (string_literal)
+            (string_literal))))
 
 ===========
 Builtin function literal
@@ -81,14 +93,14 @@ void() Function = #0:ex_func;
         (simple_type)
         (parameter_list)
         (identifier)
-        (literal))
+        (builtin_literal))
     (function_definition
         (simple_type)
         (parameter_list)
         (identifier)
-        (literal))
+        (builtin_literal))
     (function_definition
         (simple_type)
         (parameter_list)
         (identifier)
-        (literal)))
+        (builtin_literal)))

@@ -13,21 +13,23 @@ void() Function = {
 
 (source_file
     (function_definition
-        (simple_type)
-        (parameter_list)
-        (identifier)
-        (assignment_statement
-           (identifier)
-           (literal))
-        (assignment_statement
-           (identifier)
-           (literal))
-        (assignment_statement
-           (identifier)
-           (literal))
-        (assignment_statement
-           (identifier)
-           (identifier))))
+        result: (simple_type)
+        parameters: (parameter_list)
+        name: (identifier)
+        body:
+        (compound_statement
+            (assignment_statement
+               (identifier)
+               (numeric_literal))
+            (assignment_statement
+               (identifier)
+               (numeric_literal))
+            (assignment_statement
+               (identifier)
+               (numeric_literal))
+            (assignment_statement
+               (identifier)
+               (identifier)))))
 
 ===========
 If statement - simple statement guard
@@ -44,11 +46,12 @@ void() Function = {
         (simple_type)
         (parameter_list)
         (identifier)
-        (if_statement
-            (identifier)
-            (assignment_statement
+        (compound_statement
+            (if_statement
                 (identifier)
-                (literal)))))
+                (assignment_statement
+                    (identifier)
+                    (numeric_literal))))))
 
 ===========
 If statement - single compound statement guard
@@ -67,11 +70,13 @@ void() Function = {
         (simple_type)
         (parameter_list)
         (identifier)
-        (if_statement
-            (identifier)
-            (assignment_statement
+        (compound_statement
+            (if_statement
                 (identifier)
-                (literal)))))
+                (compound_statement
+                    (assignment_statement
+                        (identifier)
+                        (numeric_literal)))))))
 
 ===========
 If statement - multiple compound statements guard
@@ -92,17 +97,19 @@ void() Function = {
         (simple_type)
         (parameter_list)
         (identifier)
-        (if_statement
-            (identifier)
-            (assignment_statement
+        (compound_statement
+            (if_statement
                 (identifier)
-                (literal))
-            (assignment_statement
-                (identifier)
-                (literal))
-            (assignment_statement
-                (identifier)
-                (literal)))))
+                (compound_statement
+                    (assignment_statement
+                        (identifier)
+                        (numeric_literal))
+                    (assignment_statement
+                        (identifier)
+                        (numeric_literal))
+                    (assignment_statement
+                        (identifier)
+                        (numeric_literal)))))))
 
 
 ===========
@@ -120,14 +127,15 @@ void() Function = {
         (simple_type)
         (parameter_list)
         (identifier)
+        (compound_statement
         (if_statement
             (identifier)
             (assignment_statement
                 (identifier)
-                (literal))
+                (numeric_literal))
             (assignment_statement
                 (identifier)
-                (literal)))))
+                (numeric_literal))))))
 
 ===========
 If statement - compound else
@@ -144,17 +152,20 @@ void() Function = {
 
 (source_file
     (function_definition
-        (simple_type)
-        (parameter_list)
-        (identifier)
-        (if_statement
-            (identifier)
-            (assignment_statement
+        result: (simple_type)
+        parameters: (parameter_list)
+        name: (identifier)
+        body:
+        (compound_statement
+            (if_statement
                 (identifier)
-                (literal))
-            (assignment_statement
-                (identifier)
-                (literal)))))
+                (assignment_statement
+                    (identifier)
+                    (numeric_literal))
+                (compound_statement
+                    (assignment_statement
+                    (identifier)
+                    (numeric_literal)))))))
 
 ===========
 While statement - simple
@@ -171,11 +182,12 @@ void() Function = {
         (simple_type)
         (parameter_list)
         (identifier)
-        (while_statement
-            (identifier)
-            (assignment_statement
-                (identifier)
-                (literal)))))
+        (compound_statement
+           (while_statement
+               (identifier)
+               (assignment_statement
+                   (identifier)
+                   (numeric_literal))))))
 
 ===========
 While statement - compound
@@ -195,14 +207,16 @@ void() Function = {
         (simple_type)
         (parameter_list)
         (identifier)
-        (while_statement
-            (identifier)
-            (assignment_statement
+        (compound_statement
+            (while_statement
                 (identifier)
-                (literal))
-            (assignment_statement
-                (identifier)
-                (literal)))))
+                (compound_statement
+                    (assignment_statement
+                        (identifier)
+                        (numeric_literal))
+                    (assignment_statement
+                        (identifier)
+                        (numeric_literal)))))))
 
 ===========
 Do/while statement - simple
@@ -220,11 +234,12 @@ void() Function = {
         (simple_type)
         (parameter_list)
         (identifier)
-        (do_while_statement
-            (assignment_statement
-                (identifier)
-                (literal))
-            (identifier))))
+        (compound_statement
+            (do_while_statement
+                (assignment_statement
+                    (identifier)
+                    (numeric_literal))
+                (identifier)))))
 
 ===========
 Do/while statement - compound
@@ -244,14 +259,16 @@ void() Function = {
         (simple_type)
         (parameter_list)
         (identifier)
-        (do_while_statement
-            (assignment_statement
+        (compound_statement
+         (do_while_statement
+            (compound_statement
+              (assignment_statement
                 (identifier)
-                (literal))
-            (assignment_statement
+                (numeric_literal))
+              (assignment_statement
                 (identifier)
-                (literal))
-            (identifier))))
+                (numeric_literal)))
+             (identifier)))))
 
 ===========
 Return statement
@@ -268,8 +285,9 @@ void() Function = {
         (simple_type)
         (parameter_list)
         (identifier)
-        (return_statement
-            (literal))))
+        (compound_statement
+            (return_statement
+                (numeric_literal)))))
 
 ===========
 Variable definition statement
@@ -288,18 +306,19 @@ void() Function = {
         (simple_type)
         (parameter_list)
         (identifier)
-        (variable_definition_statement
-          (simple_type)
-          (identifier))
-        (variable_definition_statement
-          (simple_type)
-          (identifier))
-        (variable_definition_statement
-          (simple_type)
-          (identifier)
-          (literal)
-          (identifier)
-          (literal))))
+        (compound_statement
+            (variable_definition_statement
+              (simple_type)
+              (identifier))
+            (variable_definition_statement
+              (simple_type)
+              (identifier))
+            (variable_definition_statement
+              (simple_type)
+              (identifier)
+              (numeric_literal)
+              (identifier)
+              (numeric_literal)))))
 
 ===========
 Expression statement
@@ -317,5 +336,6 @@ void() Function = {
         (simple_type)
         (parameter_list)
         (identifier)
-        (literal)
-        (identifier)))
+        (compound_statement
+            (numeric_literal)
+            (identifier))))

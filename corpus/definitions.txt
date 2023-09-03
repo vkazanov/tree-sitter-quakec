@@ -45,7 +45,7 @@ void(int param1, int param2) ParamFunction1 = #2;
         result: (simple_type)
         parameters: (parameter_list)
         name: (identifier)
-        (literal))
+        (builtin_literal))
     (function_definition
         result: (simple_type)
         parameters: (parameter_list
@@ -54,7 +54,7 @@ void(int param1, int param2) ParamFunction1 = #2;
             type: (simple_type)
             name: (identifier))
         name: (identifier)
-        (literal)))
+        (builtin_literal)))
 
 ===========
 Empty block function definition
@@ -72,7 +72,8 @@ void(int param1, int param2) EmptyFunction1 = {};
             name: (identifier)
             type: (simple_type)
             name: (identifier))
-        name: (identifier)))
+        name: (identifier)
+        body: (compound_statement)))
 
 ===========
 Empty block function definition - vararg
@@ -90,7 +91,8 @@ void(int param1, int param2, ...) EmptyFunction1 = {};
             name: (identifier)
             type: (simple_type)
             name: (identifier))
-        name: (identifier)))
+        name: (identifier)
+        body: (compound_statement)))
 
 ===========
 Block function definition
@@ -111,9 +113,10 @@ void(int param1, int param2) Function1 = {
             type: (simple_type)
             name: (identifier))
         name: (identifier)
-        body: (binary_expression
-                  (identifier)
-                  (identifier))))
+        body: (compound_statement
+          (binary_expression
+            (identifier)
+            (identifier)))))
 
 ===========
 Frame function definition
@@ -133,7 +136,8 @@ void(int param1, int param2) FrameFunction1 = [ $frame1, next ] {};
             name: (identifier))
         name: (identifier)
         (frame_identifier)
-        (identifier)))
+        (identifier)
+        body: (compound_statement)))
 
 ===========
 Constant definitions
@@ -152,27 +156,33 @@ string constString = "bla bla bla";
     (constant_definition
         type: (simple_type)
         name: (identifier)
-        value: (literal))
+        value: (numeric_literal))
     (constant_definition
         type: (simple_type)
         name: (identifier)
-        value: (literal))
+        value: (numeric_literal))
     (constant_definition
         type: (simple_type)
         name: (identifier)
-        value: (literal))
+        value: (numeric_literal))
     (constant_definition
         type: (simple_type)
         name: (identifier)
-        value: (literal))
+        value: (vector_literal
+                   (numeric_literal)
+                   (numeric_literal)
+                   (numeric_literal)))
     (constant_definition
         type: (simple_type)
         name: (identifier)
-        value: (literal))
+        value: (vector_literal
+                   (numeric_literal)
+                   (numeric_literal)
+                   (numeric_literal)))
     (constant_definition
         type: (simple_type)
         name: (identifier)
-        value: (literal)))
+        value: (string_literal)))
 
 ===========
 Variable definitions
