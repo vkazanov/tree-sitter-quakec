@@ -100,8 +100,8 @@ float constFloat = 11.123;
 int constInt = 1;
 int constNegInt = -1;
 int constInt = `1 -12 3`;
-int constFloat = `1.0 -12.12 3.4`;
-int constString = "bla bla bla";
+vector constFloat = `1.0 -12.12 3.4`;
+string constString = "bla bla bla";
 
 ---
 

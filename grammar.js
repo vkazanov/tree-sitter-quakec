@@ -83,10 +83,6 @@ module.exports = grammar({
             ';'
         ),
 
-        simple_type: $ => choice(
-            'void', 'entity', 'float', 'vector', 'string', 'int'
-        ),
-
         parameter_list: $ => seq(
             '(',
             optional(
@@ -231,6 +227,9 @@ module.exports = grammar({
         // Terminal nodes
         //
 
+        simple_type: $ => choice(
+            'void', 'entity', 'float', 'vector', 'string', 'int'
+        ),
 
         identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
 
@@ -245,16 +244,20 @@ module.exports = grammar({
         ),
 
         _numeric_literal: $ => choice(
-            // integer
-            /-?[0-9]+/,
-            // float
-            /-?[0-9]+\.[0-9]+/,
+            $._integer_literal,
+            $._float_literal,
         ),
 
-        _vector_literal: $ => choice(
-            // vector: `10 -1 10.0`
-            /`-?[0-9]+ -?[0-9]+ -?[0-9]+`/,
-            /`-?[0-9]+\.[0-9]+ -?[0-9]+\.[0-9]+ -?[0-9]+\.[0-9]+`/,
+        _integer_literal: $ => /-?[0-9]+/,
+
+        _float_literal: $ => /-?([0-9]+)?\.[0-9]+/,
+
+        _vector_literal: $ => seq(
+            '`',
+            $._numeric_literal,
+            $._numeric_literal,
+            $._numeric_literal,
+            '`'
         ),
 
         // string (TODO: escaping, see how javascript grammar does it)

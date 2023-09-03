@@ -1,5 +1,5 @@
 ===========
-Numeric literal
+Numeric literals
 ===========
 
 void() Function = {
@@ -7,6 +7,7 @@ void() Function = {
    -1.1;
    101.1;
    -101.1;
+   .123;
 };
 
 ---
@@ -19,6 +20,7 @@ void() Function = {
         (literal)
         (literal)
         (literal)
+        (literal)
         (literal)))
 
 ===========
@@ -27,8 +29,8 @@ Vector literal
 
 void() Function = {
    `10 -1 10`;
-   `0 0 0`;
-   `0.1 0.100 -133.1`;
+   `  0 0 0`;
+   `0.1   0.100 -133.1`;
 };
 
 ---
