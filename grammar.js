@@ -85,9 +85,8 @@ module.exports = grammar({
 
         parameter_list: $ => seq(
             '(',
-            optional(
-                commaSeparated($._parameter),
-            ),
+            optional(commaSeparated($._parameter)),
+            optional(seq(',', '...')),
             ')'
         ),
 
@@ -274,7 +273,7 @@ module.exports = grammar({
         ),
 
         // only used assign builtin function names
-        _builtin_literal: $ => /#[0-9]+/,
+        _builtin_literal: $ => alias(/#[0-9]+(:[a-zA-Z_][a-zA-Z0-9_]*)?/, $.literal),
 
         //
         // Comments (to used in extras)

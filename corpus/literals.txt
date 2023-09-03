@@ -65,3 +65,30 @@ void() Function = {
         (literal)
         (literal)
         (literal)))
+
+===========
+Builtin function literal
+===========
+
+void() Function = #1;
+void() Function = #99;
+void() Function = #0:ex_func;
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (literal))
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (literal))
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (literal)))

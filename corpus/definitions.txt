@@ -44,7 +44,27 @@ void(int param1, int param2) ParamFunction1 = #2;
     (function_definition
         (simple_type)
         (parameter_list)
-        (identifier))
+        (identifier)
+        (literal))
+    (function_definition
+        (simple_type)
+        (parameter_list
+            (simple_type)
+            (identifier)
+            (simple_type)
+            (identifier))
+        (identifier)
+        (literal)))
+
+===========
+Empty block function definition
+===========
+
+void(int param1, int param2) EmptyFunction1 = {};
+
+---
+
+(source_file
     (function_definition
         (simple_type)
         (parameter_list
@@ -55,10 +75,10 @@ void(int param1, int param2) ParamFunction1 = #2;
         (identifier)))
 
 ===========
-Empty block function definition
+Empty block function definition - vararg
 ===========
 
-void(int param1, int param2) EmptyFunction1 = {};
+void(int param1, int param2, ...) EmptyFunction1 = {};
 
 ---
 

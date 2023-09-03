@@ -54,14 +54,14 @@
 
     Also fix numeric and vector literals, while at it
 
-  - [ ] function definition with many anonymous args: void(string s, ...) bprint =
+  - [X] function definition with many anonymous args: void(string s, ...) bprint =
     #0:ex_bprint;
+
+  - [X] wtf is this: #0:ex_walkpathtogoal; Immediate with a symbol?!
 
   - [ ] pragmas
 
   - [ ] test with original qc code
-
-  - [ ] wtf is this: #0:ex_walkpathtogoal; Immediate with a symbol?!
 
   - [ ] check with the [[https://pages.cs.wisc.edu/~jeremyp/quake/quakec/quakec.pdf][QuakeC Reference Manual]]
 
@@ -71,7 +71,7 @@
 
 - [ ] check extensions in https://quakewiki.org/wiki/QuakeC_Loops_and_Conditions
 
-  - [ ]  new-style functions
+  - [ ] void somename(void) {} // C-style functions
 
   - [ ] for
 
