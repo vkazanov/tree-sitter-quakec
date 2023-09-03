@@ -188,3 +188,24 @@ Field definitions
         (identifier)
         (identifier)
         (identifier)))
+
+===========
+Modelgen pragmas
+===========
+
+$flags 8
+$base arg1
+$cd /path/to/something
+$frame frame1 frame2 frame3
+$modelname name
+$scale `10 10 10`
+
+---
+
+(source_file
+    (modelgen_pragma)
+    (modelgen_pragma)
+    (modelgen_pragma)
+    (modelgen_pragma)
+    (modelgen_pragma)
+    (modelgen_pragma))

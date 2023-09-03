@@ -30,6 +30,10 @@
         {
           "type": "SYMBOL",
           "name": "function_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "modelgen_pragma"
         }
       ]
     },
@@ -349,6 +353,62 @@
         {
           "type": "SYMBOL",
           "name": "identifier"
+        }
+      ]
+    },
+    "modelgen_pragma": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "$"
+        },
+        {
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "flags"
+              },
+              {
+                "type": "STRING",
+                "value": "base"
+              },
+              {
+                "type": "STRING",
+                "value": "cd"
+              },
+              {
+                "type": "STRING",
+                "value": "frame"
+              },
+              {
+                "type": "STRING",
+                "value": "modelname"
+              },
+              {
+                "type": "STRING",
+                "value": "origin"
+              },
+              {
+                "type": "STRING",
+                "value": "scale"
+              },
+              {
+                "type": "STRING",
+                "value": "skin"
+              }
+            ]
+          }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "[^\\n]+"
+          }
         }
       ]
     },

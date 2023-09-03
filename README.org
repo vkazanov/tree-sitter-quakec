@@ -59,7 +59,7 @@
 
   - [X] wtf is this: #0:ex_walkpathtogoal; Immediate with a symbol?!
 
-  - [ ] pragmas
+  - [ ] modelgen pragmas (just get the pragma and it's args)
 
   - [ ] test with original qc code
 
@@ -84,6 +84,8 @@
   - [ ] switch
 
   - [ ] break
+
+  - [ ] preprocessor?
 
 - [ ] further extensions in https://www.fteqcc.org/dl/fteqcc_manual.txt
 

@@ -369,6 +369,11 @@
     "fields": {}
   },
   {
+    "type": "modelgen_pragma",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "parameter_list",
     "named": true,
     "fields": {},
@@ -484,6 +489,10 @@
         },
         {
           "type": "function_definition",
+          "named": true
+        },
+        {
+          "type": "modelgen_pragma",
           "named": true
         },
         {

@@ -36,7 +36,8 @@ module.exports = grammar({
             $.constant_definition,
             $.variable_definition,
             $.field_definition,
-            $.function_definition
+            $.function_definition,
+            $.modelgen_pragma
         ),
 
         // TODO: is it possible to declare a frame function? Need to check compiler code
@@ -93,6 +94,23 @@ module.exports = grammar({
         _parameter: $ => seq(
             $.simple_type,
             $.identifier
+        ),
+
+        modelgen_pragma: $ => seq(
+            '$',
+            token.immediate(choice(
+                'flags',
+                'base',
+                'cd',
+                'frame',
+                'modelname',
+                'origin',
+                'scale',
+                'skin'
+            )),
+
+            // TODO: let's just throw away all the args until a newline
+            token(/[^\n]+/)
         ),
 
         //
