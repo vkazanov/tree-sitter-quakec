@@ -152,6 +152,25 @@
     }
   },
   {
+    "type": "field_definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "simple_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "funcall_expression",
     "named": true,
     "fields": {},
@@ -447,11 +466,19 @@
           "named": true
         },
         {
+          "type": "field_definition",
+          "named": true
+        },
+        {
           "type": "function_declaration",
           "named": true
         },
         {
           "type": "function_definition",
+          "named": true
+        },
+        {
+          "type": "variable_definition",
           "named": true
         }
       ]
@@ -487,6 +514,25 @@
         },
         {
           "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "variable_definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "simple_type",
           "named": true
         }
       ]
@@ -616,6 +662,10 @@
   },
   {
     "type": "-",
+    "named": false
+  },
+  {
+    "type": ".",
     "named": false
   },
   {

@@ -34,6 +34,8 @@ module.exports = grammar({
         _definition: $ => choice(
             $.function_declaration,
             $.constant_definition,
+            $.variable_definition,
+            $.field_definition,
             $.function_definition
         ),
 
@@ -66,18 +68,20 @@ module.exports = grammar({
             ';'
         ),
 
-        // When defined globally with an immediate this is constant, otherwise - a
-        // variable (either a global or a local one). Note that function-local var
-        // definitions are not constants.
+        // A global variable definition
         variable_definition: $ => seq(
-            optional('local'),
             $.simple_type,
             $.identifier,
-            optional(seq('=', $.literal)),
-            optional(seq(',', commaSeparated(
-                // name [ = literal]
-                seq($.identifier, optional(seq('=', $.literal)))
-            )))
+            optional(seq(',', commaSeparated($.identifier))),
+            ';'
+        ),
+
+        field_definition: $ => seq(
+            '.',
+            $.simple_type,
+            $.identifier,
+            optional(seq(',', commaSeparated($.identifier))),
+            ';'
         ),
 
         simple_type: $ => choice(
@@ -118,7 +122,7 @@ module.exports = grammar({
             $.while_statement,
             $.do_while_statement,
             $.return_statement,
-            $._variable_definition_statement,
+            $.variable_definition_statement,
             $._expression_statement
         ),
 
@@ -158,9 +162,14 @@ module.exports = grammar({
             $._expression
         ),
 
-        _variable_definition_statement: $ => alias(
-            $.variable_definition,
-            $.variable_definition_statement
+        variable_definition_statement: $ => seq(
+            optional('local'),
+            $.simple_type,
+            $.identifier,
+            optional(seq('=', $.literal)),
+            optional(seq(',', commaSeparated(
+                seq($.identifier, optional(seq('=', $.literal)))
+            )))
         ),
 
         _expression_statement: $ => $._expression,

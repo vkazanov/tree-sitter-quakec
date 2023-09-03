@@ -1,0 +1,150 @@
+===========
+Function declaration - no params
+===========
+
+void() NoParamFunction1;
+
+---
+
+(source_file
+    (function_declaration
+        (simple_type)
+        (parameter_list)
+        (identifier)))
+
+===========
+Function declaration - multiple params
+===========
+
+float(entity param1, entity param2) TestFunction4;
+
+---
+
+(source_file
+    (function_declaration
+        (simple_type)
+        (parameter_list
+                (simple_type)
+                (identifier)
+                (simple_type)
+                (identifier))
+         (identifier)))
+
+
+===========
+Builtin function definition
+===========
+
+void() NoParamFunction1 = #12;
+void(int param1, int param2) ParamFunction1 = #2;
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier))
+    (function_definition
+        (simple_type)
+        (parameter_list
+            (simple_type)
+            (identifier)
+            (simple_type)
+            (identifier))
+        (identifier)))
+
+===========
+Empty block function definition
+===========
+
+void(int param1, int param2) EmptyFunction1 = {};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list
+            (simple_type)
+            (identifier)
+            (simple_type)
+            (identifier))
+        (identifier)))
+
+===========
+Constant definitions
+===========
+
+float constFloat = 11.123;
+int constInt = 1;
+int constNegInt = -1;
+int constInt = `1 -12 3`;
+int constFloat = `1.0 -12.12 3.4`;
+int constString = "bla bla bla";
+
+---
+
+(source_file
+    (constant_definition
+        (simple_type)
+        (identifier)
+        (literal))
+    (constant_definition
+        (simple_type)
+        (identifier)
+        (literal))
+    (constant_definition
+        (simple_type)
+        (identifier)
+        (literal))
+    (constant_definition
+        (simple_type)
+        (identifier)
+        (literal))
+    (constant_definition
+        (simple_type)
+        (identifier)
+        (literal))
+    (constant_definition
+        (simple_type)
+        (identifier)
+        (literal)))
+
+===========
+Variable definitions
+===========
+
+float floatField;
+int multiple1, multiple2, multple3;
+
+---
+
+(source_file
+    (variable_definition
+        (simple_type)
+        (identifier))
+    (variable_definition
+        (simple_type)
+        (identifier)
+        (identifier)
+        (identifier)))
+
+===========
+Field definitions
+===========
+
+.float floatField;
+.int multiple1, multiple2, multple3;
+
+---
+
+(source_file
+    (field_definition
+        (simple_type)
+        (identifier))
+    (field_definition
+        (simple_type)
+        (identifier)
+        (identifier)
+        (identifier)))

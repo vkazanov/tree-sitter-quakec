@@ -44,15 +44,22 @@
 
   - [X] proper strings (escaped newline if necessary)
 
+  - [X] variable definition
+
+  - [X] fields
+
+  - [ ] frame function definitions (are declarations necessary here?)
+
   - [ ] pragmas
 
-  - [ ] frame function definitions
-
-  - [ ] variable definition
-
-  - [ ] fields
-
   - [ ] test with original qc code
+
+  - [ ] numberic: float: .123 (leading zero omitted)
+
+  - [ ] function definition with many anonymous args: void(string s, ...) bprint =
+    #0:ex_bprint;
+
+  - [ ] wtf is this: #0:ex_walkpathtogoal; Immediate with a symbol?!
 
   - [ ] check with the [[https://pages.cs.wisc.edu/~jeremyp/quake/quakec/quakec.pdf][QuakeC Reference Manual]]
 
