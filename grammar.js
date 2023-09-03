@@ -146,7 +146,7 @@ module.exports = grammar({
         if_statement: $ => prec.right(seq(
             'if',
             '(',
-            $._expression,
+            field('condition', ($._expression)),
             ')',
             $._statement,
             optional(seq(
@@ -157,7 +157,7 @@ module.exports = grammar({
 
         while_statement: $ => seq(
             'while',
-            '(', $._expression, ')',
+            '(', field('condition', $._expression), ')',
             $._statement,
         ),
 
@@ -165,7 +165,7 @@ module.exports = grammar({
             'do',
             $._statement,
             'while',
-            '(', $._expression, ')',
+            '(', field('condition', $._expression), ')',
         ),
 
         return_statement: $ => seq(
@@ -175,8 +175,8 @@ module.exports = grammar({
 
         variable_definition_statement: $ => seq(
             optional('local'),
-            $.simple_type,
-            $.identifier,
+            field('type', $.simple_type),
+            field('name', $.identifier),
             optional(seq('=', $._literal)),
             optional(seq(',', commaSeparated(
                 seq($.identifier, optional(seq('=', $._literal)))
