@@ -91,8 +91,8 @@ module.exports = grammar({
         ),
 
         _parameter: $ => seq(
-            $.simple_type,
-            $.identifier
+            field('type', $.simple_type),
+            field('name', $.identifier)
         ),
 
         modelgen_pragma: $ => seq(
