@@ -42,7 +42,7 @@
 
     - [X] parentheses
 
-  - [ ] proper strings (escaped newline if necessary)
+  - [X] proper strings (escaped newline if necessary)
 
   - [ ] pragmas
 
@@ -58,7 +58,11 @@
 
   - [ ] fix TODO
 
+  - [ ] highlighting
+
 - [ ] check extensions in https://quakewiki.org/wiki/QuakeC_Loops_and_Conditions
+
+  - [ ]  new-style functions
 
   - [ ] for
 

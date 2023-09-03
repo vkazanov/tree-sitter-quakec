@@ -1,0 +1,65 @@
+===========
+Numeric literal
+===========
+
+void() Function = {
+   -1;
+   -1.1;
+   101.1;
+   -101.1;
+};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (literal)
+        (literal)
+        (literal)
+        (literal)))
+
+===========
+Vector literal
+===========
+
+void() Function = {
+   `10 -1 10`;
+   `0 0 0`;
+   `0.1 0.100 -133.1`;
+};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (literal)
+        (literal)
+        (literal)))
+
+
+===========
+String literal
+===========
+
+void() Function = {
+   "A boring string";
+   "A function with a newline: \n next line here";
+   "A function with a return: \r";
+};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (literal)
+        (literal)
+        (literal)))

@@ -1014,6 +1014,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "_vector_literal"
+        },
+        {
+          "type": "SYMBOL",
           "name": "_string_literal"
         }
       ]
@@ -1028,7 +1032,12 @@
         {
           "type": "PATTERN",
           "value": "-?[0-9]+\\.[0-9]+"
-        },
+        }
+      ]
+    },
+    "_vector_literal": {
+      "type": "CHOICE",
+      "members": [
         {
           "type": "PATTERN",
           "value": "`-?[0-9]+ -?[0-9]+ -?[0-9]+`"
@@ -1043,21 +1052,64 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "\""
-            },
-            {
-              "type": "PATTERN",
-              "value": "[^\"]*"
-            },
-            {
-              "type": "STRING",
-              "value": "\""
-            }
-          ]
+          "type": "STRING",
+          "value": "\""
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "IMMEDIATE_TOKEN",
+                "content": {
+                  "type": "PREC",
+                  "value": 1,
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "[^\\\\\"\\n]+"
+                  }
+                }
+              },
+              {
+                "type": "TOKEN",
+                "content": {
+                  "type": "PREC",
+                  "value": 1,
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": "\\"
+                      },
+                      {
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "STRING",
+                            "value": "n"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "r"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^\"]*"
+        },
+        {
+          "type": "STRING",
+          "value": "\""
         }
       ]
     },

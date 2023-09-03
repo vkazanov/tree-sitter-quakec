@@ -185,7 +185,7 @@ module.exports = grammar({
         )),
 
         binary_expression: $ => {
-            const table = [
+            const prec_table = [
                 ['+', PREC.ADD],
                 ['-', PREC.ADD],
                 ['*', PREC.MULTIPLY],
@@ -203,7 +203,7 @@ module.exports = grammar({
                 ['<', PREC.RELATIONAL],
             ];
 
-            return choice(...table.map(([operator, precedence]) => {
+            return choice(...prec_table.map(([operator, precedence]) => {
                 return prec.left(
                     precedence,
                     seq($._expression, operator, $._expression)
@@ -229,6 +229,7 @@ module.exports = grammar({
         // can only be used for function definition
         literal: $ => choice(
             $._numeric_literal,
+            $._vector_literal,
             $._string_literal,
         ),
 
@@ -237,6 +238,9 @@ module.exports = grammar({
             /-?[0-9]+/,
             // float
             /-?[0-9]+\.[0-9]+/,
+        ),
+
+        _vector_literal: $ => choice(
             // vector: `10 -1 10.0`
             /`-?[0-9]+ -?[0-9]+ -?[0-9]+`/,
             /`-?[0-9]+\.[0-9]+ -?[0-9]+\.[0-9]+ -?[0-9]+\.[0-9]+`/,
@@ -244,11 +248,15 @@ module.exports = grammar({
 
         // string (TODO: escaping, see how javascript grammar does it)
         _string_literal: $ => seq(
-            seq(
-                '"',
-                /[^"]*/,
-                '"'
-            ),
+            '"',
+            repeat(choice(
+                // Normal chars
+                token.immediate(prec(1, /[^\\"\n]+/)),
+                // Escape sequence
+                token(prec(1, seq('\\', choice('n', 'r'),))),
+            )),
+            /[^"]*/,
+            '"'
         ),
 
         // only used assign builtin function names
