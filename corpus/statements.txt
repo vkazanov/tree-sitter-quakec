@@ -348,6 +348,24 @@ void() Function = {
                 (numeric_literal)))))
 
 ===========
+Return statement - empty
+===========
+
+void() Function = {
+    return;
+};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (compound_statement
+            (return_statement))))
+
+===========
 Variable definition statement
 ===========
 
