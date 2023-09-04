@@ -1,13 +1,21 @@
 {
   "name": "tree-sitter-quakec",
-  "version": "0.0.1",
   "description": "A QuakeC grammar for Tree-sitter",
+  "author": "Vladimir Kazanov",
+  "license": "GPL-3.0-or-later",
+  "version": "0.0.1",
+  "keywords": [
+    "parser",
+    "lexer"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vkazanov/tree-sitter-quakec.git"
+  },
   "main": "bindings/node",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Vladimir Kazanov",
-  "license": "GPL-3.0-or-later",
   "dependencies": {
     "nan": "^2.17.0"
   },
