@@ -17,7 +17,7 @@ const PREC = {
 };
 
 module.exports = grammar({
-    name: 'QuakeC',
+    name: 'quakec',
 
     extras: $ => [
         /\s|\\\r?\n/,
