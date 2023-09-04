@@ -1,95 +1,4 @@
 ===========
-Assignment statement
-===========
-
-void() Function = {
-   ab = -1;
-   b = -1.1;
-   b11 = 101.1;
-   c = d;
-};
-
----
-
-(source_file
-    (function_definition
-        result: (simple_type)
-        parameters: (parameter_list)
-        name: (identifier)
-        body:
-        (compound_statement
-            (assignment_statement
-               target: (identifier)
-               value: (numeric_literal))
-            (assignment_statement
-               target: (identifier)
-               value: (numeric_literal))
-            (assignment_statement
-               target: (identifier)
-               value: (numeric_literal))
-            (assignment_statement
-               target: (identifier)
-               value: (identifier)))))
-
-===========
-Assignment statement - special (+= -= *= /=)
-===========
-
-void() Function = {
-   ab *= -1;
-   b /= -1.1;
-   b11 += 101.1;
-   c -= d;
-};
-
-
-
----
-
-(source_file
-    (function_definition
-        result: (simple_type)
-        parameters: (parameter_list)
-        name: (identifier)
-        body:
-        (compound_statement
-            (assignment_statement
-               target: (identifier)
-               value: (numeric_literal))
-            (assignment_statement
-               target: (identifier)
-               value: (numeric_literal))
-            (assignment_statement
-               target: (identifier)
-               value: (numeric_literal))
-            (assignment_statement
-               target: (identifier)
-               value: (identifier)))))
-
-===========
-Assignment statement - field
-===========
-
-void() Function = {
-   self.ab *= -1;
-};
-
----
-
-(source_file
-    (function_definition
-        result: (simple_type)
-        parameters: (parameter_list)
-        name: (identifier)
-        body:
-        (compound_statement
-            (assignment_statement
-               target: (field_expression
-                   argument: (identifier)
-                   field: (identifier))
-               value: (numeric_literal)))))
-
-===========
 If statement - simple statement guard
 ===========
 
@@ -107,7 +16,7 @@ void() Function = {
         body: (compound_statement
             (if_statement
                 condition: (identifier)
-                (assignment_statement
+                (assignment_expression
                     target: (identifier)
                     value: (numeric_literal))))))
 
@@ -132,7 +41,7 @@ void() Function = {
             (if_statement
                 (identifier)
                 (compound_statement
-                    (assignment_statement
+                    (assignment_expression
                         (identifier)
                         (numeric_literal)))))))
 
@@ -159,13 +68,13 @@ void() Function = {
             (if_statement
                 (identifier)
                 (compound_statement
-                    (assignment_statement
+                    (assignment_expression
                         (identifier)
                         (numeric_literal))
-                    (assignment_statement
+                    (assignment_expression
                         (identifier)
                         (numeric_literal))
-                    (assignment_statement
+                    (assignment_expression
                         (identifier)
                         (numeric_literal)))))))
 
@@ -188,10 +97,10 @@ void() Function = {
         (compound_statement
         (if_statement
             (identifier)
-            (assignment_statement
+            (assignment_expression
                 (identifier)
                 (numeric_literal))
-            (assignment_statement
+            (assignment_expression
                 (identifier)
                 (numeric_literal))))))
 
@@ -217,11 +126,11 @@ void() Function = {
         (compound_statement
             (if_statement
                 condition: (identifier)
-                (assignment_statement
+                (assignment_expression
                     target: (identifier)
                     value: (numeric_literal))
                 (compound_statement
-                    (assignment_statement
+                    (assignment_expression
                         target: (identifier)
                         value: (numeric_literal)))))))
 
@@ -243,7 +152,7 @@ void() Function = {
         body: (compound_statement
            (while_statement
                condition: (identifier)
-               (assignment_statement
+               (assignment_expression
                    target: (identifier)
                    value: (numeric_literal))))))
 
@@ -269,10 +178,10 @@ void() Function = {
             (while_statement
                 (identifier)
                 (compound_statement
-                    (assignment_statement
+                    (assignment_expression
                         (identifier)
                         (numeric_literal))
-                    (assignment_statement
+                    (assignment_expression
                         (identifier)
                         (numeric_literal)))))))
 
@@ -294,7 +203,7 @@ void() Function = {
         (identifier)
         (compound_statement
             (do_while_statement
-                (assignment_statement
+                (assignment_expression
                     (identifier)
                     (numeric_literal))
                 (identifier)))))
@@ -320,10 +229,10 @@ void() Function = {
         body: (compound_statement
          (do_while_statement
             (compound_statement
-              (assignment_statement
+              (assignment_expression
                 target: (identifier)
                 value: (numeric_literal))
-              (assignment_statement
+              (assignment_expression
                 target: (identifier)
                 value: (numeric_literal)))
              condition: (identifier)))))

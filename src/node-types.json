@@ -1,6 +1,6 @@
 [
   {
-    "type": "assignment_statement",
+    "type": "assignment_expression",
     "named": true,
     "fields": {
       "target": {
@@ -21,6 +21,10 @@
         "multiple": false,
         "required": true,
         "types": [
+          {
+            "type": "assignment_expression",
+            "named": true
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -70,6 +74,10 @@
       "required": true,
       "types": [
         {
+          "type": "assignment_expression",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
@@ -117,7 +125,7 @@
       "required": false,
       "types": [
         {
-          "type": "assignment_statement",
+          "type": "assignment_expression",
           "named": true
         },
         {
@@ -232,6 +240,10 @@
         "required": true,
         "types": [
           {
+            "type": "assignment_expression",
+            "named": true
+          },
+          {
             "type": "binary_expression",
             "named": true
           },
@@ -275,7 +287,7 @@
       "required": false,
       "types": [
         {
-          "type": "assignment_statement",
+          "type": "assignment_expression",
           "named": true
         },
         {
@@ -376,6 +388,10 @@
         "required": true,
         "types": [
           {
+            "type": "assignment_expression",
+            "named": true
+          },
+          {
             "type": "binary_expression",
             "named": true
           },
@@ -438,6 +454,10 @@
         "multiple": true,
         "required": false,
         "types": [
+          {
+            "type": "assignment_expression",
+            "named": true
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -533,7 +553,7 @@
         "required": false,
         "types": [
           {
-            "type": "assignment_statement",
+            "type": "assignment_expression",
             "named": true
           },
           {
@@ -657,6 +677,10 @@
         "required": true,
         "types": [
           {
+            "type": "assignment_expression",
+            "named": true
+          },
+          {
             "type": "binary_expression",
             "named": true
           },
@@ -700,7 +724,7 @@
       "required": false,
       "types": [
         {
-          "type": "assignment_statement",
+          "type": "assignment_expression",
           "named": true
         },
         {
@@ -826,6 +850,10 @@
       "required": true,
       "types": [
         {
+          "type": "assignment_expression",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
@@ -872,6 +900,10 @@
         "multiple": false,
         "required": false,
         "types": [
+          {
+            "type": "assignment_expression",
+            "named": true
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -965,6 +997,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "assignment_expression",
+          "named": true
+        },
         {
           "type": "binary_expression",
           "named": true
@@ -1102,6 +1138,10 @@
         "required": true,
         "types": [
           {
+            "type": "assignment_expression",
+            "named": true
+          },
+          {
             "type": "binary_expression",
             "named": true
           },
@@ -1145,7 +1185,7 @@
       "required": false,
       "types": [
         {
-          "type": "assignment_statement",
+          "type": "assignment_expression",
           "named": true
         },
         {

@@ -183,3 +183,105 @@ void() Function = {
             name: (identifier)
             arg: (funcall_expression
               name: (identifier))))))
+
+===========
+Assignment expression
+===========
+
+void() Function = {
+   ab = -1;
+};
+
+---
+
+(source_file
+    (function_definition
+        result: (simple_type)
+        parameters: (parameter_list)
+        name: (identifier)
+        body:
+        (compound_statement
+            (assignment_expression
+               target: (identifier)
+               value: (numeric_literal)))))
+
+===========
+Assignment expression - chain
+===========
+
+void() Function = {
+   ab = cd = 3;
+};
+
+---
+
+(source_file
+    (function_definition
+        result: (simple_type)
+        parameters: (parameter_list)
+        name: (identifier)
+        body:
+        (compound_statement
+            (assignment_expression
+               target: (identifier)
+               value: (assignment_expression
+                          target: (identifier)
+                          value: (numeric_literal))))))
+
+===========
+Assignment expression - special (+= -= *= /=)
+===========
+
+void() Function = {
+   ab *= -1;
+   b /= -1.1;
+   b11 += 101.1;
+   c -= d;
+};
+
+
+
+---
+
+(source_file
+    (function_definition
+        result: (simple_type)
+        parameters: (parameter_list)
+        name: (identifier)
+        body:
+        (compound_statement
+            (assignment_expression
+               target: (identifier)
+               value: (numeric_literal))
+            (assignment_expression
+               target: (identifier)
+               value: (numeric_literal))
+            (assignment_expression
+               target: (identifier)
+               value: (numeric_literal))
+            (assignment_expression
+               target: (identifier)
+               value: (identifier)))))
+
+===========
+Assignment expression - field
+===========
+
+void() Function = {
+   self.ab *= -1;
+};
+
+---
+
+(source_file
+    (function_definition
+        result: (simple_type)
+        parameters: (parameter_list)
+        name: (identifier)
+        body:
+        (compound_statement
+            (assignment_expression
+               target: (field_expression
+                   argument: (identifier)
+                   field: (identifier))
+               value: (numeric_literal)))))
