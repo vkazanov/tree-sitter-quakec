@@ -148,7 +148,7 @@ void cstyle_fun1(vector arg) {
                             name: (identifier)))
         body: (compound_statement
           (funcall_expression
-            name: (identifier)
+            function: (identifier)
             arg: (identifier)))))
 
 ===========

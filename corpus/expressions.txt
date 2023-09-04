@@ -136,6 +136,29 @@ void() Function = {
             field: (identifier)))))
 
 ===========
+Field deref expression - funcall
+===========
+
+void() Function = {
+    self.field();
+};
+
+---
+
+(source_file
+    (function_definition
+        result: (simple_type)
+        parameters: (parameter_list)
+        name: (identifier)
+        body: (compound_statement
+          (funcall_expression
+            function:
+                (field_expression
+                    argument: (identifier)
+                    field: (identifier))))))
+
+
+===========
 Binary expression - subtraction
 ===========
 
@@ -198,16 +221,16 @@ void() Function = {
         name: (identifier)
         body: (compound_statement
           (funcall_expression
-            name: (identifier))
+            function: (identifier))
           (funcall_expression
-            name: (identifier)
+            function: (identifier)
             arg: (identifier)
             arg: (identifier)
             arg: (identifier))
           (funcall_expression
-            name: (identifier)
+            function: (identifier)
             arg: (funcall_expression
-              name: (identifier))))))
+              function: (identifier))))))
 
 ===========
 Assignment expression

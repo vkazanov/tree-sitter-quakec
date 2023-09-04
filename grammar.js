@@ -15,7 +15,7 @@ const PREC = {
     MULTIPLY: 8,                 // same as division
     UNARY: 9,                    // positive/negative
     CALL: 10,
-    FIELD: 11,
+    FIELD: 11
 };
 
 module.exports = grammar({
@@ -251,12 +251,12 @@ module.exports = grammar({
             field('field', $.identifier),
         ),
 
-        funcall_expression: $ => seq(
-            field('name', $.identifier),
+        funcall_expression: $ => prec(PREC.CALL, seq(
+            field('function', $._expression),
             '(',
             optional(commaSeparated(field('arg', $._expression))),
             ')'
-        ),
+        )),
 
         parenthesized_expression: $ => seq(
             '(', $._expression, ')',
