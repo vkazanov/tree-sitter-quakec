@@ -286,11 +286,11 @@ module.exports = grammar({
         _float_literal: $ => /-?([0-9]+)?\.[0-9]+/,
 
         vector_literal: $ => seq(
-            '`',
+            '\'',
             $.numeric_literal,
             $.numeric_literal,
             $.numeric_literal,
-            '`'
+            '\''
         ),
 
         // string (TODO: escaping, see how javascript grammar does it)

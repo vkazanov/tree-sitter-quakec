@@ -181,8 +181,8 @@ Constant definitions
 float constFloat = 11.123;
 int constInt = 1;
 int constNegInt = -1;
-int constInt = `1 -12 3`;
-vector constFloat = `1.0 -12.12 3.4`;
+int constInt = '1 -12 3';
+vector constFloat = '1.0 -12.12 3.4';
 string constString = "bla bla bla";
 
 ---
@@ -266,7 +266,7 @@ $base arg1
 $cd /path/to/something
 $frame frame1 frame2 frame3
 $modelname name
-$scale `10 10 10`
+$scale '10 10 10'
 
 ---
 
