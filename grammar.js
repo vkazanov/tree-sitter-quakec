@@ -194,13 +194,20 @@ module.exports = grammar({
             $.assignment_expression,
             $.field_expression,
             $.funcall_expression,
-            $.parenthesized_expression, // TODO: should be used directly in statements
-                                        // whenver paren-zed expressions are used?
+            $.negation_expression,
+            // TODO: should be used directly in statements
+            // whenver paren-zed expressions are used?
+            $.parenthesized_expression,
         ),
 
         unary_expression: $ => prec.left(PREC.UNARY, seq(
             choice('-', '+'),
             $._expression,
+        )),
+
+
+        negation_expression: $ => prec.left(PREC.LOGICAL_NOT, seq(
+            '!', $._expression,
         )),
 
         binary_expression: $ => {
@@ -211,7 +218,6 @@ module.exports = grammar({
                 ['/', PREC.MULTIPLY],
                 ['||', PREC.LOGICAL_OR],
                 ['&&', PREC.LOGICAL_AND],
-                ['!', PREC.LOGICAL_NOT],
                 ['|', PREC.BITWISE_OR],
                 ['&', PREC.BITWISE_AND],
                 ['==', PREC.RELATIONAL],

@@ -25,6 +25,31 @@ void() Function = {
               (identifier)))))
 
 ===========
+Unary expression - negation
+===========
+
+void() Function = {
+    !a;
+    !(a+b);
+};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (compound_statement
+            (negation_expression
+              (identifier))
+            (negation_expression
+              (parenthesized_expression
+                (binary_expression
+                    (identifier)
+                    (identifier)))))))
+
+===========
 Unary expression - mixed
 ===========
 
