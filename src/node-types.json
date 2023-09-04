@@ -2,44 +2,63 @@
   {
     "type": "assignment_statement",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "funcall_expression",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "numeric_literal",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
-          "named": true
-        },
-        {
-          "type": "vector_literal",
-          "named": true
-        }
-      ]
+    "fields": {
+      "target": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "field_expression",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "field_expression",
+            "named": true
+          },
+          {
+            "type": "funcall_expression",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "numeric_literal",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "string_literal",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          },
+          {
+            "type": "vector_literal",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -52,6 +71,10 @@
       "types": [
         {
           "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "field_expression",
           "named": true
         },
         {
@@ -103,6 +126,10 @@
         },
         {
           "type": "do_while_statement",
+          "named": true
+        },
+        {
+          "type": "field_expression",
           "named": true
         },
         {
@@ -209,6 +236,10 @@
             "named": true
           },
           {
+            "type": "field_expression",
+            "named": true
+          },
+          {
             "type": "funcall_expression",
             "named": true
           },
@@ -257,6 +288,10 @@
         },
         {
           "type": "do_while_statement",
+          "named": true
+        },
+        {
+          "type": "field_expression",
           "named": true
         },
         {
@@ -333,6 +368,64 @@
     }
   },
   {
+    "type": "field_expression",
+    "named": true,
+    "fields": {
+      "argument": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "field_expression",
+            "named": true
+          },
+          {
+            "type": "funcall_expression",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "numeric_literal",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "string_literal",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          },
+          {
+            "type": "vector_literal",
+            "named": true
+          }
+        ]
+      },
+      "field": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "frame_identifier",
     "named": true,
     "fields": {}
@@ -347,6 +440,10 @@
         "types": [
           {
             "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "field_expression",
             "named": true
           },
           {
@@ -449,6 +546,10 @@
           },
           {
             "type": "do_while_statement",
+            "named": true
+          },
+          {
+            "type": "field_expression",
             "named": true
           },
           {
@@ -560,6 +661,10 @@
             "named": true
           },
           {
+            "type": "field_expression",
+            "named": true
+          },
+          {
             "type": "funcall_expression",
             "named": true
           },
@@ -608,6 +713,10 @@
         },
         {
           "type": "do_while_statement",
+          "named": true
+        },
+        {
+          "type": "field_expression",
           "named": true
         },
         {
@@ -721,6 +830,10 @@
           "named": true
         },
         {
+          "type": "field_expression",
+          "named": true
+        },
+        {
           "type": "funcall_expression",
           "named": true
         },
@@ -761,6 +874,10 @@
       "types": [
         {
           "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "field_expression",
           "named": true
         },
         {
@@ -849,6 +966,10 @@
       "types": [
         {
           "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "field_expression",
           "named": true
         },
         {
@@ -984,6 +1105,10 @@
             "named": true
           },
           {
+            "type": "field_expression",
+            "named": true
+          },
+          {
             "type": "funcall_expression",
             "named": true
           },
@@ -1032,6 +1157,10 @@
         },
         {
           "type": "do_while_statement",
+          "named": true
+        },
+        {
+          "type": "field_expression",
           "named": true
         },
         {
@@ -1118,7 +1247,15 @@
     "named": false
   },
   {
+    "type": "*=",
+    "named": false
+  },
+  {
     "type": "+",
+    "named": false
+  },
+  {
+    "type": "+=",
     "named": false
   },
   {
@@ -1127,6 +1264,10 @@
   },
   {
     "type": "-",
+    "named": false
+  },
+  {
+    "type": "-=",
     "named": false
   },
   {
@@ -1139,6 +1280,10 @@
   },
   {
     "type": "/",
+    "named": false
+  },
+  {
+    "type": "/=",
     "named": false
   },
   {

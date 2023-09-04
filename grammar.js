@@ -14,6 +14,7 @@ const PREC = {
     MULTIPLY: 8,                 // same as division
     UNARY: 9,                    // positive/negative
     CALL: 10,
+    FIELD: 11,
 };
 
 module.exports = grammar({
@@ -138,9 +139,9 @@ module.exports = grammar({
         ),
 
         assignment_statement: $ => seq(
-            $.identifier,
-            '=',
-            $._expression,
+            field('target', choice($.identifier, $.field_expression)) ,
+            choice('=', '+=', '-=', '*=', '/='),
+            field('value', $._expression),
         ),
 
         if_statement: $ => prec.right(seq(
@@ -194,6 +195,7 @@ module.exports = grammar({
             $._literal,
             $.unary_expression,
             $.binary_expression,
+            $.field_expression,
             $.funcall_expression,
             $.parenthesized_expression, // TODO: should be used directly in statements
                                         // whenver paren-zed expressions are used?
@@ -230,6 +232,14 @@ module.exports = grammar({
                 );
             }));
         },
+
+        field_expression: $ => seq(
+            prec(PREC.FIELD, seq(
+                field('argument', $._expression),
+                '.',
+            )),
+            field('field', $.identifier),
+        ),
 
         funcall_expression: $ => seq(
             field('name', $.identifier),
