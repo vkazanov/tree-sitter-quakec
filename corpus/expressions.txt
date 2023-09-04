@@ -45,6 +45,30 @@ void() Function = {
               (identifier))
             (numeric_literal)))))
 
+===========
+Binary expression - relational
+===========
+
+void() Function = {
+    1 == b;
+    1 != a;
+};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (compound_statement
+          (binary_expression
+            (numeric_literal)
+            (identifier))
+        (binary_expression
+            (numeric_literal)
+            (identifier)))))
+
 
 ===========
 Binary expression - addition
