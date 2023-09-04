@@ -559,10 +559,6 @@
               {
                 "type": "SYMBOL",
                 "name": "_simple_statement"
-              },
-              {
-                "type": "STRING",
-                "value": ";"
               }
             ]
           }
@@ -715,6 +711,10 @@
         {
           "type": "STRING",
           "value": ")"
+        },
+        {
+          "type": "STRING",
+          "value": ";"
         }
       ]
     },
@@ -740,6 +740,10 @@
               "type": "BLANK"
             }
           ]
+        },
+        {
+          "type": "STRING",
+          "value": ";"
         }
       ]
     },
@@ -888,12 +892,25 @@
               "type": "BLANK"
             }
           ]
+        },
+        {
+          "type": "STRING",
+          "value": ";"
         }
       ]
     },
     "_expression_statement": {
-      "type": "SYMBOL",
-      "name": "_expression"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_expression"
+        },
+        {
+          "type": "STRING",
+          "value": ";"
+        }
+      ]
     },
     "_expression": {
       "type": "CHOICE",

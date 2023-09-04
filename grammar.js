@@ -129,7 +129,7 @@ module.exports = grammar({
 
         compound_statement: $ => seq(
             '{',
-            repeat(seq($._simple_statement, ';')),
+            repeat(seq($._simple_statement)),
             '}'
         ),
 
@@ -144,14 +144,9 @@ module.exports = grammar({
 
         if_statement: $ => prec.right(seq(
             'if',
-            '(',
-            field('condition', ($._expression)),
-            ')',
+            '(', field('condition', ($._expression)), ')',
             $._statement,
-            optional(seq(
-                'else',
-                $._statement
-            )),
+            optional(seq('else', $._statement)),
         )),
 
         while_statement: $ => seq(
@@ -165,11 +160,13 @@ module.exports = grammar({
             $._statement,
             'while',
             '(', field('condition', $._expression), ')',
+            ';'
         ),
 
         return_statement: $ => seq(
             'return',
-            optional(field('value', $._expression))
+            optional(field('value', $._expression)),
+            ';'
         ),
 
         variable_definition_statement: $ => seq(
@@ -179,10 +176,11 @@ module.exports = grammar({
             optional(seq('=', $._literal)),
             optional(seq(',', commaSeparated(
                 seq($.identifier, optional(seq('=', $._literal)))
-            )))
+            ))),
+            ';'
         ),
 
-        _expression_statement: $ => $._expression,
+        _expression_statement: $ => seq($._expression, ';'),
 
         //
         // Expressions
