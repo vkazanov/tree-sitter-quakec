@@ -129,6 +129,29 @@ void(int param1, int param2) Function1 = {
             (identifier)))))
 
 ===========
+Function definition - C-style def
+===========
+
+void cstyle_fun1(vector arg) {
+	call(arg);
+};
+
+---
+
+(source_file
+    (function_definition
+        result: (simple_type)
+        name: (identifier)
+        parameters: (parameter_list
+                        (parameter
+                            type: (simple_type)
+                            name: (identifier)))
+        body: (compound_statement
+          (funcall_expression
+            name: (identifier)
+            arg: (identifier)))))
+
+===========
 Frame function definition
 ===========
 
