@@ -27,19 +27,20 @@ module.exports = grammar({
     ],
 
     rules: {
-        source_file: $ => repeat($._definition),
+        source_file: $ => repeat($._top_level),
 
         //
         // Global definitions and declarations
         //
 
-        _definition: $ => choice(
+        _top_level: $ => choice(
             $.function_declaration,
             $.constant_definition,
             $.variable_definition,
             $.field_definition,
             $.function_definition,
-            $.modelgen_pragma
+            $.modelgen_pragma,
+            $._preprocessor_top_level,
         ),
 
         function_declaration: $ => seq(
@@ -119,6 +120,18 @@ module.exports = grammar({
         ),
 
         //
+        _preprocessor_top_level: $ => choice(
+            alias($.preproc_ifdef_top_level, $.preproc_ifdef),
+        ),
+
+        _preprocessor_local: $ => choice(
+            alias($.preproc_ifdef_local, $.preproc_ifdef),
+        ),
+
+        ...preprocessorRules('_top_level', $ => $._top_level),
+        ...preprocessorRules('_local', $ => $._simple_statement),
+
+        //
         // Statements
         //
 
@@ -129,7 +142,7 @@ module.exports = grammar({
 
         compound_statement: $ => seq(
             '{',
-            repeat(seq($._simple_statement)),
+            repeat($._simple_statement),
             '}'
         ),
 
@@ -139,7 +152,8 @@ module.exports = grammar({
             $.do_while_statement,
             $.return_statement,
             $.variable_definition_statement,
-            $._expression_statement
+            $._expression_statement,
+            $._preprocessor_local
         ),
 
         if_statement: $ => prec.right(seq(
@@ -330,6 +344,23 @@ module.exports = grammar({
     }
 });
 
+// Generate a rule that comma-separated the provided rule
 function commaSeparated(rule) {
     return seq(rule, repeat(seq(',', rule)));
+}
+
+// Generate a set of preprocessor rules for global and local scopes
+function preprocessorRules(suffix, content) {
+    return {
+        ['preproc_ifdef' + suffix]: $ => seq(
+            choice('#ifdef', '#ifndef'),
+            field('condition', $.identifier), '\n',
+            repeat(content($)),
+            optional(field('alternative', seq(
+                '#else', '\n',
+                repeat(content($)),
+            ))),
+            '#endif', '\n'
+        ),
+    };
 }

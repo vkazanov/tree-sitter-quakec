@@ -1,0 +1,89 @@
+
+
+===========
+Preprocessor - global ifdef/endif
+===========
+
+#ifdef CONST
+#endif
+
+---
+
+(source_file
+    (preproc_ifdef
+        condition: (identifier)))
+
+===========
+Preprocessor - global ifndef/endif
+===========
+
+#ifndef CONST
+void() this = {
+};
+#endif
+
+
+---
+
+(source_file
+    (preproc_ifdef
+        condition: (identifier)
+            (function_definition
+                result: (simple_type)
+                parameters: (parameter_list)
+                name: (identifier)
+                body: (compound_statement))))
+
+===========
+Preprocessor - global ifdef/else/endif
+===========
+
+#ifdef CONST
+void() this = {
+};
+#else
+void() this = {
+};
+#endif
+
+
+---
+
+(source_file
+    (preproc_ifdef
+        condition: (identifier)
+            (function_definition
+                result: (simple_type)
+                parameters: (parameter_list)
+                name: (identifier)
+          body: (compound_statement))
+        alternative: (function_definition
+          result: (simple_type)
+          parameters: (parameter_list)
+          name: (identifier)
+          body: (compound_statement))))
+
+===========
+Preprocessor - local ifdef/endif
+===========
+
+void() Function = {
+#ifdef CONST
+    this;
+#else
+    that;
+#endif
+};
+
+---
+
+(source_file
+    (function_definition
+        result: (simple_type)
+        parameters: (parameter_list)
+        name: (identifier)
+        body: (compound_statement
+          (preproc_ifdef
+            condition: (identifier)
+            (identifier)
+            alternative: (identifier)))))
