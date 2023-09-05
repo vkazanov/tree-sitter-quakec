@@ -1,7 +1,7 @@
 // Operator precedence table
 //
 // TODO: manuals and qcc.h contradict each other on precedence, got to check code, maybe
-// even gmqcc or gteqcc code
+// even fteqcc or gmqcc code
 const PREC = {
     ASSIGNMENT: -1,
     DEFAULT: 0,
@@ -187,9 +187,12 @@ module.exports = grammar({
             optional('local'),
             field('type', $.simple_type),
             field('name', $.identifier),
-            optional(seq('=', $._literal)),
+            optional(seq('=', field('value', $._expression))),
             optional(seq(',', commaSeparated(
-                seq($.identifier, optional(seq('=', $._literal)))
+                seq(
+                    field('name', $.identifier),
+                    '=',
+                    optional(field('value', $._literal)))
             ))),
             ';'
         ),

@@ -363,9 +363,35 @@ void() Function = {
             (variable_definition_statement
               type: (simple_type)
               name: (identifier)
-              (numeric_literal)
-              (identifier)
-              (numeric_literal)))))
+              value: (numeric_literal)
+              name: (identifier)
+              value: (numeric_literal)))))
+
+===========
+Variable definition statement - expression
+===========
+
+void() Function = {
+    int a = funexpr(arg), b = 1;
+};
+
+---
+
+(source_file
+    (function_definition
+        result: (simple_type)
+        parameters: (parameter_list)
+        name: (identifier)
+        body: (compound_statement
+            (variable_definition_statement
+              type: (simple_type)
+              name: (identifier)
+              value: (funcall_expression
+                  function: (identifier)
+                  arg: (identifier))
+              name: (identifier)
+              value: (numeric_literal)))))
+
 
 ===========
 Expression statement
