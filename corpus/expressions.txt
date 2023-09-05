@@ -333,3 +333,23 @@ void() Function = {
                    argument: (identifier)
                    field: (identifier))
                value: (numeric_literal)))))
+
+===========
+Subscript expression
+===========
+
+void() Function = {
+    a[22];
+};
+
+---
+
+(source_file
+    (function_definition
+        (simple_type)
+        (parameter_list)
+        (identifier)
+        (compound_statement
+          (subscript_expression
+            (identifier)
+            (numeric_literal)))))

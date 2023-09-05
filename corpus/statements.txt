@@ -368,7 +368,7 @@ void() Function = {
               value: (numeric_literal)))))
 
 ===========
-Variable definition statement - expression
+Variable definition statement - expression init
 ===========
 
 void() Function = {
@@ -391,6 +391,31 @@ void() Function = {
                   arg: (identifier))
               name: (identifier)
               value: (numeric_literal)))))
+
+===========
+Variable definition statement - init a vector with an array;
+===========
+
+void() Function = {
+    vector vec = {10.1, funcall(), 13};
+};
+
+---
+
+(source_file
+    (function_definition
+        result: (simple_type)
+        parameters: (parameter_list)
+        name: (identifier)
+        body: (compound_statement
+            (variable_definition_statement
+              type: (simple_type)
+              name: (identifier)
+            value: (array_literal
+              (numeric_literal)
+              (funcall_expression
+                function: (identifier))
+              (numeric_literal))))))
 
 ===========
 Variable definition statement - multiple, no init

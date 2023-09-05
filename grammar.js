@@ -15,7 +15,8 @@ const PREC = {
     MULTIPLY: 8,                 // same as division
     UNARY: 9,                    // positive/negative
     CALL: 10,
-    FIELD: 11
+    FIELD: 11,
+    SUBSCRIPT: 12,
 };
 
 module.exports = grammar({
@@ -64,7 +65,7 @@ module.exports = grammar({
                 $.builtin_literal,
                 field('body', $._statement)
             ),
-            ';'
+            optional(';')
         ),
 
         constant_definition: $ => seq(
@@ -210,6 +211,7 @@ module.exports = grammar({
             $.assignment_expression,
             $.field_expression,
             $.funcall_expression,
+            $.subscript_expression,
             $.negation_expression,
             // TODO: should be used directly in statements
             // whenver paren-zed expressions are used?
@@ -258,6 +260,12 @@ module.exports = grammar({
             field('value', $._expression),
         )),
 
+        subscript_expression: $ => prec(PREC.SUBSCRIPT, seq(
+            field('argument', $._expression),
+            '[',
+            field('index', $._expression),
+            ']',
+        )),
 
         field_expression: $ => seq(
             prec(PREC.FIELD, seq(
@@ -295,6 +303,7 @@ module.exports = grammar({
         _literal: $ => choice(
             $.numeric_literal,
             $.vector_literal,
+            $.array_literal,
             $.string_literal,
         ),
 
@@ -313,6 +322,15 @@ module.exports = grammar({
             $.numeric_literal,
             $.numeric_literal,
             '\''
+        ),
+
+        // TODO: could find mention of this syntax anywhere but FTEQCC manual. The
+        // rereleased quakec/buttons.qc contains this for as an init for a vector, which
+        // contradicts the manual
+        array_literal: $ => seq(
+            '{',
+            commaSeparated($._expression),
+            '}'
         ),
 
         // string (TODO: escaping, see how javascript grammar does it)
