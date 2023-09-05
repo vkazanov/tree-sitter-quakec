@@ -1013,19 +1013,24 @@
                           }
                         },
                         {
-                          "type": "STRING",
-                          "value": "="
-                        },
-                        {
                           "type": "CHOICE",
                           "members": [
                             {
-                              "type": "FIELD",
-                              "name": "value",
-                              "content": {
-                                "type": "SYMBOL",
-                                "name": "_literal"
-                              }
+                              "type": "SEQ",
+                              "members": [
+                                {
+                                  "type": "STRING",
+                                  "value": "="
+                                },
+                                {
+                                  "type": "FIELD",
+                                  "name": "value",
+                                  "content": {
+                                    "type": "SYMBOL",
+                                    "name": "_literal"
+                                  }
+                                }
+                              ]
                             },
                             {
                               "type": "BLANK"
@@ -1055,19 +1060,24 @@
                                 }
                               },
                               {
-                                "type": "STRING",
-                                "value": "="
-                              },
-                              {
                                 "type": "CHOICE",
                                 "members": [
                                   {
-                                    "type": "FIELD",
-                                    "name": "value",
-                                    "content": {
-                                      "type": "SYMBOL",
-                                      "name": "_literal"
-                                    }
+                                    "type": "SEQ",
+                                    "members": [
+                                      {
+                                        "type": "STRING",
+                                        "value": "="
+                                      },
+                                      {
+                                        "type": "FIELD",
+                                        "name": "value",
+                                        "content": {
+                                          "type": "SYMBOL",
+                                          "name": "_literal"
+                                        }
+                                      }
+                                    ]
                                   },
                                   {
                                     "type": "BLANK"

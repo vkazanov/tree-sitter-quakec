@@ -392,6 +392,31 @@ void() Function = {
               name: (identifier)
               value: (numeric_literal)))))
 
+===========
+Variable definition statement - multiple, no init
+===========
+
+float(entity arg) fun =
+{
+	local vector var1, var2;
+};
+
+---
+
+(source_file
+    (function_definition
+        result: (simple_type)
+        parameters: (parameter_list
+          (parameter
+            type: (simple_type)
+            name: (identifier)))
+        name: (identifier)
+        body: (compound_statement
+          (variable_definition_statement
+            type: (simple_type)
+            name: (identifier)
+            name: (identifier)))))
+
 
 ===========
 Expression statement
