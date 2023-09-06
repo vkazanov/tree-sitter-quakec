@@ -82,7 +82,6 @@ float(void() funref) TestFunction4;
                 name: (identifier)))
         name: (identifier)))
 
-
 ===========
 Builtin function definition
 ===========
@@ -310,6 +309,27 @@ int multiple1, multiple2, multple3;
         type: (simple_type)
         name: (identifier)
         name: (identifier)
+        name: (identifier)))
+
+===========
+Variable definitions - type modifiers
+===========
+
+const float global1;
+const static int global2;
+nosave int global3;
+
+---
+
+(source_file
+    (variable_definition
+        type: (simple_type)
+        name: (identifier))
+    (variable_definition
+        type: (simple_type)
+        name: (identifier))
+    (variable_definition
+        type: (simple_type)
         name: (identifier)))
 
 ===========

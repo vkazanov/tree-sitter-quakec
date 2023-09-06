@@ -27,10 +27,6 @@ module.exports = grammar({
         $.comment,
     ],
 
-    // conflicts: $ => [
-    //     [$.function_declaration, $.variable_definition],
-    // ],
-
     rules: {
         source_file: $ => repeat($._top_level),
 
@@ -76,7 +72,10 @@ module.exports = grammar({
             optional(';')
         ),
 
+        // TODO: Unify with variable definition, and probably local variable definition
+        // statement as well.
         constant_definition: $ => seq(
+            optional(repeat($._type_modifier)),
             field('type', $.simple_type),
             field('name', $.identifier),
             '=',
@@ -85,6 +84,7 @@ module.exports = grammar({
         ),
 
         variable_definition: $ => seq(
+            optional(repeat($._type_modifier)),
             field('type', $.simple_type),
             field('name', $.identifier),
             optional(seq(',', commaSeparated(field('name', $.identifier)))),
@@ -255,7 +255,7 @@ module.exports = grammar({
         ),
 
         variable_definition_statement: $ => seq(
-            optional('local'),
+            optional(repeat($._type_modifier)),
             field('type', $.simple_type),
             field('name', $.identifier),
             optional(seq('=', field('value', $._expression))),
@@ -361,8 +361,12 @@ module.exports = grammar({
         // Terminal nodes
         //
 
+        _type_modifier: $ => choice(
+            'const', 'static', 'nosave', 'local'
+        ),
+
         simple_type: $ => choice(
-            'void', 'entity', 'float', 'vector', 'string', 'int'
+            'void', 'entity', 'float', 'vector', 'string', 'int', 'integer'
         ),
 
         field_ptr_type: $ => seq('.', $.simple_type),

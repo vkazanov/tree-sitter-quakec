@@ -256,6 +256,21 @@
       "type": "SEQ",
       "members": [
         {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_type_modifier"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
           "type": "FIELD",
           "name": "type",
           "content": {
@@ -292,6 +307,21 @@
     "variable_definition": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_type_modifier"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
         {
           "type": "FIELD",
           "name": "type",
@@ -1288,8 +1318,11 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "STRING",
-              "value": "local"
+              "type": "REPEAT",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_type_modifier"
+              }
             },
             {
               "type": "BLANK"
@@ -2083,6 +2116,27 @@
         }
       ]
     },
+    "_type_modifier": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "const"
+        },
+        {
+          "type": "STRING",
+          "value": "static"
+        },
+        {
+          "type": "STRING",
+          "value": "nosave"
+        },
+        {
+          "type": "STRING",
+          "value": "local"
+        }
+      ]
+    },
     "simple_type": {
       "type": "CHOICE",
       "members": [
@@ -2109,6 +2163,10 @@
         {
           "type": "STRING",
           "value": "int"
+        },
+        {
+          "type": "STRING",
+          "value": "integer"
         }
       ]
     },

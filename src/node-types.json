@@ -2761,6 +2761,10 @@
     "named": true
   },
   {
+    "type": "const",
+    "named": false
+  },
+  {
     "type": "default",
     "named": false
   },
@@ -2793,11 +2797,23 @@
     "named": false
   },
   {
+    "type": "integer",
+    "named": false
+  },
+  {
     "type": "local",
     "named": false
   },
   {
+    "type": "nosave",
+    "named": false
+  },
+  {
     "type": "return",
+    "named": false
+  },
+  {
+    "type": "static",
     "named": false
   },
   {
