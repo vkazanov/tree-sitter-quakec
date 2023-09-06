@@ -348,6 +348,10 @@
           "named": true
         },
         {
+          "type": "preproc_def",
+          "named": true
+        },
+        {
           "type": "preproc_ifdef",
           "named": true
         },
@@ -452,6 +456,10 @@
         },
         {
           "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "preproc_def",
           "named": true
         },
         {
@@ -670,6 +678,10 @@
         },
         {
           "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "preproc_def",
           "named": true
         },
         {
@@ -1094,6 +1106,10 @@
             "named": true
           },
           {
+            "type": "preproc_def",
+            "named": true
+          },
+          {
             "type": "preproc_ifdef",
             "named": true
           },
@@ -1349,6 +1365,10 @@
           "named": true
         },
         {
+          "type": "preproc_def",
+          "named": true
+        },
+        {
           "type": "preproc_ifdef",
           "named": true
         },
@@ -1586,6 +1606,22 @@
     }
   },
   {
+    "type": "preproc_def",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "preproc_ifdef",
     "named": true,
     "fields": {
@@ -1593,10 +1629,6 @@
         "multiple": true,
         "required": false,
         "types": [
-          {
-            "type": "\n",
-            "named": false
-          },
           {
             "type": "#else",
             "named": false
@@ -1675,6 +1707,10 @@
           },
           {
             "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "preproc_def",
             "named": true
           },
           {
@@ -1804,6 +1840,10 @@
         },
         {
           "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "preproc_def",
           "named": true
         },
         {
@@ -1948,6 +1988,10 @@
         },
         {
           "type": "modelgen_pragma",
+          "named": true
+        },
+        {
+          "type": "preproc_def",
           "named": true
         },
         {
@@ -2510,6 +2554,10 @@
           "named": true
         },
         {
+          "type": "preproc_def",
+          "named": true
+        },
+        {
           "type": "preproc_ifdef",
           "named": true
         },
@@ -2549,10 +2597,6 @@
     }
   },
   {
-    "type": "\n",
-    "named": false
-  },
-  {
     "type": "!",
     "named": false
   },
@@ -2562,6 +2606,10 @@
   },
   {
     "type": "\"",
+    "named": false
+  },
+  {
+    "type": "#define",
     "named": false
   },
   {

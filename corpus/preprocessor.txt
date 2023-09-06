@@ -87,3 +87,21 @@ void() Function = {
             condition: (identifier)
             (identifier)
             alternative: (identifier)))))
+
+===========
+Preprocessor - define simple
+===========
+
+#define PREPROC_CONST
+#define PREPROC_CONST 111
+#define PREPROC_CONST some(random)text;
+
+---
+
+(source_file
+    (preproc_def
+        name: (identifier))
+    (preproc_def
+        name: (identifier))
+    (preproc_def
+        name: (identifier)))

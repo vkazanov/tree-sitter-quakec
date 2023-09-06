@@ -147,16 +147,30 @@ module.exports = grammar({
         ),
 
         //
+        // Preprocessor (always a hack)
+        //
+
         _preprocessor_top_level: $ => choice(
             alias($.preproc_ifdef_top_level, $.preproc_ifdef),
+            $.preproc_def
         ),
 
         _preprocessor_local: $ => choice(
             alias($.preproc_ifdef_local, $.preproc_ifdef),
+            $.preproc_def
         ),
 
         ...preprocessorRules('_top_level', $ => $._top_level),
         ...preprocessorRules('_local', $ => $._simple_statement),
+
+        preproc_def: $ => seq(
+            '#define',
+            field('name', $.identifier),
+            optional($._preproc_arg),
+            token.immediate(/\r?\n/),
+        ),
+
+        _preproc_arg: _ => token(prec(-1, /\S([^/\n]|\/[^*]|\\\r?\n)*/)),
 
         //
         // Statements
@@ -442,13 +456,13 @@ function preprocessorRules(suffix, content) {
     return {
         ['preproc_ifdef' + suffix]: $ => seq(
             choice('#ifdef', '#ifndef'),
-            field('condition', $.identifier), '\n',
+            field('condition', $.identifier), token.immediate(/\r?\n/),
             repeat(content($)),
             optional(field('alternative', seq(
-                '#else', '\n',
+                '#else', token.immediate(/\r?\n/),
                 repeat(content($)),
             ))),
-            '#endif', '\n'
+            '#endif', token.immediate(/\r?\n/),
         ),
     };
 }
