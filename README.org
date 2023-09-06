@@ -63,9 +63,13 @@
 
   - [X] start with setting up fields in the grammar
 
-  - [ ] test with original qc code: tree-sitter parse 'examples/**/*.qc' --quiet --stat
+  - [-] test with original qc code: tree-sitter parse 'examples/**/*.qc' --quiet --stat
 
-    - [ ] 84% successful parsing achieved
+    - [X] 84% successful parsing achieved
+
+    - [X] 96.9 parsed
+
+    - [ ] enums left but let's not do it at this time
 
   - [ ] fix TODOs
 
