@@ -47,9 +47,9 @@ void() Function = {
         (parameter_list)
         (identifier)
         (compound_statement
-            (negation_expression
+            (unary_expression
               (identifier))
-            (negation_expression
+            (unary_expression
               (parenthesized_expression
                 (binary_expression
                     (identifier)

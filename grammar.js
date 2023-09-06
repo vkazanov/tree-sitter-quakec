@@ -8,16 +8,15 @@ const PREC = {
     DEFAULT: 0,
     LOGICAL_OR: 1,
     LOGICAL_AND: 2,
-    LOGICAL_NOT: 3,
-    RELATIONAL: 4,
-    ADD: 5,                     // same as substraction
-    BITWISE_OR: 6,
-    BITWISE_AND: 7,
-    MULTIPLY: 8,                 // same as division
-    UNARY: 9,                    // positive/negative
-    CALL: 10,
-    FIELD: 11,
-    SUBSCRIPT: 12,
+    RELATIONAL: 3,
+    ADD: 4,                     // same as substraction
+    BITWISE_OR: 5,
+    BITWISE_AND: 6,
+    MULTIPLY: 7,                 // same as division
+    UNARY: 8,                    // positive/negative
+    CALL: 9,
+    FIELD: 10,
+    SUBSCRIPT: 11,
 };
 
 module.exports = grammar({
@@ -292,7 +291,6 @@ module.exports = grammar({
             $.field_expression,
             $.funcall_expression,
             $.subscript_expression,
-            $.negation_expression,
             // TODO: should be used directly in statements
             // whenver paren-zed expressions are used?
             $.parenthesized_expression,
@@ -308,13 +306,8 @@ module.exports = grammar({
         },
 
         unary_expression: $ => prec.left(PREC.UNARY, seq(
-            choice('-', '+'),
+            choice('-', '+', '~', '!'),
             $._expression,
-        )),
-
-
-        negation_expression: $ => prec.left(PREC.LOGICAL_NOT, seq(
-            '!', $._expression,
         )),
 
         binary_expression: $ => {

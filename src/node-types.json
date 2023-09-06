@@ -40,10 +40,6 @@
           "named": true
         },
         {
-          "type": "negation_expression",
-          "named": true
-        },
-        {
           "type": "numeric_literal",
           "named": true
         },
@@ -129,10 +125,6 @@
             "named": true
           },
           {
-            "type": "negation_expression",
-            "named": true
-          },
-          {
             "type": "numeric_literal",
             "named": true
           },
@@ -202,10 +194,6 @@
         },
         {
           "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "negation_expression",
           "named": true
         },
         {
@@ -282,10 +270,6 @@
           },
           {
             "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "negation_expression",
             "named": true
           },
           {
@@ -369,10 +353,6 @@
         },
         {
           "type": "if_statement",
-          "named": true
-        },
-        {
-          "type": "negation_expression",
           "named": true
         },
         {
@@ -491,10 +471,6 @@
           "named": true
         },
         {
-          "type": "negation_expression",
-          "named": true
-        },
-        {
           "type": "numeric_literal",
           "named": true
         },
@@ -590,10 +566,6 @@
             "named": true
           },
           {
-            "type": "negation_expression",
-            "named": true
-          },
-          {
             "type": "numeric_literal",
             "named": true
           },
@@ -660,10 +632,6 @@
             "named": true
           },
           {
-            "type": "negation_expression",
-            "named": true
-          },
-          {
             "type": "numeric_literal",
             "named": true
           },
@@ -727,10 +695,6 @@
           },
           {
             "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "negation_expression",
             "named": true
           },
           {
@@ -826,10 +790,6 @@
             "named": true
           },
           {
-            "type": "negation_expression",
-            "named": true
-          },
-          {
             "type": "numeric_literal",
             "named": true
           },
@@ -899,10 +859,6 @@
           },
           {
             "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "negation_expression",
             "named": true
           },
           {
@@ -990,10 +946,6 @@
         },
         {
           "type": "if_statement",
-          "named": true
-        },
-        {
-          "type": "negation_expression",
           "named": true
         },
         {
@@ -1138,10 +1090,6 @@
             "named": true
           },
           {
-            "type": "negation_expression",
-            "named": true
-          },
-          {
             "type": "numeric_literal",
             "named": true
           },
@@ -1244,10 +1192,6 @@
             "named": true
           },
           {
-            "type": "negation_expression",
-            "named": true
-          },
-          {
             "type": "numeric_literal",
             "named": true
           },
@@ -1311,10 +1255,6 @@
           },
           {
             "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "negation_expression",
             "named": true
           },
           {
@@ -1447,10 +1387,6 @@
           },
           {
             "type": "if_statement",
-            "named": true
-          },
-          {
-            "type": "negation_expression",
             "named": true
           },
           {
@@ -1634,10 +1570,6 @@
             "named": true
           },
           {
-            "type": "negation_expression",
-            "named": true
-          },
-          {
             "type": "numeric_literal",
             "named": true
           },
@@ -1725,10 +1657,6 @@
           "named": true
         },
         {
-          "type": "negation_expression",
-          "named": true
-        },
-        {
           "type": "numeric_literal",
           "named": true
         },
@@ -1792,81 +1720,6 @@
     "type": "modelgen_pragma",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "negation_expression",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "array_literal",
-          "named": true
-        },
-        {
-          "type": "assignment_expression",
-          "named": true
-        },
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "conditional_expression",
-          "named": true
-        },
-        {
-          "type": "field_expression",
-          "named": true
-        },
-        {
-          "type": "frame_identifier",
-          "named": true
-        },
-        {
-          "type": "funcall_expression",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "negation_expression",
-          "named": true
-        },
-        {
-          "type": "numeric_literal",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "subscript_expression",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
-          "named": true
-        },
-        {
-          "type": "update_expression",
-          "named": true
-        },
-        {
-          "type": "vector_literal",
-          "named": true
-        }
-      ]
-    }
   },
   {
     "type": "numeric_literal",
@@ -1986,10 +1839,6 @@
         },
         {
           "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "negation_expression",
           "named": true
         },
         {
@@ -2117,10 +1966,6 @@
           },
           {
             "type": "modelgen_pragma",
-            "named": true
-          },
-          {
-            "type": "negation_expression",
             "named": true
           },
           {
@@ -2261,10 +2106,6 @@
           "named": true
         },
         {
-          "type": "negation_expression",
-          "named": true
-        },
-        {
           "type": "numeric_literal",
           "named": true
         },
@@ -2361,10 +2202,6 @@
           },
           {
             "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "negation_expression",
             "named": true
           },
           {
@@ -2493,10 +2330,6 @@
             "named": true
           },
           {
-            "type": "negation_expression",
-            "named": true
-          },
-          {
             "type": "numeric_literal",
             "named": true
           },
@@ -2560,10 +2393,6 @@
           },
           {
             "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "negation_expression",
             "named": true
           },
           {
@@ -2644,10 +2473,6 @@
           },
           {
             "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "negation_expression",
             "named": true
           },
           {
@@ -2733,10 +2558,6 @@
           "named": true
         },
         {
-          "type": "negation_expression",
-          "named": true
-        },
-        {
           "type": "numeric_literal",
           "named": true
         },
@@ -2805,10 +2626,6 @@
         },
         {
           "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "negation_expression",
           "named": true
         },
         {
@@ -2929,10 +2746,6 @@
             "named": true
           },
           {
-            "type": "negation_expression",
-            "named": true
-          },
-          {
             "type": "numeric_literal",
             "named": true
           },
@@ -3020,10 +2833,6 @@
             "named": true
           },
           {
-            "type": "negation_expression",
-            "named": true
-          },
-          {
             "type": "numeric_literal",
             "named": true
           },
@@ -3108,10 +2917,6 @@
         },
         {
           "type": "if_statement",
-          "named": true
-        },
-        {
-          "type": "negation_expression",
           "named": true
         },
         {
@@ -3447,6 +3252,10 @@
   },
   {
     "type": "}",
+    "named": false
+  },
+  {
+    "type": "~",
     "named": false
   }
 ]
