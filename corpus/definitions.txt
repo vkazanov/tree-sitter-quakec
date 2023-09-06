@@ -178,6 +178,29 @@ void(int param1, int param2) Function1 = {
             (identifier)))))
 
 ===========
+Function definition - arg init
+===========
+
+void(int param1 = init, int param2 = 10) Function1 = {};
+
+---
+
+(source_file
+    (function_definition
+        result: (simple_type)
+        parameters: (parameter_list
+            (parameter
+                type: (simple_type)
+                name: (identifier)
+                init: (identifier))
+            (parameter
+                type: (simple_type)
+                name: (identifier)
+                init: (numeric_literal)))
+        name: (identifier)
+        body: (compound_statement)))
+
+===========
 Function definition - C-style def
 ===========
 

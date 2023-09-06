@@ -127,7 +127,13 @@ module.exports = grammar({
                 $.field_ptr_type,
                 $.function_ref_type,
             )),
-            field('name', $.identifier)
+            field('name', $.identifier),
+            optional(seq('=', field('init', $._parameter_initializer)))
+        ),
+
+        _parameter_initializer: $ => choice(
+            $._literal,
+            $.identifier
         ),
 
         modelgen_pragma: $ => seq(
