@@ -87,7 +87,9 @@
 
   - [ ] for
 
-  - [ ] for
+  - [ ] enum
+
+  - [ ] class
 
   - [ ] preprocessor?
 

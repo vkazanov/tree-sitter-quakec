@@ -167,12 +167,14 @@ module.exports = grammar({
 
         _preprocessor_top_level: $ => choice(
             alias($.preproc_ifdef_top_level, $.preproc_ifdef),
-            $.preproc_def
+            $.preproc_def,
+            $.preproc_undef,
         ),
 
         _preprocessor_local: $ => choice(
             alias($.preproc_ifdef_local, $.preproc_ifdef),
-            $.preproc_def
+            $.preproc_def,
+            $.preproc_undef,
         ),
 
         ...preprocessorRules('_top_level', $ => $._top_level),
@@ -182,6 +184,12 @@ module.exports = grammar({
             '#define',
             field('name', $.identifier),
             optional($._preproc_arg),
+            token.immediate(/\r?\n/),
+        ),
+
+        preproc_undef: $ => seq(
+            '#undef',
+            field('name', $.identifier),
             token.immediate(/\r?\n/),
         ),
 

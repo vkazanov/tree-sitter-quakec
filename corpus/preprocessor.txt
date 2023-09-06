@@ -105,3 +105,15 @@ Preprocessor - define simple
         name: (identifier))
     (preproc_def
         name: (identifier)))
+
+===========
+Preprocessor - undef
+===========
+
+#undef PREPROC_CONST
+
+---
+
+(source_file
+    (preproc_undef
+        name: (identifier)))
