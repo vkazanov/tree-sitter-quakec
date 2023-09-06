@@ -344,6 +344,26 @@ int multiple1, multiple2, multple3;
         name: (identifier)))
 
 ===========
+Variable definition - array
+===========
+
+float floatField[1];
+float floatField[] = {1};
+
+---
+
+(source_file
+    (variable_definition
+        type: (simple_type)
+        name: (identifier)
+        array: (numeric_literal))
+    (constant_definition
+        type: (simple_type)
+        name: (identifier)
+        value: (array_literal
+          (numeric_literal))))
+
+===========
 Variable definitions - type modifiers
 ===========
 

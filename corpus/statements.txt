@@ -342,6 +342,7 @@ Variable definition statement
 
 void() Function = {
     int a;
+    int a[] = {1};
     local int b;
     int c = 1, d = 2;
 };
@@ -357,6 +358,11 @@ void() Function = {
             (variable_definition_statement
               type: (simple_type)
               name: (identifier))
+            (variable_definition_statement
+              type: (simple_type)
+              name: (identifier)
+              value: (array_literal
+              (numeric_literal)))
             (variable_definition_statement
               type: (simple_type)
               name: (identifier))

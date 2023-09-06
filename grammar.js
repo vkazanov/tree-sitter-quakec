@@ -77,7 +77,7 @@ module.exports = grammar({
         constant_definition: $ => seq(
             optional(repeat($._type_modifier)),
             field('type', $.simple_type),
-            field('name', $.identifier),
+            field('name', seq($.identifier, field('array', optional($._array_declarator)))),
             '=',
             field('value', $._expression),
             ';'
@@ -86,10 +86,16 @@ module.exports = grammar({
         variable_definition: $ => seq(
             optional(repeat($._type_modifier)),
             field('type', $.simple_type),
-            field('name', $.identifier),
-            optional(seq(',', commaSeparated(field('name', $.identifier)))),
+            field('name', seq($.identifier, field('array', optional($._array_declarator)))),
+            optional(seq(',', commaSeparated(field('name', seq($.identifier, field('array', optional($._array_declarator))))))),
             ';'
         ),
+
+        _array_declarator: $ => prec(1, seq(
+            '[',
+            optional($._expression),
+            ']',
+        )),
 
         field_definition: $ => seq(
             '.',
@@ -263,11 +269,11 @@ module.exports = grammar({
         variable_definition_statement: $ => seq(
             optional(repeat($._type_modifier)),
             field('type', $.simple_type),
-            field('name', $.identifier),
+            field('name', seq($.identifier, field('array', optional($._array_declarator)))),
             optional(seq('=', field('value', $._expression))),
             optional(seq(',', commaSeparated(
                 seq(
-                    field('name', $.identifier),
+                    field('name', seq($.identifier, field('array', optional($._array_declarator)))),
                     optional(seq('=', field('value', $._expression))))
             ))),
             ';'
