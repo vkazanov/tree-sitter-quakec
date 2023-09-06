@@ -50,13 +50,12 @@ module.exports = grammar({
 
         function_declaration: $ => seq(
             field('result', $.simple_type),
-            field('parameters', $.parameter_list), field('name', $.identifier),
-            // choice(
-                // // c-style
-                // field('name', $.identifier), field('parameters', $.parameter_list),
+            choice(
+                // c-style
+                seq(field('name', $.identifier), field('parameters', $.parameter_list)),
                 // qc-style
-            // field('parameters', $.parameter_list), field('name', $.identifier),
-            // ),
+                seq(field('parameters', $.parameter_list), field('name', $.identifier)),
+            ),
             ';'
         ),
 

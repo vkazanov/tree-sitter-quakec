@@ -13,6 +13,20 @@ void() NoParamFunction1;
         name: (identifier)))
 
 ===========
+Function declaration - C-style
+===========
+
+void NoParamFunction1 ();
+
+---
+
+(source_file
+    (function_declaration
+        result: (simple_type)
+        name: (identifier)
+        parameters: (parameter_list)))
+
+===========
 Function declaration - multiple params
 ===========
 
