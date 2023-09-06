@@ -73,14 +73,14 @@ module.exports = grammar({
             optional(';')
         ),
 
-        // TODO: Unify with variable definition, and probably local variable definition
-        // statement as well.
+        // TODO: Unify with variable definition, field definition and probably local
+        // variable definition statement as well.
         constant_definition: $ => seq(
             optional(repeat($._type_modifier)),
             field('type', $.simple_type),
             field('name', $.identifier),
             '=',
-            field('value', $._literal),
+            field('value', $._expression),
             ';'
         ),
 
@@ -269,7 +269,7 @@ module.exports = grammar({
             optional(seq(',', commaSeparated(
                 seq(
                     field('name', $.identifier),
-                    optional(seq('=', field('value', $._literal))))
+                    optional(seq('=', field('value', $._expression))))
             ))),
             ';'
         ),

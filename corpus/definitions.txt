@@ -280,6 +280,7 @@ int constNegInt = -1;
 int constInt = '1 -12 3';
 vector constFloat = '1.0 -12.12 3.4';
 string constString = "bla bla bla";
+int constLogic = a | b | c;
 
 ---
 
@@ -313,7 +314,15 @@ string constString = "bla bla bla";
     (constant_definition
         type: (simple_type)
         name: (identifier)
-        value: (string_literal)))
+        value: (string_literal))
+    (constant_definition
+        type: (simple_type)
+        name: (identifier)
+        value: (binary_expression
+          (binary_expression
+            (identifier)
+            (identifier))
+          (identifier))))
 
 ===========
 Variable definitions
