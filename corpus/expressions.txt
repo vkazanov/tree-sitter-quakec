@@ -121,6 +121,7 @@ Field deref expression
 
 void() Function = {
     self.field;
+    self->field;
 };
 
 ---
@@ -131,6 +132,9 @@ void() Function = {
         parameters: (parameter_list)
         name: (identifier)
         body: (compound_statement
+          (field_expression
+            argument: (identifier)
+            field: (identifier))
           (field_expression
             argument: (identifier)
             field: (identifier)))))

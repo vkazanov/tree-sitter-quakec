@@ -300,7 +300,7 @@ module.exports = grammar({
         field_expression: $ => seq(
             prec(PREC.FIELD, seq(
                 field('argument', $._expression),
-                '.',
+                choice('.', '->'),
             )),
             field('field', $.identifier),
         ),
