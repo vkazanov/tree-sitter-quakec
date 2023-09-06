@@ -121,7 +121,7 @@ module.exports = grammar({
         ),
 
         parameter: $ => seq(
-            field('type', $.simple_type),
+            field('type', choice($.simple_type, $.field_ptr)),
             field('name', $.identifier)
         ),
 
@@ -345,6 +345,8 @@ module.exports = grammar({
         simple_type: $ => choice(
             'void', 'entity', 'float', 'vector', 'string', 'int'
         ),
+
+        field_ptr: $ => seq('.', $.simple_type),
 
         identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
 

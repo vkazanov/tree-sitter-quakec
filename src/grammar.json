@@ -601,8 +601,17 @@
           "type": "FIELD",
           "name": "type",
           "content": {
-            "type": "SYMBOL",
-            "name": "simple_type"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "simple_type"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "field_ptr"
+              }
+            ]
           }
         },
         {
@@ -1998,6 +2007,19 @@
         {
           "type": "STRING",
           "value": "int"
+        }
+      ]
+    },
+    "field_ptr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "SYMBOL",
+          "name": "simple_type"
         }
       ]
     },

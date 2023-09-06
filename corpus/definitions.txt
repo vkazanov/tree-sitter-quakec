@@ -46,6 +46,23 @@ float(entity param1, entity param2) TestFunction4;
                 name: (identifier)))
         name: (identifier)))
 
+===========
+Function declaration - field pointer
+===========
+
+float(.entity ptr) TestFunction4;
+
+---
+
+(source_file
+    (function_declaration
+        result: (simple_type)
+        parameters: (parameter_list
+            (parameter
+                type: (field_ptr (simple_type))
+                name: (identifier)))
+        name: (identifier)))
+
 
 ===========
 Builtin function definition
