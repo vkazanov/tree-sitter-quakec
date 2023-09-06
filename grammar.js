@@ -68,7 +68,7 @@ module.exports = grammar({
                 seq(field('name', $.identifier), field('parameters', $.parameter_list)),
             ),
             optional('='),
-            optional(seq('[', $.frame_identifier, ',' , $.identifier, ']')),
+            optional(seq('[', field('frame', choice($.frame_identifier, $.integer_frame_literal)), ',' , $.identifier, ']')),
             choice(
                 $.builtin_literal,
                 field('body', $._statement)
@@ -412,6 +412,10 @@ module.exports = grammar({
 
         // only used assign builtin function names
         builtin_literal: $ => /#[0-9]+(:[a-zA-Z_][a-zA-Z0-9_]*)?/,
+
+        // only used to specify frames in frame functions
+        integer_frame_literal: $ => $._integer_literal,
+
 
         //
         // Comments (to used in extras)

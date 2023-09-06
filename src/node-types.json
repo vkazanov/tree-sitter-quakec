@@ -1131,6 +1131,20 @@
           }
         ]
       },
+      "frame": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "frame_identifier",
+            "named": true
+          },
+          {
+            "type": "integer_frame_literal",
+            "named": true
+          }
+        ]
+      },
       "name": {
         "multiple": false,
         "required": true,
@@ -1168,10 +1182,6 @@
       "types": [
         {
           "type": "builtin_literal",
-          "named": true
-        },
-        {
-          "type": "frame_identifier",
           "named": true
         },
         {
@@ -1376,6 +1386,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "integer_frame_literal",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "modelgen_pragma",

@@ -220,9 +220,33 @@ void(int param1, int param2) FrameFunction1 = [ $frame1, next ] {};
                 type: (simple_type)
                 name: (identifier)))
         name: (identifier)
-        (frame_identifier)
+        frame: (frame_identifier)
         (identifier)
         body: (compound_statement)))
+
+===========
+Frame function definition
+===========
+
+void(int param1, int param2) FrameFunction1 = [ 12, next ] {};
+
+---
+
+(source_file
+    (function_definition
+        result: (simple_type)
+        parameters: (parameter_list
+            (parameter
+                type: (simple_type)
+                name: (identifier))
+            (parameter
+                type: (simple_type)
+                name: (identifier)))
+        name: (identifier)
+        frame: (integer_frame_literal)
+        (identifier)
+        body: (compound_statement)))
+
 
 ===========
 Constant definitions

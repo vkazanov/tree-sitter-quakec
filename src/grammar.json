@@ -186,8 +186,21 @@
                   "value": "["
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "frame_identifier"
+                  "type": "FIELD",
+                  "name": "frame",
+                  "content": {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "frame_identifier"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "integer_frame_literal"
+                      }
+                    ]
+                  }
                 },
                 {
                   "type": "STRING",
@@ -2245,6 +2258,10 @@
     "builtin_literal": {
       "type": "PATTERN",
       "value": "#[0-9]+(:[a-zA-Z_][a-zA-Z0-9_]*)?"
+    },
+    "integer_frame_literal": {
+      "type": "SYMBOL",
+      "name": "_integer_literal"
     },
     "comment": {
       "type": "TOKEN",
