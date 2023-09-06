@@ -84,12 +84,12 @@ void() monster_death_use =
 		self.flags = self.flags - FL_FLY;
 	if (self.flags & FL_SWIM)
 		self.flags = self.flags - FL_SWIM;
-	
+
 	if (cvar("horde") && self.classname != "monster_zombie")
 	{
 		remote_wavecheck();
 	}
-	
+
 
 	if (!self.target)
 		return;
@@ -111,7 +111,7 @@ void() StartMonster =
 {
 	self.solid = SOLID_SLIDEBOX;
 	self.movetype = MOVETYPE_STEP;
-	
+
 	setmodel (self, self.mdl);
 	if(self.state == MONSTER_SIZE_SMALL) setsize (self, VEC_HULL_MIN, VEC_HULL_MAX);
 	if(self.state == MONSTER_SIZE_LARGE) setsize (self, VEC_HULL2_MIN, VEC_HULL2_MAX);
@@ -150,21 +150,21 @@ void() StartMonster =
 			spawn_tfog(self.origin);
 		}
 	}
-	
-	
+
+
 	self.takedamage = DAMAGE_AIM;
-	
+
 	self.ideal_yaw = self.angles * '0 1 0';
 	if (!self.yaw_speed)
 	self.yaw_speed = 20;
 	self.view_ofs = '0 0 25';
 	self.use = monster_use;
 	self.team = TEAM_MONSTERS;
-	
+
 	self.flags = self.flags | FL_MONSTER;
 	if(self.lefty == MONSTER_TYPE_FLY) self.flags = self.flags | FL_FLY;
 	if(self.lefty == MONSTER_TYPE_SWIM) self.flags = self.flags | FL_SWIM;
-	
+
 	if (self.target)
 	{
 		if(self.spawnflags & MONSTER_ATTACK_FRIEND)
@@ -177,7 +177,7 @@ void() StartMonster =
 				return;
 			}
 		}
-	
+
 		self.goalentity = self.movetarget = find(world, targetname, self.target);
 		self.ideal_yaw = vectoyaw(self.goalentity.origin - self.origin);
 		if (!self.movetarget)
@@ -210,20 +210,20 @@ void() StartMonster =
 		self.pausetime = 99999999;
 		self.th_stand ();
 	}
-	
+
 	if(self.spawnflags & MONSTER_SPAWNED)
 	{
 		// Yoder, Sept29, horde fix so that preplaced monsters are counted on spawn_tdeath
 		if (horde_ent)
 			total_monsters = total_monsters + 1;
 		// end Yoder chunk, back to normal
-		
+
 		if(self.spawnflags & MONSTER_SPAWNED_ANGRY)
-		{	
+		{
 			monster_use(); //Make monster angry!
 		}
-		
-		
+
+
 	}
 	else
 	{
@@ -240,18 +240,18 @@ void InitMonster(string model, float type, float size)
 		return;
 	}
 
-	INHIBIT_COOP
+	INHIBIT_COOP;
 	if (RemovedOutsideCoop()) return;
-	
+
 	self.flags |= FL_FUTUREMONSTER;
 
 	self.mdl = model;
 	self.lefty = type;
 	self.state = size;
-	
+
 	// CG: This was removed because it caused the entity alpha to differ from the baseline alpha somehow, causing it to be transmitted over the network every frame for every monster.
-	// self.alpha = 1; 
-	
+	// self.alpha = 1;
+
 	// Yoder, Sept29, fix for preplaced monsters in horde_ent
 	// in horde, mosnters shouldn't increase total count until spawned
 	if (cvar("horde"))

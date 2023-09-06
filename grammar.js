@@ -447,12 +447,19 @@ module.exports = grammar({
             repeat(choice(
                 // Normal chars
                 token.immediate(prec(1, /[^\\"\n]+/)),
-                // Escape sequence
-                token(prec(1, seq('\\', choice('n', 'r'),))),
+
+                $._escape_sequence
             )),
             /[^"]*/,
             '"'
         ),
+
+        _escape_sequence: $ => token(prec(1, seq(
+            '\\',
+            choice(
+                'n', 'r', '"', '\'', '\\', /[0-9]/
+            ),
+        ))),
 
         // only used assign builtin function names
         builtin_literal: $ => /#[0-9]+(:[a-zA-Z_][a-zA-Z0-9_]*)?/,

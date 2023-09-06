@@ -56,7 +56,7 @@ void() multi_trigger =
 			return;
 		found_secrets = found_secrets + 1;
 		WriteByte (MSG_ALL, SVC_FOUNDSECRET);
-		
+
 		msg_entity = self.enemy;
 		WriteByte (MSG_ONE, SVC_ACHIEVEMENT);
 		WriteString(MSG_ONE, "ACH_FIND_SECRET");
@@ -69,10 +69,10 @@ void() multi_trigger =
 	self.takedamage = DAMAGE_NO;
 
 	activator = self.enemy;
-	
+
 	SUB_UseTargets();
 
-	if (self.wait > 0)	
+	if (self.wait > 0)
 	{
 		self.think = multi_wait;
 		self.nextthink = time + self.wait;
@@ -102,7 +102,7 @@ void() multi_touch =
 {
 	if (other.classname != "player")
 		return;
-	
+
 // if the trigger has an angles field, check player's facing direction
 	if (self.movedir != '0 0 0')
 	{
@@ -110,7 +110,7 @@ void() multi_touch =
 		if (v_forward * self.movedir < 0)
 			return;		// not facing the right way
 	}
-	
+
 	self.enemy = other;
 	multi_trigger ();
 };
@@ -130,7 +130,7 @@ set "message" to text string
 */
 void() trigger_multiple =
 {
-	INHIBIT_COOP
+		INHIBIT_COOP;
 	self.netname = "trigger_multiple"; // for bot nav support.
 	if (self.sounds == 1)
 	{
@@ -154,7 +154,7 @@ void() trigger_multiple =
 		self.spawnflags &~= SPAWNFLAG_TRIGGER_FIRST;
 		return;
 	}
-	
+
 	if (!self.wait)
 		self.wait = 0.2;
 	self.use = multi_use;
@@ -208,7 +208,7 @@ This fixed size trigger cannot be touched, it can only be fired by other events.
 */
 void() trigger_relay =
 {
-	INHIBIT_COOP
+		INHIBIT_COOP;
 	if (RemovedOutsideCoop()) return;
 
 	self.use = SUB_UseTargets;
@@ -228,14 +228,14 @@ set "message" to text string
 */
 void() trigger_secret =
 {
-	INHIBIT_COOP
+		INHIBIT_COOP;
 	total_secrets = total_secrets + 1;
 	self.wait = -1;
 	if (!self.message)
 		self.message = "$qc_found_secret";
 	if (!self.sounds)
 		self.sounds = 1;
-	
+
 	if (self.sounds == 1)
 	{
 		precache_sound ("misc/secret.wav");
@@ -258,7 +258,7 @@ void() counter_use =
 	self.count = self.count - 1;
 	if (self.count < 0)
 		return;
-	
+
 	if (self.count != 0)
 	{
 		if (activator.classname == "player"
@@ -267,7 +267,7 @@ void() counter_use =
 			if (self.count >= 4)
 			{
 				centerprint_all ("$qc_more_go");
-			} 
+			}
 			else if (self.count == 3)
 			{
 				centerprint_all ("$qc_three_more");
@@ -283,17 +283,17 @@ void() counter_use =
 		}
 		return;
 	}
-	
+
 	if (activator.classname == "player"	&& (self.spawnflags & SPAWNFLAG_NOMESSAGE) == 0)
 	{
 		centerprint_all("$qc_sequence_completed");
 	}
 	self.enemy = activator;
-	
+
 	// yoder Sept24, 2021, Horde Merge
 	if (self.spawnflags & COUNTER_LOOPS)
 		self.count = self.wait;
-	
+
 	multi_trigger ();
 };
 
@@ -306,15 +306,15 @@ After the counter has been triggered "count" times (default 2), it will fire all
 */
 void() trigger_counter =
 {
-	INHIBIT_COOP
+		INHIBIT_COOP;
 	if (RemovedOutsideCoop()) return;
-	
+
 	// Yoder Sept24, 2021 Horde Merge
 	// .count is decremented each use and fires its targets on 0
 	// .wait stores the original .count and restores to this if COUNTER_LOOPS
 	if (!self.count)
 		self.count = 2;
-	
+
 	if (!self.wait)
 		self.wait = self.count;
 
@@ -335,7 +335,7 @@ void() counter_timed_use =
 	self.count = self.count - 1;
 	if (self.count < 0)
 	return;
-	
+
 	self.nextthink = time + self.delay;
 
 	if (self.count != 0)
@@ -346,7 +346,7 @@ void() counter_timed_use =
 			if (self.count >= 4)
 			{
 				centerprint_all ("$qc_more_go");
-			} 
+			}
 			else if (self.count == 3)
 			{
 				centerprint_all ("$qc_three_more");
@@ -362,7 +362,7 @@ void() counter_timed_use =
 		}
 		return;
 	}
-	
+
 	if (activator.classname == "player"	&& (self.spawnflags & SPAWNFLAG_NOMESSAGE) == 0)
 	{
 		centerprint_all("$qc_sequence_completed");
@@ -384,7 +384,7 @@ After the counter has been triggered "count" times (default 2), it will fire all
 */
 void() trigger_counter_timed =
 {
-	INHIBIT_COOP
+		INHIBIT_COOP;
 	if (RemovedOutsideCoop()) return;
 
 	self.wait = -1;
@@ -393,7 +393,7 @@ void() trigger_counter_timed =
 
 	if (!self.delay)
 		self.delay = 2;
-	
+
 	self.cnt = self.count;
 
 	self.use = counter_timed_use;
@@ -473,7 +473,7 @@ void() tdeath_touch =
 			T_Damage (self.owner, self, self, 50000);
 			return;
 		}
-		
+
 	}
 
 	if (other.health)
@@ -483,7 +483,7 @@ void() tdeath_touch =
 };
 
 // Yoder sept24 2021 horde merge
-// a faster version of tdeath to minimize telefragging 
+// a faster version of tdeath to minimize telefragging
 void(vector org, entity death_owner) spawn_tdeath_fast =
 {
 local entity	death;
@@ -499,7 +499,7 @@ local entity	death;
 	death.nextthink = time + 0.01;
 	death.think = SUB_Remove;
 	death.owner = death_owner;
-	
+
 	force_retouch = 2;		// make sure even still objects get hit
 };
 
@@ -518,7 +518,7 @@ local entity	death;
 	death.nextthink = time + 0.2;
 	death.think = SUB_Remove;
 	death.owner = death_owner;
-	
+
 	force_retouch = 2;		// make sure even still objects get hit
 };
 
@@ -553,7 +553,7 @@ local vector	org;
 	t = find (world, targetname, self.target);
 	if (!t)
 		objerror ("couldn't find target");
-		
+
 // spawn a tfog flash in front of the destination
 	makevectors (t.mangle);
 	org = t.origin + 32 * v_forward;
@@ -620,7 +620,7 @@ void() trigger_teleport =
 
 	InitTrigger ();
 	self.touch = teleport_touch;
-	// find the destination 
+	// find the destination
 	if (!self.target)
 		objerror ("no target");
 	self.use = teleport_use;
@@ -645,7 +645,7 @@ void() trigger_skill_touch =
 {
 	if (other.classname != "player")
 		return;
-		
+
 	cvar_set ("skill", self.message);
 };
 
@@ -724,7 +724,7 @@ void() hurt_touch =
 		// allows for monster-only hurt volumes
 		if ((self.spawnflags & MONSTER_ONLY) && !(other.flags & FL_MONSTER))
 			return;
-			
+
 		self.solid = SOLID_NOT;
 		T_Damage (other, self, self, self.dmg);
 		self.think = hurt_on;
@@ -762,25 +762,25 @@ float PUSH_START_OFF = 4;
 void() trigger_push_touch =
 {
 	// yoder Sept 24 2021 horde merge
-	
+
 	if (horde_ent)
 	{
 		if (other.spawnflags & PUSH_START_OFF) // ignore this spawnflag in horde mode
 			other.spawnflags-= PUSH_START_OFF;
-		
+
 		if ((other.classname != "player"))
 		{
 			if ((other.classname == "item_artifact_invulnerability") || (other.classname == "item_artifact_super_damage"))
 			{
 				if (self.spawnflags & ADDITIVE_PUSH)
-					other.velocity = other.velocity + (self.speed * self.movedir * 10 * frametime); 
+					other.velocity = other.velocity + (self.speed * self.movedir * 10 * frametime);
 				else
 					other.velocity = self.speed * self.movedir * 10;
 			}
 			return;
 		}
 	}
-	
+
 	if (other.health > 0 || other.classname == "grenade")
 	{
 		if(other.flags & FL_INSHELTER) return;
@@ -854,7 +854,7 @@ void() trigger_shelter_portal_touch =
 	}
 }
 
-/*QUAKED trigger_shelter (.5 .5 .5) 
+/*QUAKED trigger_shelter (.5 .5 .5)
 Shelters the player from pushes
 */
 void() trigger_shelter_portal =
@@ -886,7 +886,7 @@ void() trigger_monsterjump_touch =
 {
 	if ( other.flags & (FL_MONSTER | FL_FLY | FL_SWIM) != FL_MONSTER )
 		return;
-	
+
 	// yoder add, July 10th 2020
 	// making it so trigger_monsterjump's with spawnflag 8 only affect mosnters with spawnflag 8
 	if (self.spawnflags & 64)
@@ -901,10 +901,10 @@ void() trigger_monsterjump_touch =
 // set XY even if not on ground, so the jump will clear lips
 	other.velocity_x = self.movedir_x * self.speed;
 	other.velocity_y = self.movedir_y * self.speed;
-	
+
 	if ( !(other.flags & FL_ONGROUND) )
 		return;
-	
+
 	other.flags = other.flags - FL_ONGROUND;
 
 	other.velocity_z = self.height;
@@ -933,16 +933,16 @@ void() trigger_explosion_activate =
 {
 	self.delay = 0;
 	SUB_UseTargets ();
-	
+
 	if (!(self.spawnflags & NO_DAMAGE))
 		T_RadiusDamage (self, self.owner, 120, self);
-		
+
 	WriteByte (MSG_BROADCAST, SVC_TEMPENTITY);
 	WriteByte (MSG_BROADCAST, TE_EXPLOSION);
 	WriteCoord (MSG_BROADCAST, self.origin_x);
 	WriteCoord (MSG_BROADCAST, self.origin_y);
 	WriteCoord (MSG_BROADCAST, self.origin_z);
-	
+
 	BecomeExplosion();
 }
 
@@ -961,9 +961,9 @@ void() trigger_explosion_use =
 
 void() trigger_explosion =
 {
-	INHIBIT_COOP
-	if (RemovedOutsideCoop()) return;	
-		
+		INHIBIT_COOP;
+	if (RemovedOutsideCoop()) return;
+
 	self.use = trigger_explosion_use;
 };
 
@@ -995,7 +995,7 @@ void() repeater_use =
 
 void() trigger_repeater =
 {
-	INHIBIT_COOP
+		INHIBIT_COOP;
 	if (RemovedOutsideCoop()) return;
 
 	if (!self.wait)
@@ -1009,7 +1009,7 @@ void() trigger_repeater =
 		self.think = repeater_think;
 	}
 	else
-	{	
+	{
 		self.nextthink = 0;
 		self.think = SUB_Null;
 	}
@@ -1026,7 +1026,7 @@ float IGNORE_EMPTIED = 32;
 
 void() trigger_multitouch_think =
 {
-    bprint("untouched\n"); 
+    bprint("untouched\n");
     self.wait = 0;
     if (!(self.spawnflags & IGNORE_EMPTIED))
         SUB_UseTargets();
@@ -1038,7 +1038,7 @@ void() trigger_multitouch_touch =
         return;
 	if (other.health <= 0)
 		return;
-    
+
     if (self.wait == 0) // first touch?
     {
         self.wait = 1;
@@ -1046,7 +1046,7 @@ void() trigger_multitouch_touch =
         if (!(self.spawnflags & IGNORE_FIRST_TOUCH))
             SUB_UseTargets();
     }
-    
+
     // think
     self.think = trigger_multitouch_think;
     self.nextthink = time + 0.2;
