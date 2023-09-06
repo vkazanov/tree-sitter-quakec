@@ -229,11 +229,7 @@ module.exports = grammar({
 
         switch_statement: $ => seq(
             'switch',
-            field('condition', seq(
-                '(',
-                $._expression,
-                ')',
-            )),
+            field('condition', $._parenthesized_expression),
             $.compound_statement,
         ),
 
@@ -252,14 +248,14 @@ module.exports = grammar({
 
         if_statement: $ => prec.right(seq(
             'if',
-            '(', field('condition', ($._expression)), ')',
+            field('condition', $._parenthesized_expression),
             $._statement,
             optional(seq('else', $._statement)),
         )),
 
         while_statement: $ => seq(
             'while',
-            '(', field('condition', $._expression), ')',
+            field('condition', $._parenthesized_expression),
             $._statement,
         ),
 
@@ -267,7 +263,7 @@ module.exports = grammar({
             'do',
             $._statement,
             'while',
-            '(', field('condition', $._expression), ')',
+            field('condition', $._parenthesized_expression),
             ';'
         ),
 
@@ -310,7 +306,7 @@ module.exports = grammar({
             $.subscript_expression,
             // TODO: should be used directly in statements
             // whenver paren-zed expressions are used?
-            $.parenthesized_expression,
+            $._parenthesized_expression,
         ),
 
         update_expression: $ => {
@@ -390,7 +386,7 @@ module.exports = grammar({
             ')'
         )),
 
-        parenthesized_expression: $ => seq(
+        _parenthesized_expression: $ => seq(
             '(', $._expression, ')',
         ),
 

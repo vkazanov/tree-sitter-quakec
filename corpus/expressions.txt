@@ -50,10 +50,9 @@ void() Function = {
             (unary_expression
               (identifier))
             (unary_expression
-              (parenthesized_expression
                 (binary_expression
                     (identifier)
-                    (identifier)))))))
+                    (identifier))))))
 
 ===========
 Unary expression - mixed
