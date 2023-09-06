@@ -928,6 +928,52 @@
     }
   },
   {
+    "type": "field_definition",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "parameters": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "parameter_list",
+            "named": true
+          }
+        ]
+      },
+      "result": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "simple_type",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "simple_type",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "field_expression",
     "named": true,
     "fields": {
@@ -1768,6 +1814,10 @@
             "named": true
           },
           {
+            "type": "field_definition",
+            "named": true
+          },
+          {
             "type": "field_expression",
             "named": true
           },
@@ -1890,6 +1940,10 @@
         },
         {
           "type": "do_while_statement",
+          "named": true
+        },
+        {
+          "type": "field_definition",
           "named": true
         },
         {
@@ -2084,6 +2138,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "field_definition",
+          "named": true
+        },
         {
           "type": "function_declaration",
           "named": true

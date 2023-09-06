@@ -37,7 +37,7 @@ module.exports = grammar({
         _top_level: $ => choice(
             $.function_declaration,
             $.variable_definition,
-            // $.field_definition,
+            $.field_definition,
             $.function_definition,
             $.modelgen_pragma,
             $._preprocessor_top_level,
@@ -60,10 +60,10 @@ module.exports = grammar({
                 // c-style
                 seq(field('parameters', $.parameter_list), field('name', $.identifier)),
                 // qc-style
-                seq(field('name', $.identifier), field('parameters', $.parameter_list)),
+                seq(field('name', $.identifier), field('parameters', $.parameter_list), ),
             ),
             optional('='),
-            optional(seq('[', field('frame', choice($.frame_identifier, $.integer_frame_literal)), ',' , $.identifier, ']')),
+            optional($._frame_specifier),
             choice(
                 $.builtin_literal,
                 field('body', $._statement)
@@ -71,11 +71,20 @@ module.exports = grammar({
             optional(';')
         ),
 
-        // TODO: Unify with variable definition, field definition and probably local
-        // variable definition statement as well.
+        _frame_specifier: $ => seq(
+            '[',
+            field('frame', choice(
+                $.frame_identifier,
+                $.integer_frame_literal
+            )),
+            ',' ,
+            $.identifier,
+            ']'
+        ),
+
+        // TODO: Unify with field definition?
         variable_definition: $ => seq(
             optional(repeat($._type_modifier)),
-            optional('.'),
             field('type', $.simple_type),
             commaOneOrMore(field('name', seq(
                 $._variable_name_specifier,
@@ -91,13 +100,18 @@ module.exports = grammar({
             field('array', optional($._array_declarator))
         ),
 
+        _variable_def_type: $ => choice(
+            $.simple_type,
+            $.function_ref_type
+        ),
+
         _array_declarator: $ => prec(1, seq(
             '[',
             optional($._expression),
             ']',
         )),
 
-        // TODO: integrate into the more general variable_definition
+        // TODO: integrate into the more general variable_definition?
         field_definition: $ => seq(
             '.',
             choice(
@@ -294,8 +308,6 @@ module.exports = grammar({
             $.field_expression,
             $.funcall_expression,
             $.subscript_expression,
-            // TODO: should be used directly in statements
-            // whenver paren-zed expressions are used?
             $._parenthesized_expression,
         ),
 
