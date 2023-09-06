@@ -357,3 +357,25 @@ void() Function = {
           (subscript_expression
             (identifier)
             (numeric_literal)))))
+
+===========
+Conditional expression
+===========
+
+void() Function = {
+   a ? 1 : 2;
+};
+
+---
+
+(source_file
+    (function_definition
+        result: (simple_type)
+        parameters: (parameter_list)
+        name: (identifier)
+        body:
+        (compound_statement
+            (conditional_expression
+              condition: (identifier)
+              consequence: (numeric_literal)
+              alternative: (numeric_literal)))))

@@ -3,7 +3,8 @@
 // TODO: manuals and qcc.h contradict each other on precedence, got to check code, maybe
 // even fteqcc or gmqcc code
 const PREC = {
-    ASSIGNMENT: -1,
+    ASSIGNMENT: -2,
+    CONDITIONAL: -1,
     DEFAULT: 0,
     LOGICAL_OR: 1,
     LOGICAL_AND: 2,
@@ -279,6 +280,7 @@ module.exports = grammar({
             $._literal,
             $.unary_expression,
             $.binary_expression,
+            $.conditional_expression,
             $.assignment_expression,
             $.field_expression,
             $.funcall_expression,
@@ -324,6 +326,14 @@ module.exports = grammar({
                 );
             }));
         },
+
+        conditional_expression: $ => prec.right(PREC.CONDITIONAL, seq(
+            field('condition', $._expression),
+            '?',
+            optional(field('consequence', $._expression)),
+            ':',
+            field('alternative', $._expression),
+        )),
 
         assignment_expression: $ => prec.right(PREC.ASSIGNMENT, seq(
             field('target', choice($.identifier, $.field_expression)) ,
