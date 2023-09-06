@@ -258,6 +258,20 @@ Field definitions
         name: (identifier)))
 
 ===========
+Field definitions - no param function;
+===========
+
+.float() floatField;
+
+---
+
+(source_file
+    (field_definition
+        result: (simple_type)
+        parameters: (parameter_list)
+        name: (identifier)))
+
+===========
 Modelgen pragmas
 ===========
 
