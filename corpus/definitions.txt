@@ -409,10 +409,10 @@ Field definitions
 ---
 
 (source_file
-    (field_definition
+    (variable_definition
         type: (simple_type)
         name: (identifier))
-    (field_definition
+    (variable_definition
         type: (simple_type)
         name: (identifier)
         name: (identifier)

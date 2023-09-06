@@ -37,7 +37,7 @@ module.exports = grammar({
         _top_level: $ => choice(
             $.function_declaration,
             $.variable_definition,
-            $.field_definition,
+            // $.field_definition,
             $.function_definition,
             $.modelgen_pragma,
             $._preprocessor_top_level,
@@ -75,26 +75,20 @@ module.exports = grammar({
         // variable definition statement as well.
         variable_definition: $ => seq(
             optional(repeat($._type_modifier)),
+            optional('.'),
             field('type', $.simple_type),
-            field('name', seq(
+            commaOneOrMore(field('name', seq(
                 $._variable_name_specifier,
                 optional(seq(
                     '=', field('value', $._expression)
                 ))
-            )),
-            optional(seq(
-                ',', commaSeparated(seq(
-                    $._variable_name_specifier,
-                    optional(seq(
-                        '=', field('value', $._expression)
-                    ))
-                ))
-            )),
+            ))),
             ';'
         ),
 
         _variable_name_specifier: $ => seq(
-            field('name', $.identifier), field('array', optional($._array_declarator))
+            field('name', $.identifier),
+            field('array', optional($._array_declarator))
         ),
 
         _array_declarator: $ => prec(1, seq(
@@ -103,6 +97,7 @@ module.exports = grammar({
             ']',
         )),
 
+        // TODO: integrate into the more general variable_definition
         field_definition: $ => seq(
             '.',
             choice(
@@ -115,19 +110,19 @@ module.exports = grammar({
         _field_variable_definition: $ => seq(
             field('type', $.simple_type),
             field('name', $.identifier),
-            optional(seq(',', commaSeparated(field('name', $.identifier)))),
+            optional(seq(',', commaOneOrMore(field('name', $.identifier)))),
         ),
 
         _field_function_definition: $ => seq(
             field('result', $.simple_type),
             field('parameters', $.parameter_list),
             field('name', $.identifier),
-            optional(seq(',', commaSeparated(field('name', $.identifier)))),
+            optional(seq(',', commaOneOrMore(field('name', $.identifier)))),
         ),
 
         parameter_list: $ => seq(
             '(',
-            optional(commaSeparated($.parameter)),
+            optional(commaOneOrMore($.parameter)),
             optional(seq(optional(','), '...')),
             ')'
         ),
@@ -228,7 +223,7 @@ module.exports = grammar({
             $.while_statement,
             $.do_while_statement,
             $.return_statement,
-            $.variable_definition_statement,
+            $._variable_definition_statement,
             $._expression_statement,
             $._preprocessor_local
         ),
@@ -279,18 +274,7 @@ module.exports = grammar({
             ';'
         ),
 
-        variable_definition_statement: $ => seq(
-            optional(repeat($._type_modifier)),
-            field('type', $.simple_type),
-            field('name', seq($.identifier, field('array', optional($._array_declarator)))),
-            optional(seq('=', field('value', $._expression))),
-            optional(seq(',', commaSeparated(
-                seq(
-                    field('name', seq($.identifier, field('array', optional($._array_declarator)))),
-                    optional(seq('=', field('value', $._expression))))
-            ))),
-            ';'
-        ),
+        _variable_definition_statement: $ => $.variable_definition,
 
         _expression_statement: $ => seq($._expression, ';'),
 
@@ -388,7 +372,7 @@ module.exports = grammar({
         funcall_expression: $ => prec(PREC.CALL, seq(
             field('function', $._expression),
             '(',
-            optional(commaSeparated(field('arg', $._expression))),
+            optional(commaOneOrMore(field('arg', $._expression))),
             ')'
         )),
 
@@ -450,7 +434,7 @@ module.exports = grammar({
         // contradicts the manual
         array_literal: $ => seq(
             '{',
-            commaSeparated($._expression),
+            commaOneOrMore($._expression),
             '}'
         ),
 
@@ -497,7 +481,7 @@ module.exports = grammar({
 });
 
 // Generate a rule that comma-separated the provided rule
-function commaSeparated(rule) {
+function commaOneOrMore(rule) {
     return seq(rule, repeat(seq(',', rule)));
 }
 
