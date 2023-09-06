@@ -286,7 +286,7 @@ void(int param1, int param2) FrameFunction1 = [ 12, next ] {};
 
 
 ===========
-Constant definitions
+Variable definitions
 ===========
 
 float constFloat = 11.123;
@@ -300,37 +300,37 @@ int constLogic = a | b | c;
 ---
 
 (source_file
-    (constant_definition
+    (variable_definition
         type: (simple_type)
         name: (identifier)
         value: (numeric_literal))
-    (constant_definition
+    (variable_definition
         type: (simple_type)
         name: (identifier)
         value: (numeric_literal))
-    (constant_definition
+    (variable_definition
         type: (simple_type)
         name: (identifier)
         value: (numeric_literal))
-    (constant_definition
+    (variable_definition
         type: (simple_type)
         name: (identifier)
         value: (vector_literal
                    (numeric_literal)
                    (numeric_literal)
                    (numeric_literal)))
-    (constant_definition
+    (variable_definition
         type: (simple_type)
         name: (identifier)
         value: (vector_literal
                    (numeric_literal)
                    (numeric_literal)
                    (numeric_literal)))
-    (constant_definition
+    (variable_definition
         type: (simple_type)
         name: (identifier)
         value: (string_literal))
-    (constant_definition
+    (variable_definition
         type: (simple_type)
         name: (identifier)
         value: (binary_expression
@@ -372,7 +372,7 @@ float floatField[] = {1};
         type: (simple_type)
         name: (identifier)
         array: (numeric_literal))
-    (constant_definition
+    (variable_definition
         type: (simple_type)
         name: (identifier)
         value: (array_literal

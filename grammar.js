@@ -36,7 +36,6 @@ module.exports = grammar({
 
         _top_level: $ => choice(
             $.function_declaration,
-            $.constant_definition,
             $.variable_definition,
             $.field_definition,
             $.function_definition,
@@ -74,21 +73,28 @@ module.exports = grammar({
 
         // TODO: Unify with variable definition, field definition and probably local
         // variable definition statement as well.
-        constant_definition: $ => seq(
-            optional(repeat($._type_modifier)),
-            field('type', $.simple_type),
-            field('name', seq($.identifier, field('array', optional($._array_declarator)))),
-            '=',
-            field('value', $._expression),
-            ';'
-        ),
-
         variable_definition: $ => seq(
             optional(repeat($._type_modifier)),
             field('type', $.simple_type),
-            field('name', seq($.identifier, field('array', optional($._array_declarator)))),
-            optional(seq(',', commaSeparated(field('name', seq($.identifier, field('array', optional($._array_declarator))))))),
+            field('name', seq(
+                $._variable_name_specifier,
+                optional(seq(
+                    '=', field('value', $._expression)
+                ))
+            )),
+            optional(seq(
+                ',', commaSeparated(seq(
+                    $._variable_name_specifier,
+                    optional(seq(
+                        '=', field('value', $._expression)
+                    ))
+                ))
+            )),
             ';'
+        ),
+
+        _variable_name_specifier: $ => seq(
+            field('name', $.identifier), field('array', optional($._array_declarator))
         ),
 
         _array_declarator: $ => prec(1, seq(
