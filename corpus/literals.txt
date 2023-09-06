@@ -4,6 +4,7 @@ Numeric literals
 
 void() Function = {
    -1;
+   -1.0f;
    -1.1;
    101.1;
    -101.1;
@@ -18,6 +19,7 @@ void() Function = {
         (parameter_list)
         (identifier)
         (compound_statement
+             (numeric_literal)
              (numeric_literal)
              (numeric_literal)
              (numeric_literal)

@@ -342,9 +342,9 @@ module.exports = grammar({
             $._float_literal,
         ),
 
-        _integer_literal: $ => /-?[0-9]+/,
+        _integer_literal: $ => /-?[0-9]+i?/,
 
-        _float_literal: $ => /-?([0-9]+)?\.[0-9]+/,
+        _float_literal: $ => /-?([0-9]+)?\.([0-9]+f?)?/,
 
         vector_literal: $ => seq(
             '\'',
