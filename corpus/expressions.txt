@@ -1,11 +1,14 @@
 ===========
-Unary expression - simple
+Unary/update expression - simple
 ===========
 
 void() Function = {
     +a;
     ++b;
     -a;
+    b--;
+    b++;
+
 };
 
 ---
@@ -18,10 +21,13 @@ void() Function = {
         (compound_statement
             (unary_expression
               (identifier))
+            (update_expression
+                (identifier))
             (unary_expression
-              (unary_expression
-                (identifier)))
-            (unary_expression
+              (identifier))
+            (update_expression
+              (identifier))
+            (update_expression
               (identifier)))))
 
 ===========

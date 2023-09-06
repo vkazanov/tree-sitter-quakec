@@ -279,6 +279,7 @@ module.exports = grammar({
             $.frame_identifier,
             $._literal,
             $.unary_expression,
+            $.update_expression,
             $.binary_expression,
             $.conditional_expression,
             $.assignment_expression,
@@ -290,6 +291,15 @@ module.exports = grammar({
             // whenver paren-zed expressions are used?
             $.parenthesized_expression,
         ),
+
+        update_expression: $ => {
+            const argument = $._expression;
+            const operator = choice('--', '++');
+            return prec.right(PREC.UNARY, choice(
+                seq(operator, argument),
+                seq(argument, operator),
+            ));
+        },
 
         unary_expression: $ => prec.left(PREC.UNARY, seq(
             choice('-', '+'),
