@@ -873,6 +873,18 @@
               {
                 "type": "STRING",
                 "value": "skin"
+              },
+              {
+                "type": "STRING",
+                "value": "spritename"
+              },
+              {
+                "type": "STRING",
+                "value": "type"
+              },
+              {
+                "type": "STRING",
+                "value": "load"
               }
             ]
           }
@@ -2299,6 +2311,10 @@
               {
                 "type": "STRING",
                 "value": "(+)"
+              },
+              {
+                "type": "STRING",
+                "value": "^="
               }
             ]
           },
@@ -2477,6 +2493,10 @@
       "members": [
         {
           "type": "STRING",
+          "value": "var"
+        },
+        {
+          "type": "STRING",
           "value": "const"
         },
         {
@@ -2575,7 +2595,7 @@
           "type": "IMMEDIATE_TOKEN",
           "content": {
             "type": "PATTERN",
-            "value": "[a-zA-Z_][a-zA-Z0-9_]*"
+            "value": "[a-zA-Z_][a-zA-Z0-9_.]*"
           }
         }
       ]

@@ -151,7 +151,10 @@ module.exports = grammar({
                 'modelname',
                 'origin',
                 'scale',
-                'skin'
+                'skin',
+                'spritename',
+                'type',
+                'load',
             )),
 
             // TODO: let's just throw away all the args until a newline
@@ -353,7 +356,7 @@ module.exports = grammar({
 
         assignment_expression: $ => prec.right(PREC.ASSIGNMENT, seq(
             field('target', choice($.identifier, $.field_expression)) ,
-            choice('=', '+=', '-=', '*=', '/=', '|=', '&=', '&~=', '%=', '(-)', '(+)'),
+            choice('=', '+=', '-=', '*=', '/=', '|=', '&=', '&~=', '%=', '(-)', '(+)', '^='),
             field('value', $._expression),
         )),
 
@@ -388,7 +391,7 @@ module.exports = grammar({
         //
 
         _type_modifier: $ => choice(
-            'const', 'static', 'nosave', 'local'
+            'var', 'const', 'static', 'nosave', 'local'
         ),
 
         simple_type: $ => choice(
@@ -404,7 +407,7 @@ module.exports = grammar({
 
         identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
 
-        frame_identifier: $ => seq('$', token.immediate(/[a-zA-Z_][a-zA-Z0-9_]*/)),
+        frame_identifier: $ => seq('$', token.immediate(/[a-zA-Z_][a-zA-Z0-9_.]*/)),
 
         // NOTE: usual literals used in code, excluding the builtin function literals that
         // can only be used for function definition

@@ -32,17 +32,17 @@ void() T_Shake =
 	local float hit;
 
 	starttime = self.storednextthink - self.wait;
-	
+
 	// early out if intermission is running
 	if (intermission_running)
 		return;
-	
+
 	// Completed, cleanup!
 	if (time > self.storednextthink)
 	{
 		if (!(self.spawnflags & SILENT_SHAKE))
 			sound (self, CHAN_VOICE, self.noise1, 1, ATTN_NORM);
-		
+
 		t = find( world, classname, "player" );
 		while (t)
 		{
@@ -51,20 +51,20 @@ void() T_Shake =
 		}
 		return;
 	}
-	
-	// Ramp up? 
+
+	// Ramp up?
 	if (time < self.delay)
 		hit = (time - starttime) / (self.wait/3);
-		
+
 	else
 		hit = 1;
-	
+
 	// dprint("intensity: ");
 	// dprint(ftos(hit));
 	// dprint("\n");
-	
+
 	hit = self.dmg * hit;
-	
+
 	// for each player
 	t = find( world, classname, "player" );
 	while (t)
@@ -73,7 +73,7 @@ void() T_Shake =
 		t.punchangle_x = random() * hit;
 		t.punchangle_y = crandom() * hit;
 		t.punchangle_z = random() * hit;
-		
+
 		t = find( t, classname, "player" );
 	}
 
@@ -84,7 +84,7 @@ void() screenshake_use =
 {
 	self.storednextthink = time + self.wait; // when to end
 	self.delay = time + (self.wait / 3); // how long to ramp up
-	
+
 	if (!(self.spawnflags & SILENT_SHAKE))
 		sound (self, CHAN_VOICE, self.noise, 1, ATTN_NORM);
 
@@ -99,7 +99,7 @@ dmg is the intensity of the shake
 */
 void() trigger_screenshake =
 {
-	INHIBIT_COOP
+		INHIBIT_COOP;
 	if (RemovedOutsideCoop()) return;
 
 	// wait is sustain time
@@ -111,10 +111,10 @@ void() trigger_screenshake =
 		precache_sound(self.noise);
 		precache_sound(self.noise1);
 	}
-	
+
 	if (!self.wait) // no duration!
 		self.wait = 2;
-		
+
 	if (!self.dmg) // no intensity!
 		self.dmg = 3;
 
@@ -129,19 +129,19 @@ void() trigger_sound_play =
 {
 	if (!self.noise)
 		return;
-	
+
 	sound(self, CHAN_VOICE, self.noise, 1, ATTN_NORM);
 };
 /*QUAKED trigger_sound
 */
-void() trigger_sound = 
+void() trigger_sound =
 {
 	if (!self.noise)
 		remove(self);
-	
+
 	precache_sound (self.noise);
 	self.use = trigger_sound_play;
-	
+
 };
 
 //============================================================================
@@ -170,9 +170,9 @@ void() play_lightning =
 	}
 	float triggertwice = (self.spawnflags & LIGHTNING_TRIGGER_TARGETS_ONCE) ? FALSE : TRUE; //Note boolean reversal
 	float activatetargets = (self.spawnflags & LIGHTNING_NO_ACTIVATE_TARGET) ? FALSE : TRUE; //Note boolean reversal
-	
+
 	local entity t, oself;
-	
+
 	float i = 0;
 	t = find(world, targetname, self.target);
 	while(t)
@@ -183,7 +183,7 @@ void() play_lightning =
 				t = find(t, targetname, self.target);
 				i++;
 				continue;
-			} 
+			}
 			if (i > rt) return;
 			i++;
 		}
@@ -201,8 +201,8 @@ void() play_lightning =
 			endpos = trace_endpos;
 			startpos = self.origin;
 		}
-	
-		
+
+
 		sound (t, CHAN_AUTO, self.noise, self.volume, ATTN_NORM); //Changed to CHAN_AUTO to allow more overlapping sounds
 
 		// create the temp lightning entity
@@ -220,7 +220,7 @@ void() play_lightning =
 		{
 			LightningDamage (startpos, endpos, self, self.dmg);
 		}
-		
+
 		//If activatetargets and t has a target, activate it.
 		if(activatetargets && t.target)
 		{
@@ -269,12 +269,12 @@ void() trigger_lightning =
 //============================================================================
 /* Checks all targets to see if they are dead. If they are, then it starts a fade
 */
-void() SUB_FadeTargets = 
+void() SUB_FadeTargets =
 {
 	local entity t;
 	local float count; // how many entities are being faded
 	count = 0;
-	
+
 	if (self.target)
 	{
 		if(!self.state)
@@ -295,7 +295,7 @@ void() SUB_FadeTargets =
 		while (t)
 		{
 			if (t.health <= 0)
-			{	
+			{
 				if (t.alpha > 0)
 				{
 					t.alpha = t.alpha - (frametime/self.delay);
@@ -340,11 +340,11 @@ void() spawn_fade_manager =
 
 void() trigger_fade =
 {
-	INHIBIT_COOP
+		INHIBIT_COOP;
 	if (RemovedOutsideCoop()) return;
 
 	self.use = spawn_fade_manager;
-	
+
 	if (!self.delay)
 		self.delay = 1; // delay determines fade time
 };
@@ -375,7 +375,7 @@ void() SUB_Unfreeze =
 void() SUB_FreezeTargets =
 {
 	local entity t;
-	
+
 	if (self.target)
 	{
 		t = world;
@@ -384,7 +384,7 @@ void() SUB_FreezeTargets =
 			t = find (t, targetname, self.target);
 			if (!t)
 				return;
-			
+
 			if (!(t.is_frozen)) // check if already frozen
 			{
 				// freeze
@@ -393,7 +393,7 @@ void() SUB_FreezeTargets =
 				t.nextthink = time;
 				t.think = SUB_Null;
 				t.is_frozen = 1;
-				
+
 			}
 			else
 			{
@@ -412,9 +412,9 @@ void() SUB_FreezeTargets =
 */
 void() trigger_freeze =
 {
-	INHIBIT_COOP
+		INHIBIT_COOP;
 	if (RemovedOutsideCoop()) return;
-	
+
 	self.use = SUB_FreezeTargets;
 };
 
@@ -445,15 +445,15 @@ void() particle_embers =
 	// delay is random time added per loop
 	if (!self.delay)
 		self.delay = 0.1;
-	
+
 	// wait is time always added per loop
 	if (!self.wait)
 		self.wait = 0.05;
-	
+
 	// velocity is used as a scalar on speed
 	if (!self.velocity)
 		self.velocity = '1 1 1';
-	
+
 	self.think = particle_embers_think;
 	self.nextthink = time + self.wait + self.delay * random();
 };
@@ -480,16 +480,16 @@ void() particle_tele_think =
 	local vector pos; // where to spawn
 	local float dist; // scalar from org, used for speed too
 	local vector rando;
-	
+
 	rando_x = crandom() * 10;
 	rando_y = crandom() * 10;
 	rando_z = crandom() * 5;
 	rando = normalize(rando);
-	
+
 	dist = 64;
-	
+
 	pos = self.origin + (rando * dist);
-	
+
 	// spawn particle
 	particle(pos, rando * dist * -.125, 3, 3);
 	self.nextthink = time + self.wait + self.delay * random();
@@ -511,11 +511,11 @@ void() particle_tele =
 	// delay is random time added per loop
 	if (!self.delay)
 		self.delay = 0.1;
-	
+
 	// wait is time always added per loop
 	if (!self.wait)
 		self.wait = 0;
-	
+
 	self.think = particle_tele_think;
 	self.nextthink = time + self.wait + self.delay * random();
 }
@@ -538,13 +538,13 @@ void() particle_tele_fountain =
 {
 	if (!self.delay)
 		self.delay = 0.1;
-	
+
 	if (!self.wait)
 		self.wait = 0.05;
-	
+
 	if (!self.velocity)
 		self.velocity = '1 1 6';
-	
+
 	if (self.spawnflags & START_OFF)
 		self.use = particle_tele_fountain_use;
 	else

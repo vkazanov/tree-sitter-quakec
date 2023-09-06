@@ -3377,6 +3377,10 @@
     "named": false
   },
   {
+    "type": "^=",
+    "named": false
+  },
+  {
     "type": "break",
     "named": false
   },
@@ -3454,6 +3458,10 @@
   },
   {
     "type": "switch",
+    "named": false
+  },
+  {
+    "type": "var",
     "named": false
   },
   {
