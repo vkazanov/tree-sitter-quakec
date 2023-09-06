@@ -65,7 +65,7 @@
 
   - [ ] test with original qc code: tree-sitter parse 'examples/**/*.qc' --quiet --stat
 
-  - [ ] check with the [[https://pages.cs.wisc.edu/~jeremyp/quake/quakec/quakec.pdf][QuakeC Reference Manual]]
+    - [ ] 84% successful parsing achieved
 
   - [ ] fix TODOs
 
@@ -73,25 +73,19 @@
 
 - [ ] tags?
 
-- [ ] check extensions in https://quakewiki.org/wiki/QuakeC_Loops_and_Conditions
+- [-] check extensions in https://quakewiki.org/wiki/QuakeC_Loops_and_Conditions
 
-  - [ ] void somename(void) {} // C-style functions
+  - [X] switch
 
-  - [ ] for
+  - [X] void somename(void) {} // C-style functions
 
-  - [ ] switch
-
-  - [ ] break
+  - [X] break
 
   - [ ] for
 
-  - [ ] switch
-
-  - [ ] break
+  - [ ] for
 
   - [ ] preprocessor?
-
-- [ ] new-style quakec
 
 - [ ] fteqcc dialect
 
