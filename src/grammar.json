@@ -1389,6 +1389,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "frame_identifier"
+        },
+        {
+          "type": "SYMBOL",
           "name": "_literal"
         },
         {

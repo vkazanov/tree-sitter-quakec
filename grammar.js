@@ -261,6 +261,7 @@ module.exports = grammar({
 
         _expression: $ => choice(
             $.identifier,
+            $.frame_identifier,
             $._literal,
             $.unary_expression,
             $.binary_expression,

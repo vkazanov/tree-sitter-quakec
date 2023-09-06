@@ -24,6 +24,10 @@
           "named": true
         },
         {
+          "type": "frame_identifier",
+          "named": true
+        },
+        {
           "type": "funcall_expression",
           "named": true
         },
@@ -101,6 +105,10 @@
             "named": true
           },
           {
+            "type": "frame_identifier",
+            "named": true
+          },
+          {
             "type": "funcall_expression",
             "named": true
           },
@@ -162,6 +170,10 @@
         },
         {
           "type": "field_expression",
+          "named": true
+        },
+        {
+          "type": "frame_identifier",
           "named": true
         },
         {
@@ -233,6 +245,10 @@
             "named": true
           },
           {
+            "type": "frame_identifier",
+            "named": true
+          },
+          {
             "type": "funcall_expression",
             "named": true
           },
@@ -301,6 +317,10 @@
         },
         {
           "type": "field_expression",
+          "named": true
+        },
+        {
+          "type": "frame_identifier",
           "named": true
         },
         {
@@ -404,6 +424,10 @@
         },
         {
           "type": "field_expression",
+          "named": true
+        },
+        {
+          "type": "frame_identifier",
           "named": true
         },
         {
@@ -542,6 +566,10 @@
             "named": true
           },
           {
+            "type": "frame_identifier",
+            "named": true
+          },
+          {
             "type": "funcall_expression",
             "named": true
           },
@@ -614,6 +642,10 @@
         },
         {
           "type": "field_expression",
+          "named": true
+        },
+        {
+          "type": "frame_identifier",
           "named": true
         },
         {
@@ -750,6 +782,10 @@
             "named": true
           },
           {
+            "type": "frame_identifier",
+            "named": true
+          },
+          {
             "type": "funcall_expression",
             "named": true
           },
@@ -844,6 +880,10 @@
             "named": true
           },
           {
+            "type": "frame_identifier",
+            "named": true
+          },
+          {
             "type": "funcall_expression",
             "named": true
           },
@@ -899,6 +939,10 @@
           },
           {
             "type": "field_expression",
+            "named": true
+          },
+          {
+            "type": "frame_identifier",
             "named": true
           },
           {
@@ -1019,6 +1063,10 @@
           },
           {
             "type": "field_expression",
+            "named": true
+          },
+          {
+            "type": "frame_identifier",
             "named": true
           },
           {
@@ -1184,6 +1232,10 @@
             "named": true
           },
           {
+            "type": "frame_identifier",
+            "named": true
+          },
+          {
             "type": "funcall_expression",
             "named": true
           },
@@ -1256,6 +1308,10 @@
         },
         {
           "type": "field_expression",
+          "named": true
+        },
+        {
+          "type": "frame_identifier",
           "named": true
         },
         {
@@ -1348,6 +1404,10 @@
         },
         {
           "type": "field_expression",
+          "named": true
+        },
+        {
+          "type": "frame_identifier",
           "named": true
         },
         {
@@ -1468,6 +1528,10 @@
           "named": true
         },
         {
+          "type": "frame_identifier",
+          "named": true
+        },
+        {
           "type": "funcall_expression",
           "named": true
         },
@@ -1556,6 +1620,10 @@
           },
           {
             "type": "field_expression",
+            "named": true
+          },
+          {
+            "type": "frame_identifier",
             "named": true
           },
           {
@@ -1684,6 +1752,10 @@
           "named": true
         },
         {
+          "type": "frame_identifier",
+          "named": true
+        },
+        {
           "type": "funcall_expression",
           "named": true
         },
@@ -1784,6 +1856,10 @@
           },
           {
             "type": "field_expression",
+            "named": true
+          },
+          {
+            "type": "frame_identifier",
             "named": true
           },
           {
@@ -1900,6 +1976,10 @@
             "named": true
           },
           {
+            "type": "frame_identifier",
+            "named": true
+          },
+          {
             "type": "funcall_expression",
             "named": true
           },
@@ -1955,6 +2035,10 @@
           },
           {
             "type": "field_expression",
+            "named": true
+          },
+          {
+            "type": "frame_identifier",
             "named": true
           },
           {
@@ -2030,6 +2114,10 @@
             "named": true
           },
           {
+            "type": "frame_identifier",
+            "named": true
+          },
+          {
             "type": "funcall_expression",
             "named": true
           },
@@ -2101,6 +2189,10 @@
         },
         {
           "type": "field_expression",
+          "named": true
+        },
+        {
+          "type": "frame_identifier",
           "named": true
         },
         {
@@ -2213,6 +2305,10 @@
             "named": true
           },
           {
+            "type": "frame_identifier",
+            "named": true
+          },
+          {
             "type": "funcall_expression",
             "named": true
           },
@@ -2292,6 +2388,10 @@
             "named": true
           },
           {
+            "type": "frame_identifier",
+            "named": true
+          },
+          {
             "type": "funcall_expression",
             "named": true
           },
@@ -2364,6 +2464,10 @@
         },
         {
           "type": "field_expression",
+          "named": true
+        },
+        {
+          "type": "frame_identifier",
           "named": true
         },
         {
