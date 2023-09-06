@@ -323,6 +323,7 @@ module.exports = grammar({
                 ['-', PREC.ADD],
                 ['*', PREC.MULTIPLY],
                 ['/', PREC.MULTIPLY],
+                ['%', PREC.MULTIPLY],
                 ['||', PREC.LOGICAL_OR],
                 ['&&', PREC.LOGICAL_AND],
                 ['|', PREC.BITWISE_OR],
@@ -353,7 +354,7 @@ module.exports = grammar({
 
         assignment_expression: $ => prec.right(PREC.ASSIGNMENT, seq(
             field('target', choice($.identifier, $.field_expression)) ,
-            choice('=', '+=', '-=', '*=', '/=', '|=', '&='),
+            choice('=', '+=', '-=', '*=', '/=', '|=', '&=', '%='),
             field('value', $._expression),
         )),
 

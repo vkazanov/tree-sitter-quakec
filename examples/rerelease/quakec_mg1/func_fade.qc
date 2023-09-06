@@ -21,7 +21,7 @@
 const float FUNC_FADE_STATE_HIDDEN = 0;
 const float FUNC_FADE_STATE_VISIBLE = 1;
 
-const float FUNC_FADE_DISTANCE_MAXSPEED = 320; 
+const float FUNC_FADE_DISTANCE_MAXSPEED = 320;
 
 float func_fade_get_shortest_playerdistance()
 {
@@ -95,7 +95,7 @@ void func_fade()
 {
     if(TRUE)
     {
-        dprint("WARNING: A func_fade was spawned. This entity is obsolete, and was converted to a func_wall instead.\n")
+        dprint("WARNING: A func_fade was spawned. This entity is obsolete, and was converted to a func_wall instead.\n");
         func_wall();
         return;
     }

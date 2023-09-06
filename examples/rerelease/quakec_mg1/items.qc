@@ -88,7 +88,7 @@ Sets the clipping size and plants the object on the floor
 */
 void() StartItem =
 {
-	INHIBIT_COOP
+    INHIBIT_COOP;
 
 	if (RemovedOutsideCoop()) return;
 
@@ -114,7 +114,7 @@ float (entity e, float healamount, float ignore) T_Heal =
 	if ((!ignore) && (e.health >= other.max_health))
 		return 0;
 	healamount = ceil(healamount);
-	
+
 	// AY Dec13 2021, horde rune of hunger
 	if (cvar("horde") && (serverflags & 2))
 		e.hunger_time = time + HUNGER_MAX;
@@ -122,7 +122,7 @@ float (entity e, float healamount, float ignore) T_Heal =
 	e.health = e.health + healamount;
 	if ((!ignore) && (e.health >= other.max_health))
 		e.health = other.max_health;
-		
+
 	if (e.health > 250)
 		e.health = 250;
 	return 1;
@@ -131,8 +131,8 @@ float (entity e, float healamount, float ignore) T_Heal =
 /*QUAKED item_health (.3 .3 1) (0 0 0) (32 32 32) rotten megahealth
 Health box. Normally gives 25 points.
 Rotten box heals 5-10 points,
-megahealth will add 100 health, then 
-rot you down to your maximum health limit, 
+megahealth will add 100 health, then
+rot you down to your maximum health limit,
 one point per second.
 */
 
@@ -143,7 +143,7 @@ void() health_touch;
 void() item_megahealth_rot;
 
 void() item_health =
-{	
+{
 	self.touch = health_touch;
 
 	if (self.spawnflags & H_ROTTEN)
@@ -203,14 +203,14 @@ void() health_touch =
 		if (!T_Heal(other, self.healamount, 0))
 			return;
 	}
-	
+
 	sprint(other, "$qc_item_health", ftos(self.healamount));
-	
+
 // health touch sound
 	sound(other, CHAN_ITEM, self.noise, 1, ATTN_NORM);
 
 	stuffcmd (other, "bf\n");
-	
+
 	self.model = string_null;
 	self.solid = SOLID_NOT;
 
@@ -233,13 +233,13 @@ void() health_touch =
 			}
 		}
 
-#ifdef COOP_RESPAWN_ITEMS_FOR_PLAYERS		
+#ifdef COOP_RESPAWN_ITEMS_FOR_PLAYERS
 		if(coop && self.wait <= 0)
 		{
 			self.cnt++;
 			if(self.cnt < num_players) //Not been picked up by all players yet.
 			{
-				self.nextthink = time + 1; 
+				self.nextthink = time + 1;
 				self.think = SUB_regen; // Respawn almost immediately
 			}
 			else
@@ -250,7 +250,6 @@ void() health_touch =
 				self.think = SUB_regen; // Respawn after 6 mins in case the players get stuck on something hard.
 			}
 		}
-		else
 #endif
 
 		if (self.wait)
@@ -260,15 +259,15 @@ void() health_touch =
 			self.enemy = world;
 		}
 	}
-	
+
 	activator = other;
 	SUB_UseTargets();				// fire all targets / killtargets
-};	
+};
 
 void() item_megahealth_rot =
 {
 	other = self.owner;
-	
+
 	if (other.health > other.max_health)
 	{
 		other.health = other.health - 1;
@@ -279,7 +278,7 @@ void() item_megahealth_rot =
 // it is possible for a player to die and respawn between rots, so don't
 // just blindly subtract the flag off
 	other.items = other.items - (other.items & IT_SUPERHEALTH);
-	
+
 	if (deathmatch && deathmatch != 2)	// deathmatch 2 is silly old rules
 	{
 		self.nextthink = time + 20;
@@ -298,7 +297,7 @@ ARMOR
 void() armor_touch =
 {
 	local	float	type, value, bit;
-	
+
 	if (other.health <= 0)
 		return;
 	if (other.classname != "player")
@@ -330,21 +329,21 @@ void() armor_touch =
 	}
 	if (other.armortype*other.armorvalue >= type*value)
 		return;
-		
+
 	other.armortype = type;
 	other.armorvalue = value;
 	other.items = other.items - (other.items & (IT_ARMOR1 | IT_ARMOR2 | IT_ARMOR3)) + bit;
 
 	self.solid = SOLID_NOT;
 	self.model = string_null;
-	
-#ifdef COOP_RESPAWN_ITEMS_FOR_PLAYERS	
+
+#ifdef COOP_RESPAWN_ITEMS_FOR_PLAYERS
 	if(coop && self.wait <= 0)
 	{
 		self.cnt++;
 		if(self.cnt < num_players) //Not been picked up by all players yet.
 		{
-			self.nextthink = time + 1; 
+			self.nextthink = time + 1;
 			self.think = SUB_regen; // Respawn almost immediately
 		}
 		else
@@ -355,7 +354,6 @@ void() armor_touch =
 			self.think = SUB_regen; // Respawn after 8 mins in case the players get stuck on something hard.
 		}
 	}
-	else
 #endif
 
 	if (deathmatch && deathmatch != 2)
@@ -375,7 +373,7 @@ void() armor_touch =
 	// armor touch sound
 	sound(other, CHAN_ITEM, "items/armor1.wav", 1, ATTN_NORM);
 	stuffcmd (other, "bf\n");
-	
+
 	activator = other;
 	SUB_UseTargets();				// fire all targets / killtargets
 };
@@ -440,9 +438,9 @@ void() bound_other_ammo =
 	if (other.ammo_nails > 200)
 		other.ammo_nails = 200;
 	if (other.ammo_rockets > 100)
-		other.ammo_rockets = 100;		
+		other.ammo_rockets = 100;
 	if (other.ammo_cells > 100)
-		other.ammo_cells = 100;		
+		other.ammo_cells = 100;
 };
 
 
@@ -500,7 +498,7 @@ void() weapon_touch =
 	if (!(other.flags & FL_CLIENT))
 		return;
 
-// if the player was using his best weapon, change up to the new one if better		
+// if the player was using his best weapon, change up to the new one if better
 	stemp = self;
 	self = other;
 	best = W_BestWeapon();
@@ -510,12 +508,12 @@ void() weapon_touch =
 		leave = 1;
 	else
 		leave = 0;
-	
+
 	if (self.classname == "weapon_nailgun")
 	{
 		if (leave && (other.items & IT_NAILGUN) )
 			return;
-		hadammo = other.ammo_nails;			
+		hadammo = other.ammo_nails;
 		new = IT_NAILGUN;
 		other.ammo_nails = other.ammo_nails + 30;
 	}
@@ -523,7 +521,7 @@ void() weapon_touch =
 	{
 		if (leave && (other.items & IT_SUPER_NAILGUN) )
 			return;
-		hadammo = other.ammo_rockets;			
+		hadammo = other.ammo_rockets;
 		new = IT_SUPER_NAILGUN;
 		other.ammo_nails = other.ammo_nails + 30;
 	}
@@ -531,7 +529,7 @@ void() weapon_touch =
 	{
 		if (leave && (other.items & IT_SUPER_SHOTGUN) )
 			return;
-		hadammo = other.ammo_rockets;			
+		hadammo = other.ammo_rockets;
 		new = IT_SUPER_SHOTGUN;
 		other.ammo_shells = other.ammo_shells + 5;
 	}
@@ -539,7 +537,7 @@ void() weapon_touch =
 	{
 		if (leave && (other.items & IT_ROCKET_LAUNCHER) )
 			return;
-		hadammo = other.ammo_rockets;			
+		hadammo = other.ammo_rockets;
 		new = IT_ROCKET_LAUNCHER;
 		other.ammo_rockets = other.ammo_rockets + 5;
 	}
@@ -547,7 +545,7 @@ void() weapon_touch =
 	{
 		if (leave && (other.items & IT_GRENADE_LAUNCHER) )
 			return;
-		hadammo = other.ammo_rockets;			
+		hadammo = other.ammo_rockets;
 		new = IT_GRENADE_LAUNCHER;
 		other.ammo_rockets = other.ammo_rockets + 5;
 	}
@@ -555,7 +553,7 @@ void() weapon_touch =
 	{
 		if (leave && (other.items & IT_LIGHTNING) )
 			return;
-		hadammo = other.ammo_rockets;			
+		hadammo = other.ammo_rockets;
 		new = IT_LIGHTNING;
 		other.ammo_cells = other.ammo_cells + 15;
 	}
@@ -572,7 +570,7 @@ void() weapon_touch =
 // change to the weapon
 	old = other.items;
 	other.items = other.items | new;
-	
+
 	stemp = self;
 	self = other;
 
@@ -591,7 +589,7 @@ void() weapon_touch =
 	// Moved up so the targets are fired even in coop, but only once.
 	activator = other;
 	SUB_UseTargets();				// fire all targets / killtargets
-	
+
 	if (leave)
 	{
 		self.target = string_null;
@@ -725,7 +723,7 @@ void() ammo_touch =
 	self.enemy = other;	// Store this player for coop
 #endif
 
-	// if the player was using his best weapon, change up to the new one if better		
+	// if the player was using his best weapon, change up to the new one if better
 	stemp = self;
 	self = other;
 	best = W_BestWeapon();
@@ -764,7 +762,7 @@ void() ammo_touch =
 	}
 
 	bound_other_ammo ();
-	
+
 	sprint(other, "$qc_got_item", self.netname);
 	// ammo touch sound
 	sound (other, CHAN_ITEM, "weapons/lock4.wav", 1, ATTN_NORM);
@@ -787,7 +785,7 @@ void() ammo_touch =
 	W_SetCurrentAmmo();
 	self = stemp;
 
-	
+
 	// remove it in single player, or setup for respawning in deathmatch
 	self.model = string_null;
 	self.solid = SOLID_NOT;
@@ -799,7 +797,7 @@ void() ammo_touch =
 		self.cnt++;
 		if(self.cnt < num_players) //Not been picked up by all players yet.
 		{
-			self.nextthink = time + 1; 
+			self.nextthink = time + 1;
 			self.think = SUB_regen; // Respawn almost immediately
 		}
 		else
@@ -810,7 +808,7 @@ void() ammo_touch =
 			self.think = SUB_regen; // Respawn after 4 mins in case the players get stuck on something hard.
 		}
 	}
-	else 
+
 #endif
 	if (deathmatch)
 	{
@@ -828,7 +826,7 @@ void() ammo_touch =
 		self.enemy = world;
 		self.nextthink = time + self.wait;
 	}
-	
+
 
 	activator = other;
 	SUB_UseTargets();				// fire all targets / killtargets
@@ -965,7 +963,7 @@ void() key_touch =
 	other.items = other.items | self.items;
 
 	if (!coop)
-	{	
+	{
 		self.solid = SOLID_NOT;
 		self.model = string_null;
 	}
@@ -1070,7 +1068,7 @@ void() item_key2 =
 		setmodel (self, "progs/b_g_key.mdl");
 		self.netname = "$qc_gold_keycard";
 	}
-	
+
 	key_setsounds();
 	self.touch = key_touch;
 	self.items = IT_KEY2;
@@ -1099,18 +1097,18 @@ void() powerup_touch =
 	if (other.health <= 0)
 		return;
 
-	sprint(other, "$qc_got_item", self.netname);		
+	sprint(other, "$qc_got_item", self.netname);
 
 	if (deathmatch)
 	{
 		self.mdl = self.model;
-		
+
 		if ((self.classname == "item_artifact_invulnerability") ||
 			(self.classname == "item_artifact_invisibility"))
 			self.nextthink = time + 60*5;
 		else
 			self.nextthink = time + 60;
-		
+
 		self.think = SUB_regen;
 	}
 	else if (self.wait)
@@ -1128,7 +1126,7 @@ void() powerup_touch =
 
 	activator = other;
 	SUB_UseTargets();				// fire all targets / killtargets
-	
+
 	if (self.classname == "item_artifact_envirosuit")
 	// do the apropriate action
 	{
@@ -1147,10 +1145,10 @@ void() powerup_touch =
 		// Yoder Sept24 2021 Horde Merge
 		if (horde_ent)
 			other.invincible_finished = time + 5;
-		else	
+		else
 			other.invincible_finished = time + 30;
 	}
-	
+
 	if (self.classname == "item_artifact_invisibility")
 	{
 		other.invisible_time = 1;
@@ -1165,7 +1163,7 @@ void() powerup_touch =
 			other.super_damage_finished = time + 5;
 		else
 			other.super_damage_finished = time + 30;
-	}	
+	}
 
 };
 
@@ -1263,7 +1261,7 @@ void() BackpackTouch =
 	local	float	best, old, new;
 	local		entity	stemp;
 	local	float	acount;
-	
+
 	if (other.classname != "player")
 		return;
 	if (other.health <= 0)
@@ -1279,7 +1277,7 @@ void() BackpackTouch =
 			sprint(other, "{}", self.netname); // No need to localize
 		}
 
-// if the player was using his best weapon, change up to the new one if better		
+// if the player was using his best weapon, change up to the new one if better
 	stemp = self;
 	self = other;
 	best = W_BestWeapon();
@@ -1296,7 +1294,7 @@ void() BackpackTouch =
 		new = other.weapon;
 	old = other.items;
 	other.items = other.items | new;
-	
+
 	bound_other_ammo ();
 
 	if (self.ammo_shells)
@@ -1327,7 +1325,7 @@ void() BackpackTouch =
 		acount = 1;
 		sprint(other, "$qc_backpack_cells", ftos(self.ammo_cells));
 	}
-	
+
 	sprint (other, "\n"); // No need to localize
 // backpack touch sound
 	sound (other, CHAN_ITEM, "weapons/lock4.wav", 1, ATTN_NORM);
@@ -1361,13 +1359,13 @@ void() DropBackpack =
 	// Yoder Sept24 2021 Horde Merge
 	// don't drop backpacks in horde mode
 	if (horde_ent)
-		return; 
+		return;
 	if (!(self.ammo_shells + self.ammo_nails + self.ammo_rockets + self.ammo_cells))
 		return;	// nothing in it
 
 	item = spawn();
 	item.origin = self.origin - '0 0 24';
-	
+
 	item.items = self.weapon;
 	if (item.items == IT_AXE)
 		item.netname = "$qc_axe";
@@ -1413,14 +1411,14 @@ void() DropBackpack =
 	item.velocity_z = 300;
 	item.velocity_x = -100 + (random() * 200);
 	item.velocity_y = -100 + (random() * 200);
-	
+
 	item.flags = FL_ITEM;
 	item.solid = SOLID_TRIGGER;
 	item.movetype = MOVETYPE_TOSS;
 	setmodel (item, "progs/backpack.mdl");
 	setsize (item, '-16 -16 0', '16 16 56');
 	item.touch = BackpackTouch;
-	
+
 	item.nextthink = time + 120;	// remove after 2 minutes
 	item.think = SUB_Remove;
 };
