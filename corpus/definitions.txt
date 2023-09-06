@@ -131,6 +131,21 @@ void(int param1, int param2) EmptyFunction1 = {};
         body: (compound_statement)))
 
 ===========
+Empty block function definition - pure vararg
+===========
+
+void(...) EmptyFunction1 = {};
+
+---
+
+(source_file
+    (function_definition
+        result: (simple_type)
+        parameters: (parameter_list)
+        name: (identifier)
+        body: (compound_statement)))
+
+===========
 Empty block function definition - vararg
 ===========
 

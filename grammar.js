@@ -122,7 +122,7 @@ module.exports = grammar({
         parameter_list: $ => seq(
             '(',
             optional(commaSeparated($.parameter)),
-            optional(seq(',', '...')),
+            optional(seq(optional(','), '...')),
             ')'
         ),
 
