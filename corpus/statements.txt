@@ -462,3 +462,43 @@ void() Function = {
         (compound_statement
             (numeric_literal)
             (identifier))))
+
+===========
+Switch statement
+===========
+
+void() Function = {
+    switch (a) {
+        case 0:
+        case 1:
+            1;
+        case 2:
+            2;
+            break;
+        default:
+            break;
+    }
+};
+
+---
+
+(source_file
+    (function_definition
+         result: (simple_type)
+         parameters: (parameter_list)
+         name: (identifier)
+         body: (compound_statement
+             (switch_statement
+                 condition: (identifier)
+                    (compound_statement
+                      (case_statement
+                        value: (numeric_literal))
+                      (case_statement
+                        value: (numeric_literal)
+                        (numeric_literal))
+                      (case_statement
+                        value: (numeric_literal)
+                            (numeric_literal)
+                            (break_statement))
+                      (case_statement
+                        (break_statement)))))))

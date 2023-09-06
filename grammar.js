@@ -137,17 +137,24 @@ module.exports = grammar({
         //
 
         _statement: $ => choice(
+            $.case_statement,
+            $._non_case_statement,
+        ),
+
+        _non_case_statement: $ => choice(
             $.compound_statement,
             $._simple_statement,
         ),
 
         compound_statement: $ => seq(
             '{',
-            repeat($._simple_statement),
+            repeat($._statement),
             '}'
         ),
 
         _simple_statement: $ => choice(
+            $.switch_statement,
+            $.break_statement,
             $.if_statement,
             $.while_statement,
             $.do_while_statement,
@@ -155,6 +162,29 @@ module.exports = grammar({
             $.variable_definition_statement,
             $._expression_statement,
             $._preprocessor_local
+        ),
+
+        switch_statement: $ => seq(
+            'switch',
+            field('condition', seq(
+                '(',
+                $._expression,
+                ')',
+            )),
+            $.compound_statement,
+        ),
+
+        case_statement: $ => prec.right(seq(
+            choice(
+                seq('case', field('value', $._expression)),
+                'default',
+            ),
+            ':',
+            repeat($._non_case_statement),
+        )),
+
+        break_statement: $ => seq(
+            'break', ';'
         ),
 
         if_statement: $ => prec.right(seq(
