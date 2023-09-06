@@ -51,7 +51,7 @@ float TEAM_ATTACKER_DAMAGE =    4;      // Attacker takes damage from hitting te
 float TEAM_FRAG_PENALTY =       8;      // One frag penalty for killing teammate
 float TEAM_DEATH_PENALTY =      16;     // Die when you kill a teammate.
 float TEAM_STATIC_TEAMS =       64;     // Don't allow players to switch teams
-float TEAM_DROP_ITEMS =     128;  // Allow players to drop packs and 
+float TEAM_DROP_ITEMS =     128;  // Allow players to drop packs and
 float TEAM_CAPTURE_SELECT_TEAM = 1024; // team selection
 float TEAM_DISABLE_GRAPPLE = 2048; // team selection
 
@@ -147,14 +147,14 @@ void(entity e, float top, float bottom) TeamSetColor =
   {
     if (checkextension("DP_SV_SETCOLOR"))
     {
-      local float color = bottom + top * 16
+			float color = bottom + top * 16;
       setcolor(e, color);
       return;
     }
   }
 
   local string n;
-  
+
   stuffcmd(self, "color ");
   n = ftos(top);
   stuffcmd(self, n);
@@ -176,9 +176,9 @@ Print out current teamplay options
 void() TeamPrintSettings =
 {
   local string s;
-  
+
   sprint(self,"The following Teamplay options are set:\n");
-  
+
   if(teamplay < 0)
   {
     sprint(self, "Frag penalty manually set to ");
@@ -187,40 +187,40 @@ void() TeamPrintSettings =
     sprint(self, "\n");
     return;
   }
-  
-  if(!teamplay) 
+
+  if(!teamplay)
   {
     sprint(self, "None\n");
     return;
   }
-  
+
   if(1 == teamplay)
   {
     sprint(self, "ID's original teamplay 1\n");
     return;
   }
-  
+
   if(teamplay & TEAM_HEALTH_PROTECT)
     sprint(self, "Health-Protect ");
-  
+
   if(teamplay & TEAM_ARMOR_PROTECT)
     sprint(self, "Armor-Protect ");
-    
+
   if(teamplay & TEAM_ATTACKER_DAMAGE)
     sprint(self, "Mirror-Damage ");
-    
+
   if(teamplay & TEAM_FRAG_PENALTY)
     sprint(self, "Frag-Penalty ");
-    
+
   if(teamplay & TEAM_DEATH_PENALTY)
     sprint(self, "Death-Penalty ");
-    
+
   if(teamplay & TEAM_STATIC_TEAMS)
     sprint(self, "Static-Teams ");
-    
+
   if(teamplay & TEAM_DROP_ITEMS)
     sprint(self, "Drop-Items (Backpack Impulse 20, Weapon Impulse 21) ");
-    
+
   sprint(self, "\n");
 };
 
@@ -237,8 +237,8 @@ float(entity targ, entity inflictor, entity attacker, float damage) TeamArmorDam
         if ((teamplay < 0) || gamestart)
                 return TRUE;
 
-        if( (teamplay & TEAM_ARMOR_PROTECT) && 
-      (attacker.lastteam == targ.lastteam) && 
+        if( (teamplay & TEAM_ARMOR_PROTECT) &&
+      (attacker.lastteam == targ.lastteam) &&
       (attacker != targ) && (targ.lastteam > 0) )
         {
                 // Armor is protected
@@ -260,7 +260,7 @@ float(entity targ, entity inflictor, entity attacker, float damage) TeamHealthDa
         if ((teamplay < 0) || gamestart)
                 return TRUE;
 
-        if( (attacker.lastteam == targ.lastteam) && 
+        if( (attacker.lastteam == targ.lastteam) &&
       (attacker != targ) && (targ.lastteam > 0) ) {
                 // Attacker and target are on the same team.
                 if( teamplay & TEAM_ATTACKER_DAMAGE )
@@ -467,7 +467,7 @@ void() TeamCheckLock =
   // Don't do anything if teamplay is negative
   if ( teamplay < 0 )
       return;
-  
+
   if (self.observer || self.do_observer || gamestart) {
     if (self.lastteam != 1)
       TeamSetColor(self, 0, 0);
@@ -566,8 +566,8 @@ void() TossBackpack =
       item.ammo_shells = self.ammo_shells;
       self.ammo_shells = 0;
     }
-  }   
-  
+  }
+
   // See if you have neither the Shotgun or Super Shotgun
         if ( !(self.items & IT_SHOTGUN) && !(self.items & IT_SUPER_SHOTGUN)) {
     if( self.ammo_shells >= 20 ) {
@@ -579,8 +579,8 @@ void() TossBackpack =
       item.ammo_shells = self.ammo_shells;
       self.ammo_shells = 0;
     }
-  }   
-  
+  }
+
   // See if we are using a nailgun
         if ( (self.weapon == IT_NAILGUN) || (self.weapon == IT_SUPER_NAILGUN) )
   {
@@ -594,7 +594,7 @@ void() TossBackpack =
       item.ammo_nails = self.ammo_nails;
       self.ammo_nails = 0;
     }
-  } 
+  }
   // Check to see if we have neither nailgun
         if ( !(self.items & IT_NAILGUN) && !(self.items & IT_SUPER_NAILGUN) )
   {
@@ -608,8 +608,8 @@ void() TossBackpack =
       item.ammo_nails = self.ammo_nails;
       self.ammo_nails = 0;
     }
-  } 
-  
+  }
+
   // See if we are using a grenade or rocket launcher
         if ( (self.weapon == IT_GRENADE_LAUNCHER) || (self.weapon == IT_ROCKET_LAUNCHER) )
   {
@@ -641,7 +641,7 @@ void() TossBackpack =
 
   // See if we're using the lightning gun
   if ( self.weapon == IT_LIGHTNING )
-  { 
+  {
     if( self.ammo_cells >= 20 )
     {
       item.ammo_cells = 20;
@@ -655,7 +655,7 @@ void() TossBackpack =
   }
   // see if we don't have the lightning gun
         if ( !(self.items & IT_LIGHTNING) )
-  { 
+  {
     if( self.ammo_cells >= 20 )
     {
       item.ammo_cells = 20;
@@ -667,7 +667,7 @@ void() TossBackpack =
       self.ammo_cells = 0;
     }
   }
-   
+
   item.owner = self;
   makevectors(self.v_angle);
 
@@ -699,7 +699,7 @@ void() Team_weapon_touch =
   if ( (other == self.owner) && ( (self.nextthink - time) > 119 ) )
     return;
 
-// if the player was using his best weapon, change up to the new one if better    
+// if the player was using his best weapon, change up to the new one if better
   stemp = self;
   self = other;
   best = W_BestWeapon();
@@ -707,32 +707,32 @@ void() Team_weapon_touch =
 
   if (self.classname == "weapon_nailgun")
   {
-    hadammo = other.ammo_nails;     
+    hadammo = other.ammo_nails;
     new = IT_NAILGUN;
   }
   else if (self.classname == "weapon_supernailgun")
   {
-    hadammo = other.ammo_rockets;     
+    hadammo = other.ammo_rockets;
     new = IT_SUPER_NAILGUN;
   }
   else if (self.classname == "weapon_supershotgun")
   {
-    hadammo = other.ammo_rockets;     
+    hadammo = other.ammo_rockets;
     new = IT_SUPER_SHOTGUN;
   }
   else if (self.classname == "weapon_rocketlauncher")
   {
-    hadammo = other.ammo_rockets;     
+    hadammo = other.ammo_rockets;
     new = IT_ROCKET_LAUNCHER;
   }
   else if (self.classname == "weapon_grenadelauncher")
   {
-    hadammo = other.ammo_rockets;     
+    hadammo = other.ammo_rockets;
     new = IT_GRENADE_LAUNCHER;
   }
   else if (self.classname == "weapon_lightning")
   {
-    hadammo = other.ammo_rockets;     
+    hadammo = other.ammo_rockets;
     new = IT_LIGHTNING;
   }
   else
@@ -748,7 +748,7 @@ void() Team_weapon_touch =
 // change to the weapon
   old = other.items;
   other.items = other.items | new;
-  
+
   remove(self);
   self = other;
 
@@ -762,18 +762,18 @@ void() Team_weapon_touch =
   activator = other;
   SUB_UseTargets();       // fire all targets / killtargets
 };
-        
+
 void() TossWeapon =
 {
   local entity item;
-  
+
   if (deathmatch != 1)
     return;  // only in deathmatch 1
 
   if((self.weapon == IT_AXE) || (self.weapon == IT_SHOTGUN) ||
     (self.weapon == IT_HOOK))
     return;
-    
+
   item = spawn();
   item.owner = self;
   makevectors(self.v_angle);
@@ -784,7 +784,7 @@ void() TossWeapon =
   item.flags = FL_ITEM;
   item.solid = SOLID_TRIGGER;
   item.movetype = MOVETYPE_BOUNCE;
-  
+
   if(self.weapon == IT_SUPER_SHOTGUN)
   {
     setmodel (item, "progs/g_shot.mdl");
@@ -802,7 +802,7 @@ void() TossWeapon =
     item.classname = "weapon_nailgun";
     self.items = self.items - IT_NAILGUN;
   }
-    
+
   if( self.weapon == IT_SUPER_NAILGUN)
   {
     setmodel (item, "progs/g_nail2.mdl");
@@ -811,7 +811,7 @@ void() TossWeapon =
     item.classname = "weapon_supernailgun";
     self.items = self.items - IT_SUPER_NAILGUN;
   }
-  
+
   if( self.weapon == IT_GRENADE_LAUNCHER)
   {
     setmodel (item, "progs/g_rock.mdl");
@@ -820,7 +820,7 @@ void() TossWeapon =
     item.classname = "weapon_grenadelauncher";
     self.items = self.items - IT_GRENADE_LAUNCHER;
   }
-  
+
   if( self.weapon == IT_ROCKET_LAUNCHER )
   {
     setmodel (item, "progs/g_rock2.mdl");
@@ -829,7 +829,7 @@ void() TossWeapon =
     item.classname = "weapon_rocketlauncher";
     self.items = self.items - IT_ROCKET_LAUNCHER;
   }
-  
+
   if( self.weapon == IT_LIGHTNING )
   {
     setmodel (item, "progs/g_light.mdl");
@@ -842,7 +842,7 @@ void() TossWeapon =
   item.touch = Team_weapon_touch;
   item.think = SUB_Remove;
   item.nextthink = time + 120;
-  
+
   self.weapon = W_BestWeapon();
   W_SetCurrentAmmo();
 };
@@ -922,7 +922,7 @@ void(entity player) TeamCaptureDropFlagOfPlayer =
 
   if (!(player.player_flag & ITEM_ENEMY_FLAG))
     return;
-  if (player.lastteam == TEAM_COLOR1) 
+  if (player.lastteam == TEAM_COLOR1)
     kn = "item_flag_team2";
   else
     kn = "item_flag_team1";
@@ -988,7 +988,7 @@ void() TeamCaptureFlagTouch =
           } else if (self.lastteam == other.lastteam) {
             // done to all players on the capturing team
             // *XXX* EXPERT CTF
-  
+
             // award extra points for capture assists
             if (self.last_returned_flag + TEAM_CAPTURE_RETURN_FLAG_ASSIST_TIMEOUT > time) {
               bprint("$qc_ks_assist", self.netname);
@@ -1000,11 +1000,11 @@ void() TeamCaptureFlagTouch =
             }
           }
           self.player_flag = self.player_flag - (self.player_flag & ITEM_ENEMY_FLAG);
-          
+
           p = find(p, classname, "player");
         }
 
-        
+
         p = find(world, classname, "player");
         while (p != world) {
           if ((p.lastteam == TEAM_COLOR1 && other.lastteam == TEAM_COLOR2) ||
@@ -1021,7 +1021,7 @@ void() TeamCaptureFlagTouch =
       }
 
       return; // its at home base already
-    } 
+    }
     // hey, its not home.  return it by teleporting it back
     if (other.team == TEAM_COLOR1)
       bprint("$qc_ks_red_returned", other.netname); // red
@@ -1109,9 +1109,9 @@ void() TeamCaptureFlagThink =
 //s = vtos(v);
 //dprint(s);
 //dprint("\n");
-//  if (v_z < 0) { 
-//    v_z = (-1)*v_z; 
-//    v = v + v * 1.2 * v_z; 
+//  if (v_z < 0) {
+//    v_z = (-1)*v_z;
+//    v = v + v * 1.2 * v_z;
 //  }
 //dprint("adj: ");
 //s = vtos(v);
@@ -1122,14 +1122,14 @@ void() TeamCaptureFlagThink =
   f = 14;
   if (self.owner.frame >= 29 && self.owner.frame <= 40) {
     if (self.owner.frame >= 29 && self.owner.frame <= 34) { //axpain
-      if      (self.owner.frame == 29) f = f + 2; 
+      if      (self.owner.frame == 29) f = f + 2;
       else if (self.owner.frame == 30) f = f + 8;
       else if (self.owner.frame == 31) f = f + 12;
       else if (self.owner.frame == 32) f = f + 11;
       else if (self.owner.frame == 33) f = f + 10;
       else if (self.owner.frame == 34) f = f + 4;
     } else if (self.owner.frame >= 35 && self.owner.frame <= 40) { // pain
-      if      (self.owner.frame == 35) f = f + 2; 
+      if      (self.owner.frame == 35) f = f + 2;
       else if (self.owner.frame == 36) f = f + 10;
       else if (self.owner.frame == 37) f = f + 10;
       else if (self.owner.frame == 38) f = f + 8;
@@ -1138,7 +1138,7 @@ void() TeamCaptureFlagThink =
     }
   } else if (self.owner.frame >= 103 && self.owner.frame <= 118) {
     if      (self.owner.frame >= 103 && self.owner.frame <= 104) f = f + 6;  //nailattack
-    else if (self.owner.frame >= 105 && self.owner.frame <= 106) f = f + 6;  //light 
+    else if (self.owner.frame >= 105 && self.owner.frame <= 106) f = f + 6;  //light
     else if (self.owner.frame >= 107 && self.owner.frame <= 112) f = f + 7;  //rocketattack
     else if (self.owner.frame >= 112 && self.owner.frame <= 118) f = f + 7;  //shotattack
   }
@@ -1175,7 +1175,7 @@ void() place_flag = {
   self.mdl = self.model;      // so it can be restored on respawn
   self.flags = FL_ITEM | FL_OBJECTIVE;  // make extra wide
   self.solid = SOLID_TRIGGER;
-  self.movetype = MOVETYPE_TOSS;  
+  self.movetype = MOVETYPE_TOSS;
   self.velocity = '0 0 0';
   self.origin_z = self.origin_z + 6;
   self.think = TeamCaptureFlagThink;
@@ -1246,4 +1246,3 @@ void() func_ctf_wall =
   self.solid = SOLID_BSP;
   setmodel (self, self.model);
 };
-
