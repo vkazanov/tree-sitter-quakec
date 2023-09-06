@@ -800,7 +800,7 @@
     }
   },
   {
-    "type": "field_ptr",
+    "type": "field_ptr_type",
     "named": true,
     "fields": {},
     "children": {
@@ -1134,6 +1134,32 @@
     }
   },
   {
+    "type": "function_ref_type",
+    "named": true,
+    "fields": {
+      "parameters": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "parameter_list",
+            "named": true
+          }
+        ]
+      },
+      "result": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "simple_type",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "if_statement",
     "named": true,
     "fields": {
@@ -1387,7 +1413,11 @@
         "required": true,
         "types": [
           {
-            "type": "field_ptr",
+            "type": "field_ptr_type",
+            "named": true
+          },
+          {
+            "type": "function_ref_type",
             "named": true
           },
           {

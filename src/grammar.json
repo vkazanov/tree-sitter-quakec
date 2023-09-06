@@ -609,7 +609,11 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "field_ptr"
+                "name": "field_ptr_type"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "function_ref_type"
               }
             ]
           }
@@ -2010,7 +2014,7 @@
         }
       ]
     },
-    "field_ptr": {
+    "field_ptr_type": {
       "type": "SEQ",
       "members": [
         {
@@ -2020,6 +2024,27 @@
         {
           "type": "SYMBOL",
           "name": "simple_type"
+        }
+      ]
+    },
+    "function_ref_type": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "result",
+          "content": {
+            "type": "SYMBOL",
+            "name": "simple_type"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "parameters",
+          "content": {
+            "type": "SYMBOL",
+            "name": "parameter_list"
+          }
         }
       ]
     },

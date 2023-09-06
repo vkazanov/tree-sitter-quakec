@@ -59,7 +59,26 @@ float(.entity ptr) TestFunction4;
         result: (simple_type)
         parameters: (parameter_list
             (parameter
-                type: (field_ptr (simple_type))
+                type: (field_ptr_type (simple_type))
+                name: (identifier)))
+        name: (identifier)))
+
+===========
+Function declaration - function reference
+===========
+
+float(void() funref) TestFunction4;
+
+---
+
+(source_file
+    (function_declaration
+        result: (simple_type)
+        parameters: (parameter_list
+            (parameter
+               type: (function_ref_type
+                   result: (simple_type)
+                   parameters: (parameter_list))
                 name: (identifier)))
         name: (identifier)))
 
