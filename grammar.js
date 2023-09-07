@@ -419,7 +419,7 @@ module.exports = grammar({
         ),
 
         funcall_expression: $ => prec(PREC.CALL, seq(
-            field('function', $._expression),
+            field('function', $.identifier),
             '(',
             optional(commaOneOrMore(field('arg', $._expression))),
             ')'

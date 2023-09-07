@@ -80,7 +80,13 @@
 
   - [ ] fix TODOs
 
-- [ ] highlighting?
+- [ ] highlight
+
+  - [ ] highlights.scm
+
+  - [ ] locals.scm
+
+  - [ ] tags.scm
 
 - [ ] tags?
 
