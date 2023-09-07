@@ -67,9 +67,13 @@
 
     - [X] 84% successful parsing achieved
 
-    - [X] 96.9 parsed
+    - [X] 96.9% parsed
 
-    - [ ] enums left but let's not do it at this time
+    - [X] enums left but let's not do it at this time
+
+    - [X] 98.67%
+
+    - [ ] typedef
 
   - [ ] fix TODOs
 
@@ -85,13 +89,15 @@
 
   - [X] break
 
+  - [X] enum
+
+  - [X] preprocessor?
+
   - [ ] for
 
-  - [ ] enum
+  - [ ] continue;
 
-  - [ ] class
-
-  - [ ] preprocessor?
+  - [ ] class?
 
 - [ ] fteqcc dialect
 

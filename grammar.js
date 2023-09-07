@@ -255,6 +255,7 @@ module.exports = grammar({
             $.switch_statement,
             $.break_statement,
             $.if_statement,
+            $.for_statement,
             $.while_statement,
             $.do_while_statement,
             $.return_statement,
@@ -280,6 +281,16 @@ module.exports = grammar({
 
         break_statement: $ => seq(
             'break', ';'
+        ),
+
+        for_statement: $ => seq(
+            'for',
+            '(',
+            field('initial', $._expression), ';',
+            field('condition', $._expression), ';',
+            field('increment', $._expression),
+            ')',
+            $._statement,
         ),
 
         if_statement: $ => prec.right(seq(

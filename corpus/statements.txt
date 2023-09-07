@@ -477,8 +477,7 @@ Variable definition statement - typedef
 typedef struct
 {
     string mdl;
-    float frame;
-}poseInfo;
+} poseInfo;
 
 ---
 
@@ -553,3 +552,36 @@ void() Function = {
                             (break_statement))
                       (case_statement
                         (break_statement)))))))
+
+===========
+For statement
+===========
+
+void() Function = {
+    for (a = 1; a < 3; a++) {
+        111;
+    }
+};
+
+---
+
+(source_file
+    (function_definition
+        result: (simple_type)
+        parameters: (parameter_list)
+        name: (identifier)
+        body: (compound_statement
+            (for_statement
+                initial:
+                    (assignment_expression
+                         target: (identifier)
+                         value: (numeric_literal))
+                condition:
+                    (binary_expression
+                        (identifier)
+                        (numeric_literal))
+                increment:
+                    (update_expression
+                        (identifier))
+                (compound_statement
+                    (numeric_literal))))))
