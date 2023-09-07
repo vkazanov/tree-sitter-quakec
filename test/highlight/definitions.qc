@@ -22,3 +22,15 @@ float CStyleFun(entity param1, entity param2);
 //                     ^variable
 //                              ^type
 //                                     ^variable
+
+enum class ReturnCode: int {
+// ^keyword
+//    ^keyword
+//          ^type
+//                      ^type
+
+    CONST1,
+//   ^ constant
+    CONST2,
+    CONST3 = 10
+};

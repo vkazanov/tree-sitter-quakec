@@ -55,4 +55,8 @@
 ((identifier) @constant
  (#match? @constant "^[A-Z][A-Z\\d_]*$"))
 
-(identifier) @variable
+(parameter
+ name: (identifier) @variable)
+
+(enum_definition
+ name: (identifier) @type)
