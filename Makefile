@@ -15,3 +15,5 @@ test_examples:
 
 highlight:
 	node_modules/tree-sitter-cli/tree-sitter highlight $(RUN_ARGS)
+
+.PHONY: test generate test_examples highlight
