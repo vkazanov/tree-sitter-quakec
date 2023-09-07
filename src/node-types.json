@@ -928,6 +928,94 @@
     }
   },
   {
+    "type": "enum_definition",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "simple_type",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
+        {
+          "type": "assignment_expression",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "conditional_expression",
+          "named": true
+        },
+        {
+          "type": "field_expression",
+          "named": true
+        },
+        {
+          "type": "frame_identifier",
+          "named": true
+        },
+        {
+          "type": "funcall_expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "numeric_literal",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "update_expression",
+          "named": true
+        },
+        {
+          "type": "vector_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "field_definition",
     "named": true,
     "fields": {
@@ -1814,6 +1902,10 @@
             "named": true
           },
           {
+            "type": "enum_definition",
+            "named": true
+          },
+          {
             "type": "field_definition",
             "named": true
           },
@@ -1940,6 +2032,10 @@
         },
         {
           "type": "do_while_statement",
+          "named": true
+        },
+        {
+          "type": "enum_definition",
           "named": true
         },
         {
@@ -2138,6 +2234,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "enum_definition",
+          "named": true
+        },
         {
           "type": "field_definition",
           "named": true
@@ -3192,6 +3292,10 @@
     "named": false
   },
   {
+    "type": "class",
+    "named": false
+  },
+  {
     "type": "comment",
     "named": true
   },
@@ -3213,6 +3317,10 @@
   },
   {
     "type": "entity",
+    "named": false
+  },
+  {
+    "type": "enum",
     "named": false
   },
   {

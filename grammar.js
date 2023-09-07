@@ -39,6 +39,7 @@ module.exports = grammar({
             $.variable_definition,
             $.field_definition,
             $.function_definition,
+            $.enum_definition,
             $.modelgen_pragma,
             $._preprocessor_top_level,
         ),
@@ -69,6 +70,28 @@ module.exports = grammar({
                 field('body', $._statement)
             ),
             optional(';')
+        ),
+
+        enum_definition: $ => seq(
+            'enum',
+            optional(
+                seq('class', field('name', $.identifier))
+            ),
+            optional(
+                seq(':', field('type', $.simple_type))
+            ),
+            '{',
+            repeat(commaOneOrMore($._enum_constant_specifier)),
+            '}',
+            optional(';')
+        ),
+
+        _enum_constant_specifier: $ => seq(
+            $.identifier,
+            optional(seq(
+                '=',
+                $._expression
+            ))
         ),
 
         _frame_specifier: $ => seq(
@@ -123,15 +146,13 @@ module.exports = grammar({
 
         _field_variable_definition: $ => seq(
             field('type', $.simple_type),
-            field('name', $.identifier),
-            optional(seq(',', commaOneOrMore(field('name', $.identifier)))),
+            commaOneOrMore(field('name', $.identifier))
         ),
 
         _field_function_definition: $ => seq(
             field('result', $.simple_type),
             field('parameters', $.parameter_list),
-            field('name', $.identifier),
-            optional(seq(',', commaOneOrMore(field('name', $.identifier)))),
+            commaOneOrMore(field('name', $.identifier)),
         ),
 
         parameter_list: $ => seq(

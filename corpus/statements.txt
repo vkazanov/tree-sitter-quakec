@@ -448,6 +448,51 @@ float(entity arg) fun =
             name: (identifier)
             name: (identifier)))))
 
+===========
+Variable definition statement - local function ref variable
+===========
+
+void Function()
+{
+    void() local_fun;
+}
+
+---
+
+(source_file
+    (function_definition
+        result: (simple_type)
+        name: (identifier)
+        parameters: (parameter_list)
+        body: (compound_statement
+          (variable_definition
+            type: (simple_type)
+            name: (identifier)
+            name: (identifier)))))
+
+===========
+Variable definition statement - typedef
+===========
+
+typedef struct
+{
+    string mdl;
+    float frame;
+}poseInfo;
+
+---
+
+(source_file
+    (function_definition
+        result: (simple_type)
+        name: (identifier)
+        parameters: (parameter_list)
+        body: (compound_statement
+          (variable_definition
+            type: (simple_type)
+            name: (identifier)
+            name: (identifier)))))
+
 
 ===========
 Expression statement

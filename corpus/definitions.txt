@@ -452,3 +452,63 @@ $scale '10 10 10'
     (modelgen_pragma)
     (modelgen_pragma)
     (modelgen_pragma))
+
+===========
+enum definition - simple
+===========
+
+enum {
+    CONST1,
+    CONST2,
+    CONST3 = 10
+};
+
+---
+
+(source_file
+    (enum_definition
+      (identifier)
+      (identifier)
+      (identifier)
+      (numeric_literal)))
+
+===========
+enum definition - typed
+===========
+
+enum: int {
+    CONST1,
+    CONST2,
+    CONST3 = 10
+};
+
+---
+
+(source_file
+    (enum_definition
+        type: (simple_type)
+        (identifier)
+        (identifier)
+        (identifier)
+        (numeric_literal)))
+
+===========
+enum definition - strongly typed
+===========
+
+enum class ReturnCode: int {
+    CONST1,
+    CONST2,
+    CONST3 = 10
+};
+
+---
+
+(source_file
+    (enum_definition
+        name: (identifier)
+        type: (simple_type)
+        (identifier)
+        (identifier)
+        (identifier)
+        (numeric_literal)))
