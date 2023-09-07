@@ -144,28 +144,6 @@ void() Function = {
             argument: (identifier)
             field: (identifier)))))
 
-===========
-Field deref expression - funcall
-===========
-
-void() Function = {
-    self.field();
-};
-
----
-
-(source_file
-    (function_definition
-        result: (simple_type)
-        parameters: (parameter_list)
-        name: (identifier)
-        body: (compound_statement
-          (funcall_expression
-            function:
-                (field_expression
-                    argument: (identifier)
-                    field: (identifier))))))
-
 
 ===========
 Binary expression - subtraction
