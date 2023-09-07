@@ -16,25 +16,37 @@
  "#endif"
  ] @keyword
 
-"--" @operator
-"-" @operator
-"-=" @operator
-"->" @operator
-"=" @operator
-"!=" @operator
-"*" @operator
-"&" @operator
-"&&" @operator
-"+" @operator
-"++" @operator
-"+=" @operator
-"<" @operator
-"==" @operator
-">" @operator
-"||" @operator
+[
+ "--"
+ "-"
+ "-="
+ "->"
+ "="
+ "!="
+ "*"
+ "&"
+ "&&"
+ "+"
+ "++"
+ "+="
+ "<"
+ "=="
+ ">"
+ "||"
+] @operator
 
-"." @delimiter
-";" @delimiter
+[
+ "."
+ ";"
+ ":"
+] @punctuation.delimiter
+
+[
+ "(" ")"
+ "{" "}"
+ "[" "]"
+] @punctuation.bracket
+
 
 (simple_type) @type
 
