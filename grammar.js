@@ -254,6 +254,7 @@ module.exports = grammar({
         _simple_statement: $ => choice(
             $.switch_statement,
             $.break_statement,
+            $.continue_statement,
             $.if_statement,
             $.for_statement,
             $.while_statement,
@@ -281,6 +282,10 @@ module.exports = grammar({
 
         break_statement: $ => seq(
             'break', ';'
+        ),
+
+        continue_statement: $ => seq(
+            'continue', ';'
         ),
 
         for_statement: $ => seq(

@@ -332,6 +332,10 @@
           "named": true
         },
         {
+          "type": "continue_statement",
+          "named": true
+        },
+        {
           "type": "do_while_statement",
           "named": true
         },
@@ -448,6 +452,10 @@
         },
         {
           "type": "conditional_expression",
+          "named": true
+        },
+        {
+          "type": "continue_statement",
           "named": true
         },
         {
@@ -750,6 +758,11 @@
     }
   },
   {
+    "type": "continue_statement",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "do_while_statement",
     "named": true,
     "fields": {
@@ -854,6 +867,10 @@
         },
         {
           "type": "conditional_expression",
+          "named": true
+        },
+        {
+          "type": "continue_statement",
           "named": true
         },
         {
@@ -1422,6 +1439,10 @@
           "named": true
         },
         {
+          "type": "continue_statement",
+          "named": true
+        },
+        {
           "type": "do_while_statement",
           "named": true
         },
@@ -1740,6 +1761,10 @@
             "named": true
           },
           {
+            "type": "continue_statement",
+            "named": true
+          },
+          {
             "type": "do_while_statement",
             "named": true
           },
@@ -2015,6 +2040,10 @@
           "named": true
         },
         {
+          "type": "continue_statement",
+          "named": true
+        },
+        {
           "type": "do_while_statement",
           "named": true
         },
@@ -2248,6 +2277,10 @@
             "named": true
           },
           {
+            "type": "continue_statement",
+            "named": true
+          },
+          {
             "type": "do_while_statement",
             "named": true
           },
@@ -2382,6 +2415,10 @@
         },
         {
           "type": "conditional_expression",
+          "named": true
+        },
+        {
+          "type": "continue_statement",
           "named": true
         },
         {
@@ -3371,6 +3408,10 @@
           "named": true
         },
         {
+          "type": "continue_statement",
+          "named": true
+        },
+        {
           "type": "do_while_statement",
           "named": true
         },
@@ -3663,6 +3704,10 @@
   },
   {
     "type": "const",
+    "named": false
+  },
+  {
+    "type": "continue",
     "named": false
   },
   {

@@ -93,9 +93,9 @@
 
   - [X] preprocessor?
 
-  - [ ] for
+  - [X] for
 
-  - [ ] continue;
+  - [X] continue;
 
   - [ ] class?
 

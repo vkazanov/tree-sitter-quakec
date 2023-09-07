@@ -219,6 +219,33 @@ void() Function = {
                    value: (numeric_literal))))))
 
 ===========
+While statement - break/continue
+===========
+
+void() Function = {
+    while (a) {
+        if (a) break;
+        else continue;
+    }
+};
+
+---
+
+(source_file
+    (function_definition
+        result: (simple_type)
+        parameters: (parameter_list)
+        name: (identifier)
+        body: (compound_statement
+           (while_statement
+               condition: (identifier)
+              (compound_statement
+                (if_statement
+                  condition: (identifier)
+                  (break_statement)
+                  (continue_statement)))))))
+
+===========
 While statement - compound
 ===========
 
