@@ -6,6 +6,8 @@ void() QCStyleFun;
 void CStyleFun ();
 // <-type
 //     ^function
+//             ^punctuation.bracket
+//               ^punctuation.delimiter
 
 float(entity param1, entity param2) QCStyleFun;
 // ^type
@@ -23,11 +25,22 @@ float CStyleFun(entity param1, entity param2);
 //                              ^type
 //                                     ^variable
 
+void(...) EmptyFunction1 = {};
+//   ^punctuation.delimiter
+
+void() BuiltinFunction1 = #12;
+//                        ^constant.builtin
+
+void(int param1, int param2) FrameFunction1 = [ $frame1, next ] {
+//                                                       ^function
+};
+
 enum class ReturnCode: int {
 // ^keyword
 //    ^keyword
 //          ^type
 //                      ^type
+//                         ^punctuation.bracket
 
     CONST1,
 //   ^ constant

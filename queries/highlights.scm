@@ -7,6 +7,7 @@
  "while"
  "do"
  "class"
+ "nosave"
 
  "#define"
  "#undef"
@@ -36,9 +37,9 @@
 ] @operator
 
 [
- "."
  ";"
  ":"
+ "..."
 ] @punctuation.delimiter
 
 [
@@ -47,6 +48,12 @@
  "[" "]"
 ] @punctuation.bracket
 
+((identifier) @variable.builtin
+ (#eq? @variable.builtin "self"))
+
+(field_expression
+ operator: ["." "->"] @operator
+ field: (identifier) @variable)
 
 (simple_type) @type
 
@@ -63,6 +70,12 @@
 
 (function_definition
  name: (identifier) @function)
+
+(function_definition
+ frame_function_name: (identifier) @function)
+
+
+(builtin_literal) @constant.builtin
 
 ((identifier) @constant
  (#match? @constant "^[A-Z][A-Z\\d_]*$"))

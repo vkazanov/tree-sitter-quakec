@@ -258,7 +258,7 @@ void(int param1, int param2) FrameFunction1 = [ $frame1, next ] {};
                 name: (identifier)))
         name: (identifier)
         frame: (frame_identifier)
-        (identifier)
+        frame_function_name: (identifier)
         body: (compound_statement)))
 
 ===========
@@ -281,7 +281,7 @@ void(int param1, int param2) FrameFunction1 = [ 12, next ] {};
                 name: (identifier)))
         name: (identifier)
         frame: (integer_frame_literal)
-        (identifier)
+        frame_function_name: (identifier)
         body: (compound_statement)))
 
 

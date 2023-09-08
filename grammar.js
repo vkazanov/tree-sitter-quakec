@@ -101,7 +101,7 @@ module.exports = grammar({
                 $.integer_frame_literal
             )),
             ',' ,
-            $.identifier,
+            field('frame_function_name', $.identifier),
             ']'
         ),
 
@@ -413,7 +413,7 @@ module.exports = grammar({
         field_expression: $ => seq(
             prec(PREC.FIELD, seq(
                 field('argument', $._expression),
-                choice('.', '->'),
+                field('operator', choice('.', '->')),
             )),
             field('field', $.identifier),
         ),
