@@ -88,9 +88,9 @@
 
   - [X] highlights.scm
 
-  - [ ] locals.scm
+  - [X] tags.scm
 
-  - [ ] tags.scm
+  - [ ] locals.scm
 
 - [-] check extensions in https://quakewiki.org/wiki/QuakeC_Loops_and_Conditions
 

@@ -15,20 +15,20 @@ void() Function = {
 
 (source_file
     (function_definition
-        (simple_type)
-        (parameter_list)
-        (identifier)
-        (compound_statement
+        result: (simple_type)
+        parameters: (parameter_list)
+        name: (identifier)
+        body: (compound_statement
             (unary_expression
-              (identifier))
+              target: (identifier))
             (update_expression
-                (identifier))
+              target: (identifier))
             (unary_expression
-              (identifier))
+              target: (identifier))
             (update_expression
-              (identifier))
+              target: (identifier))
             (update_expression
-              (identifier)))))
+              target: (identifier)))))
 
 ===========
 Unary expression - negation
@@ -43,16 +43,16 @@ void() Function = {
 
 (source_file
     (function_definition
-        (simple_type)
-        (parameter_list)
-        (identifier)
-        (compound_statement
+        result: (simple_type)
+        parameters: (parameter_list)
+        name: (identifier)
+        body: (compound_statement
             (unary_expression
-              (identifier))
+              target: (identifier))
             (unary_expression
-                (binary_expression
-                    (identifier)
-                    (identifier))))))
+                target: (binary_expression
+                    left: (identifier)
+                    right: (identifier))))))
 
 ===========
 Unary expression - mixed

@@ -349,7 +349,7 @@ module.exports = grammar({
         ),
 
         update_expression: $ => {
-            const argument = $._expression;
+            const argument = field('target', $._expression);
             const operator = choice('--', '++');
             return prec.right(PREC.UNARY, choice(
                 seq(operator, argument),
@@ -359,7 +359,7 @@ module.exports = grammar({
 
         unary_expression: $ => prec.left(PREC.UNARY, seq(
             choice('-', '+', '~', '!'),
-            $._expression,
+            field('target', $._expression),
         )),
 
         binary_expression: $ => {
@@ -384,7 +384,11 @@ module.exports = grammar({
             return choice(...prec_table.map(([operator, precedence]) => {
                 return prec.left(
                     precedence,
-                    seq($._expression, operator, $._expression)
+                    seq(
+                        field('left', $._expression),
+                        operator,
+                        field('right', $._expression)
+                    )
                 );
             }));
         },

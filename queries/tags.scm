@@ -24,3 +24,15 @@
 
 (field_expression
  field: (identifier) @name) @reference.variable
+
+(unary_expression
+ target: (identifier) @name) @reference.variable
+
+(update_expression
+ target: (identifier) @name) @reference.variable
+
+(binary_expression
+ left: (identifier) @name) @reference.variable
+
+(binary_expression
+ right: (identifier) @name) @reference.variable

@@ -189,8 +189,8 @@ void(int param1, int param2) Function1 = {
         name: (identifier)
         body: (compound_statement
           (binary_expression
-            (identifier)
-            (identifier)))))
+            left: (identifier)
+            right: (identifier)))))
 
 ===========
 Function definition - arg init
@@ -334,10 +334,10 @@ int constLogic = a | b | c;
         type: (simple_type)
         name: (identifier)
         value: (binary_expression
-          (binary_expression
-            (identifier)
-            (identifier))
-          (identifier))))
+          left: (binary_expression
+            left: (identifier)
+            right: (identifier))
+          right: (identifier))))
 
 ===========
 Variable definitions

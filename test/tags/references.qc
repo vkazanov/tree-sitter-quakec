@@ -16,8 +16,15 @@ void() Function = {
     self.field(12, 13);
 //         ^ reference.call
 
-    b++;
-//  ^ reference.variable
+    abc++;
+//   ^ reference.variable
+
+    +abc;
+//   ^ reference.variable
+
+    abc+def;
+//   ^ reference.variable
+//       ^ reference.variable
 
 
 };

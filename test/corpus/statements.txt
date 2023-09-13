@@ -560,10 +560,10 @@ void() Function = {
                          value: (numeric_literal))
                 condition:
                     (binary_expression
-                        (identifier)
-                        (numeric_literal))
+                        left: (identifier)
+                        right: (numeric_literal))
                 increment:
                     (update_expression
-                        (identifier))
+                        target: (identifier))
                 (compound_statement
                     (numeric_literal))))))
