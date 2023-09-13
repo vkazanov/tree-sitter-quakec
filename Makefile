@@ -1,5 +1,9 @@
-# If the first argument is "run"...
 ifeq (highlight,$(firstword $(MAKECMDGOALS)))
+  RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
+  $(eval $(RUN_ARGS):;@:)
+endif
+
+ifeq (tags,$(firstword $(MAKECMDGOALS)))
   RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
   $(eval $(RUN_ARGS):;@:)
 endif
@@ -16,4 +20,7 @@ test_examples:
 highlight:
 	node_modules/tree-sitter-cli/tree-sitter highlight $(RUN_ARGS)
 
-.PHONY: test generate test_examples highlight
+tags:
+	node_modules/tree-sitter-cli/tree-sitter tags $(RUN_ARGS)
+
+.PHONY: test generate test_examples highlight tags
