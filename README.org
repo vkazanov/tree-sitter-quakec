@@ -80,19 +80,17 @@
 
   - [ ] local function ref variable
 
-  - [ ] Field deref expression - funcall (self.field();)
+  - [X] Field deref expression - funcall (self.field();)
 
   - [ ] fix TODOs
 
-- [ ] highlight
+- [-] highlight
 
-  - [ ] highlights.scm
+  - [X] highlights.scm
 
   - [ ] locals.scm
 
   - [ ] tags.scm
-
-- [ ] tags?
 
 - [-] check extensions in https://quakewiki.org/wiki/QuakeC_Loops_and_Conditions
 
@@ -121,3 +119,6 @@
 - [ ] gmqcc
 
 - [ ] extract and test code for 3-4 most popular extensions
+
+- [ ] check grammar publishing rules (including the way licenses are structured) and
+  register as an official grammar

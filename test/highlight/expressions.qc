@@ -1,23 +1,37 @@
 void() Function = {
+//      ^ function.definition
+
     b++;
 //   ^ operator
 
     self.field;
 //  ^ variable.builtin
 //      ^ operator
+
     self->field;
 //         ^ variable
 //      ^ operator
+//  ^ variable.builtin
 
-	int a = 2 + 2;
+    int abc = 2 + 2;
 //  ^ type
-//      ^ variable
-//            ^ operator
+//       ^ variable.definition
+//              ^ operator
 
-	a = 10 - call(12, 13);
+    a = 10 - call(12, 13);
 //  ^ variable
 //      ^ number
-//           ^ function
+//           ^ function.call
 
+    a = 10 - call();
+//  ^ variable
+//      ^ number
+//            ^ function.call
+
+    self.field();
+//         ^ function.call
+
+    self.field(12, 13);
+//         ^ function.call
 
 };
