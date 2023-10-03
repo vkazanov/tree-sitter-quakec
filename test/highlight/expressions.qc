@@ -1,8 +1,14 @@
+void() Function = #23;
+
 void() Function = {
 //      ^ function.definition
 
     b++;
 //   ^ operator
+
+    "asdf";
+
+    a = 1 + b;
 
     self.field;
 //  ^ variable.builtin
@@ -12,6 +18,8 @@ void() Function = {
 //         ^ variable
 //      ^ operator
 //  ^ variable.builtin
+
+    entity a = 1;
 
     int abc = 2 + 2;
 //  ^ type

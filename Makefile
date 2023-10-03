@@ -15,12 +15,12 @@ test:
 	npm exec tree-sitter-cli test
 
 test_examples:
-	node_modules/tree-sitter-cli/tree-sitter parse examples/**/*.qc --quiet --stat
+	tree-sitter parse examples/**/*.qc --quiet --stat
 
 highlight:
-	node_modules/tree-sitter-cli/tree-sitter highlight $(RUN_ARGS)
+	tree-sitter highlight $(RUN_ARGS)
 
 tags:
-	node_modules/tree-sitter-cli/tree-sitter tags $(RUN_ARGS)
+	tree-sitter tags $(RUN_ARGS)
 
 .PHONY: test generate test_examples highlight tags

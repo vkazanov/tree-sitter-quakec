@@ -1,5 +1,5 @@
 QuakeC grammar for [[https://github.com/tree-sitter/tree-sitter][tree-sitter]].
 
 As the language has many dialects and extensions and is not well-defined, the grammar had
-to be developed in an ad-hoc based on the dialect used by the 2021 Quake 1 rerelease
+to be developed in an ad-hoc way based on the dialect used by the 2021 Quake 1 rerelease
 ([[https://github.com/vkazanov/tree-sitter-quakec/tree/main/examples/rerelease][included]] directly for testing purposes).
