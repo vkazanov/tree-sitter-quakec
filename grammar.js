@@ -59,9 +59,9 @@ module.exports = grammar({
             field('result', $.simple_type),
             choice(
                 // c-style
-                seq(field('parameters', $.parameter_list), field('name', $.identifier)),
-                // qc-style
                 seq(field('name', $.identifier), field('parameters', $.parameter_list), ),
+                // qc-style
+                seq(field('parameters', $.parameter_list), field('name', $.identifier)),
             ),
             optional('='),
             optional($._frame_specifier),
