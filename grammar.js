@@ -27,6 +27,8 @@ module.exports = grammar({
         $.comment,
     ],
 
+    word: $ => $.identifier,
+
     rules: {
         source_file: $ => repeat($._top_level),
 

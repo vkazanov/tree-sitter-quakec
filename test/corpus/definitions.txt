@@ -1,4 +1,19 @@
 ===========
+Function declaration - invalid
+===========
+
+floataaa();
+
+---
+
+(source_file
+      (function_declaration
+        result: (simple_type
+          (MISSING "void"))
+        name: (identifier)
+        parameters: (parameter_list)))
+
+===========
 Function declaration - no params
 ===========
 
@@ -452,6 +467,21 @@ $scale '10 10 10'
     (modelgen_pragma)
     (modelgen_pragma)
     (modelgen_pragma))
+
+===========
+Modelgen pragmas - broken
+===========
+
+$flags 8
+$flags8
+$basearg1
+---
+
+ (source_file
+      (modelgen_pragma)
+      (ERROR
+        (identifier)
+        (identifier)))
 
 ===========
 enum definition - simple
